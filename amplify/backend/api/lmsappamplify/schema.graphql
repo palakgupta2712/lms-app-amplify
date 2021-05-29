@@ -2,4 +2,7 @@ type User @model @auth(rules: [{allow: public}]) {
   id: ID!
   name: String
   email: String
+  username: String
+  isEducator: Boolean
 }
+ 

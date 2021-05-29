@@ -8,6 +8,8 @@ export declare class User {
   readonly id: string;
   readonly name?: string;
   readonly email?: string;
+  readonly username?: string;
+  readonly isEducator?: boolean;
   readonly createdAt?: string;
   readonly updatedAt?: string;
   constructor(init: ModelInit<User>);
