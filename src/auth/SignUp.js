@@ -15,9 +15,7 @@ import {
   Box,
   FormControl,
   Hidden,
-  Input,
 } from "@material-ui/core";
-import Alert from "@material-ui/lab/Alert";
 
 import signUpLogo from "./signUpLogo.svg";
 import { Link } from "react-router-dom";
@@ -86,6 +84,8 @@ function SignUp() {
         new User({
           name: name,
           email: email,
+          username: username,
+          isEducator: true,
         })
       );
 
