@@ -17,6 +17,8 @@ import {
   Hidden,
   Input,
 } from "@material-ui/core";
+import Alert from "@material-ui/lab/Alert";
+
 import signUpLogo from "./signUpLogo.svg";
 import { Link } from "react-router-dom";
 
@@ -50,6 +52,7 @@ const initialFormState = {
   password: "",
   email: "",
   authCode: "",
+  error: "",
   formType: "signUp",
 };
 
