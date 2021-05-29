@@ -1,7 +1,13 @@
 import React from "react";
+import { BrowserRouter as Router } from "react-router-dom";
+import Routes from "./routes/Routes";
 
-function App() {
-  return <div>LMS APP</div>;
+export default function App() {
+  return (
+    <React.Fragment>
+      <Router>
+        <Routes />
+      </Router>
+    </React.Fragment>
+  );
 }
-
-export default App;
