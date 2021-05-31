@@ -17,6 +17,9 @@ export default function Routes() {
       <PrivateRoute path="/home" component={Home} />
       <Route path="/signin/" component={SignIn} />
       <Route path="/signup/" component={SignUp} />
+      <Route exact path="/courses/" component={Courses} />
+      <Route path="/courses/new" component={NewCourse} />
+
       <PrivateRoute path="/topic/" component={Topic} />
 
       <Route path="*" component={Error404} />
