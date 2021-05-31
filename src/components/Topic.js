@@ -1,3 +1,4 @@
+import Auth from "@aws-amplify/auth";
 import React from "react";
 import { useParams } from "react-router-dom";
 import Home from "./Home";
@@ -13,6 +14,14 @@ export default function Topic() {
       kc
       <Home />
       <h3>{topicId}</h3>
+      <button
+        onClick={() => {
+          Auth.signOut();
+          localStorage.removeItem("auth");
+        }}
+      >
+        Sign Out
+      </button>
     </div>
   );
 }

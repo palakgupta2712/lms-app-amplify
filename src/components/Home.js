@@ -1,13 +1,5 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  useParams,
-  useRouteMatch,
-  NavLink,
-} from "react-router-dom";
+import { Switch, Route, Link, useRouteMatch, NavLink } from "react-router-dom";
 import Topic from "./Topic";
 function Home() {
   let { path, url } = useRouteMatch();
