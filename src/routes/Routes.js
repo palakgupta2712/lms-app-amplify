@@ -9,6 +9,7 @@ import Topic from "../components/Topic";
 import Courses from "../course/Courses";
 import NewCourse from "../course/NewCourse";
 import PrivateRoute from "./PrivateRoute";
+import ProtectedRoute from "./ProtectedRoute";
 
 export default function Routes() {
   return (
@@ -18,7 +19,7 @@ export default function Routes() {
       <Route path="/signin/" component={SignIn} />
       <Route path="/signup/" component={SignUp} />
       <Route exact path="/courses/" component={Courses} />
-      <Route path="/courses/new" component={NewCourse} />
+      <ProtectedRoute path="/courses/new" component={NewCourse} />
 
       <PrivateRoute path="/topic/" component={Topic} />
 

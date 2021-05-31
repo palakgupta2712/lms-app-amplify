@@ -85,7 +85,7 @@ function SignUp() {
           name: name,
           email: email,
           username: username,
-          isEducator: true,
+          isEducator: false,
         })
       );
 
