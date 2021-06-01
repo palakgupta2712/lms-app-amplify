@@ -1,11 +1,20 @@
 import React from "react";
-import { Box, List, makeStyles, Typography } from "@material-ui/core";
+import {
+  Box,
+  IconButton,
+  List,
+  makeStyles,
+  Typography,
+} from "@material-ui/core";
 import AccountCircleOutlinedIcon from "@material-ui/icons/AccountCircleOutlined";
 import DashboardRoundedIcon from "@material-ui/icons/DashboardRounded";
 import LibraryBooksRoundedIcon from "@material-ui/icons/LibraryBooksRounded";
 import DateRangeRoundedIcon from "@material-ui/icons/DateRangeRounded";
 import LinkRoundedIcon from "@material-ui/icons/LinkRounded";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import { NavLink } from "react-router-dom";
+import Auth from "@aws-amplify/auth";
+import SignoutButton from "./SignoutButton";
 const useStyles = makeStyles((theme) => ({
   nav: {
     display: "flex",
@@ -20,13 +29,11 @@ const useStyles = makeStyles((theme) => ({
     "&:hover": {
       fontWeight: "bold",
       color: theme.palette.secondary.main,
-      borderRadius: "10%",
     },
   },
   navActive: {
     fontWeight: "bold",
     color: theme.palette.secondary.main,
-    borderRadius: "10%",
   },
 }));
 
@@ -77,6 +84,7 @@ function Navigation() {
             <Typography>Calendar</Typography>
           </NavLink>
         </Box>
+
         <Box align="center" m={2}>
           <NavLink
             to="/connect"
@@ -86,6 +94,9 @@ function Navigation() {
             <LinkRoundedIcon fontSize="large" />
             <Typography>Connect</Typography>
           </NavLink>
+        </Box>
+        <Box className={classes.navlink}>
+          <SignoutButton />
         </Box>
       </List>
     </div>
