@@ -60,7 +60,7 @@ function SignIn() {
       await Auth.signIn(username, password);
       updateFormState(() => ({ ...formState }));
       localStorage.setItem("auth", username);
-      history.push("/home");
+      history.push("/");
     } catch (err) {
       console.log("error signing in user...", err);
     }

@@ -40,7 +40,7 @@ function Error404() {
         </Typography>
 
         <Button variant="contained" color="primary" style={{ margin: "20px" }}>
-          <Link to="/home" className={classes.link}>
+          <Link to="/" className={classes.link}>
             Back to home
           </Link>
         </Button>
