@@ -8,7 +8,6 @@ function Calendar() {
       <div
         style={{
           marginLeft: "120px",
-          marginTop: "-20px",
         }}
       >
         <h1>Calendar</h1>

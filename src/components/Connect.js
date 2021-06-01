@@ -8,7 +8,6 @@ function Connect() {
       <div
         style={{
           marginLeft: "120px",
-          marginTop: "-20px",
         }}
       >
         <h1>Connect</h1>

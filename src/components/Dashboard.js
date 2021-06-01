@@ -8,7 +8,6 @@ function Dashboard() {
       <div
         style={{
           marginLeft: "120px",
-          marginTop: "-20px",
         }}
       >
         <h1>Dashboard</h1>
