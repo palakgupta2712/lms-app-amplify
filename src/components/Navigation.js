@@ -5,13 +5,28 @@ import DashboardRoundedIcon from "@material-ui/icons/DashboardRounded";
 import LibraryBooksRoundedIcon from "@material-ui/icons/LibraryBooksRounded";
 import DateRangeRoundedIcon from "@material-ui/icons/DateRangeRounded";
 import LinkRoundedIcon from "@material-ui/icons/LinkRounded";
-
+import { NavLink } from "react-router-dom";
 const useStyles = makeStyles((theme) => ({
   nav: {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     color: "white",
+  },
+  navlink: {
+    textDecoration: "none",
+    color: "white",
+
+    "&:hover": {
+      fontWeight: "bold",
+      color: theme.palette.secondary.main,
+      borderRadius: "10%",
+    },
+  },
+  navActive: {
+    fontWeight: "bold",
+    color: theme.palette.secondary.main,
+    borderRadius: "10%",
   },
 }));
 
@@ -21,25 +36,56 @@ function Navigation() {
   return (
     <div>
       <List className={classes.nav}>
+        <NavLink
+          to="/account"
+          activeClassName={classes.navActive}
+          className={classes.navlink}
+        >
+          <Box align="center" m={2}>
+            <AccountCircleOutlinedIcon fontSize="large" />
+            <Typography>Account</Typography>
+          </Box>
+        </NavLink>
+
+        <NavLink
+          to="/dashboard"
+          activeClassName={classes.navActive}
+          className={classes.navlink}
+        >
+          <Box align="center" m={2}>
+            <DashboardRoundedIcon fontSize="large" />
+            <Typography>Dashboard</Typography>
+          </Box>
+        </NavLink>
         <Box align="center" m={2}>
-          <AccountCircleOutlinedIcon fontSize="large" />
-          <Typography>Account</Typography>
+          <NavLink
+            to="/courses"
+            activeClassName={classes.navActive}
+            className={classes.navlink}
+          >
+            <LibraryBooksRoundedIcon fontSize="large" />
+            <Typography>Courses</Typography>
+          </NavLink>
         </Box>
         <Box align="center" m={2}>
-          <DashboardRoundedIcon fontSize="large" />
-          <Typography>Dashboard</Typography>
+          <NavLink
+            to="/calendar"
+            activeClassName={classes.navActive}
+            className={classes.navlink}
+          >
+            <DateRangeRoundedIcon fontSize="large" />
+            <Typography>Calendar</Typography>
+          </NavLink>
         </Box>
         <Box align="center" m={2}>
-          <LibraryBooksRoundedIcon fontSize="large" />
-          <Typography>Courses</Typography>
-        </Box>
-        <Box align="center" m={2}>
-          <DateRangeRoundedIcon fontSize="large" />
-          <Typography>Calendar</Typography>
-        </Box>
-        <Box align="center" m={2}>
-          <LinkRoundedIcon fontSize="large" />
-          <Typography>Connect</Typography>
+          <NavLink
+            to="/connect"
+            activeClassName={classes.navActive}
+            className={classes.navlink}
+          >
+            <LinkRoundedIcon fontSize="large" />
+            <Typography>Connect</Typography>
+          </NavLink>
         </Box>
       </List>
     </div>
