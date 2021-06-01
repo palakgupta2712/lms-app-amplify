@@ -8,7 +8,6 @@ function Courses() {
       <div
         style={{
           marginLeft: "120px",
-          marginTop: "-20px",
         }}
       >
         <h1>Courses</h1>
