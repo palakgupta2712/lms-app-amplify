@@ -1,9 +1,13 @@
 import React from "react";
-
+import { isLoggedIn } from "../routes/isLoggedIn";
+import LandingPage from "./LandingPage";
+import Sidebar from "./Sidebar";
 function Home() {
-  return (
+  return !isLoggedIn() ? (
+    <LandingPage />
+  ) : (
     <div>
-      <h1>HOME</h1>
+      <Sidebar />
     </div>
   );
 }

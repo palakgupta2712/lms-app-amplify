@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Amplify, { Auth } from "aws-amplify";
 import awsconfig from "../aws-exports";
-import { Link, Redirect, useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import {
   makeStyles,
   Grid,
@@ -59,6 +59,7 @@ function SignIn() {
     try {
       await Auth.signIn(username, password);
       updateFormState(() => ({ ...formState }));
+      localStorage.setItem("auth", username);
       history.push("/home");
     } catch (err) {
       console.log("error signing in user...", err);
