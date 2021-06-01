@@ -1,51 +1,13 @@
 import React from "react";
-import { Switch, Route, Link, useRouteMatch, NavLink } from "react-router-dom";
-import Topic from "./Topic";
+import { isLoggedIn } from "../routes/isLoggedIn";
+import LandingPage from "./LandingPage";
+import Sidebar from "./Sidebar";
 function Home() {
-  let { path, url } = useRouteMatch();
-
-  return (
+  return !isLoggedIn() ? (
+    <LandingPage />
+  ) : (
     <div>
-      <h2>Topics</h2>
-      <ul>
-        <li>
-          <NavLink
-            activeStyle={{
-              fontWeight: "bold",
-              color: "red",
-            }}
-            to={`${url}/rendering`}
-          >
-            Rendering with React
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            activeStyle={{
-              fontWeight: "bold",
-              color: "red",
-            }}
-            to={`${url}/components`}
-          >
-            Components
-          </NavLink>
-        </li>
-        <li>
-          <Link to={`${url}/props-v-state`}>Props v. State</Link>
-        </li>
-      </ul>
-
-      <Switch>
-        <Route exact path={path}>
-          <h3>Please select a topic.</h3>
-        </Route>
-        <Route exact path={`${url}/rendering`}>
-          <h3>Please select a topic.</h3>
-        </Route>
-        <Route exact path={`${path}/:topicId`}>
-          <Topic />
-        </Route>
-      </Switch>
+      <Sidebar />
     </div>
   );
 }
