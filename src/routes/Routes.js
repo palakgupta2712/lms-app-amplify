@@ -2,6 +2,10 @@ import React from "react";
 import { Switch, Route } from "react-router-dom";
 import SignIn from "../auth/SignIn";
 import SignUp from "../auth/SignUp";
+import Account from "../components/Account";
+import Calendar from "../components/Calendar";
+import Connect from "../components/Connect";
+import Dashboard from "../components/Dashboard";
 import Error404 from "../components/Error404";
 import Home from "../components/Home";
 import Courses from "../course/Courses";
@@ -17,6 +21,11 @@ export default function Routes() {
       <Route path="/signup/" component={SignUp} />
       <PrivateRoute exact path="/courses/" component={Courses} />
       <ProtectedRoute path="/courses/new" component={NewCourse} />
+
+      <PrivateRoute path="/dashboard/" component={Dashboard} />
+      <PrivateRoute path="/account/" component={Account} />
+      <PrivateRoute path="/calendar/" component={Calendar} />
+      <PrivateRoute path="/connect/" component={Connect} />
 
       <Route path="*" component={Error404} />
     </Switch>

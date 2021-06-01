@@ -1,7 +1,7 @@
 import React from "react";
 import Sidebar from "../components/Sidebar";
 
-function Courses() {
+function Connect() {
   return (
     <div>
       <Sidebar />
@@ -11,10 +11,10 @@ function Courses() {
           marginTop: "-20px",
         }}
       >
-        <h1>Courses</h1>
+        <h1>Connect</h1>
       </div>
     </div>
   );
 }
 
-export default Courses;
+export default Connect;
