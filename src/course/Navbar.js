@@ -5,7 +5,7 @@ import NavRoutes from "./NavRoutes";
 function Navbar() {
   return (
     <React.Fragment>
-      <div style={{ background: "red ", display: "flex" }}>
+      <div style={{ display: "flex" }}>
         <Navlinks />
         <NavRoutes />
       </div>

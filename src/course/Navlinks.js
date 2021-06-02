@@ -52,8 +52,8 @@ const useStyles = makeStyles({
     display: "flex",
     flexDirection: "column",
     padding: "20px",
+    paddingTop: "50px",
     width: "160px",
-    background: "pink",
     height: "100vh",
   },
   links: {
