@@ -8,6 +8,7 @@ import Connect from "../components/Connect";
 import Dashboard from "../components/Dashboard";
 import Error404 from "../components/Error404";
 import Home from "../components/Home";
+import Course from "../course/Course";
 import Courses from "../course/Courses";
 import NewCourse from "../course/NewCourse";
 import PrivateRoute from "./PrivateRoute";
@@ -20,6 +21,8 @@ export default function Routes() {
       <Route path="/signin/" component={SignIn} />
       <Route path="/signup/" component={SignUp} />
       <PrivateRoute exact path="/courses/" component={Courses} />
+      <PrivateRoute path="/course/:id" component={Course} />
+
       <ProtectedRoute path="/courses/new" component={NewCourse} />
 
       <PrivateRoute path="/dashboard/" component={Dashboard} />
