@@ -1,20 +1,15 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core";
 import Navlinks from "./Navlinks";
+import NavRoutes from "./NavRoutes";
 
-const useStyles = makeStyles((theme) => ({
-  sidebar: {
-    position: "absolute",
-    height: "100vh",
-    width: "180px",
-  },
-}));
 function Navbar() {
-  const classes = useStyles();
   return (
-    <div className={classes.sidebar}>
-      <Navlinks />
-    </div>
+    <React.Fragment>
+      <div style={{ background: "red ", display: "flex" }}>
+        <Navlinks />
+        <NavRoutes />
+      </div>
+    </React.Fragment>
   );
 }
 
