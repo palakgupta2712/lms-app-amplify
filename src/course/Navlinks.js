@@ -10,34 +10,75 @@ function Navlinks() {
   return (
     <React.Fragment>
       <div className={classes.navlinks}>
-        <NavLink to={`${url}/home`} className={classes.links}>
+        <NavLink
+          to={`${url}/home`}
+          activeClassName={classes.activeLinks}
+          className={classes.links}
+        >
           Home
         </NavLink>
-        <NavLink to={`${url}/announcements`} className={classes.links}>
+        <NavLink
+          to={`${url}/announcements`}
+          activeClassName={classes.activeLinks}
+          className={classes.links}
+        >
           Announcements
         </NavLink>
-        <NavLink to={`${url}/assignments`} className={classes.links}>
+        <NavLink
+          to={`${url}/assignments`}
+          activeClassName={classes.activeLinks}
+          className={classes.links}
+        >
           Assignments
         </NavLink>
-        <NavLink to={`${url}/lessons`} className={classes.links}>
+        <NavLink
+          to={`${url}/lessons`}
+          activeStyle={{}}
+          activeClassName={classes.activeLinks}
+          className={classes.links}
+        >
           Lessons
         </NavLink>
-        <NavLink to={`${url}/discussions`} className={classes.links}>
+        <NavLink
+          to={`${url}/discussions`}
+          activeClassName={classes.activeLinks}
+          className={classes.links}
+        >
           Discussions
         </NavLink>
-        <NavLink to={`${url}/syllabus`} className={classes.links}>
+        <NavLink
+          to={`${url}/syllabus`}
+          activeClassName={classes.activeLinks}
+          className={classes.links}
+        >
           Syllabus
         </NavLink>
-        <NavLink to={`${url}/files`} className={classes.links}>
+        <NavLink
+          to={`${url}/files`}
+          activeClassName={classes.activeLinks}
+          className={classes.links}
+        >
           Files
         </NavLink>
-        <NavLink to={`${url}/notes`} className={classes.links}>
+        <NavLink
+          to={`${url}/notes`}
+          activeClassName={classes.activeLinks}
+          className={classes.links}
+        >
           Notes(personal)
         </NavLink>
-        <NavLink to={`${url}/zoom`} className={classes.links}>
+        <NavLink
+          to={`${url}/zoom`}
+          activeClassName={classes.activeLinks}
+          className={classes.links}
+        >
           Zoom
         </NavLink>
-        <NavLink to={`${url}/chat`} className={classes.links}>
+        <NavLink
+          to={`${url}/chat`}
+          activeClassName={classes.activeLinks}
+          className={classes.links}
+        >
           Chat
         </NavLink>
       </div>
@@ -58,5 +99,13 @@ const useStyles = makeStyles({
   },
   links: {
     padding: "10px",
+    "&:hover": {
+      fontWeight: "bold",
+    },
+  },
+  activeLinks: {
+    fontWeight: "bold",
+    color: "black",
+    borderLeft: "3px solid black",
   },
 });
