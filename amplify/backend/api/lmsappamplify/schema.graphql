@@ -1,10 +1,18 @@
-type Course @model @auth(rules: [{allow: public}]) @key(name: "byUser", fields: ["userID"]) {
+type Lesson @model @auth(rules: [{allow: public}]) @key(name: "byCourse", fields: ["courseID"]) {
+  id: ID!
+  title: String
+  summary: String
+  videoURL: String
+  courseID: ID
+}
+
+type Course @model @auth(rules: [{allow: public}]) {
   id: ID!
   title: String
   desc: String
   createdBy: String
   createdAt: String
-  userID: ID
+  Lessons: [Lesson] @connection(keyName: "byCourse", fields: ["id"])
 }
 
 type User @model @auth(rules: [{allow: public}]) {
@@ -13,6 +21,5 @@ type User @model @auth(rules: [{allow: public}]) {
   email: String
   username: String
   isEducator: Boolean
-  Courses: [Course] @connection(keyName: "byUser", fields: ["id"])
 }
  
