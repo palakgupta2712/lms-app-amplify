@@ -7,7 +7,7 @@ import Chat from "../pages/Chat";
 import Discussions from "../pages/Discussions";
 import Files from "../pages/Files";
 import Home from "../pages/Home";
-import Lessons from "../pages/Lessons";
+import Lessons from "../lessons/Lessons";
 import Notes from "../pages/Notes";
 import Syllabus from "../pages/Syllabus";
 import Zoom from "../pages/Zoom";
