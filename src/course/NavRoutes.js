@@ -15,7 +15,7 @@ function NavRoutes() {
   let { path } = useRouteMatch();
 
   return (
-    <div style={{ width: "100%" }}>
+    <div style={{ width: "100vw", marginLeft: "180px" }}>
       <Switch>
         <ProtectedRoutes path={`${path}/home`} component={Home} />
         <ProtectedRoutes
