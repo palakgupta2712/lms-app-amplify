@@ -7,7 +7,7 @@ import Chat from "../pages/Chat";
 import Discussions from "../pages/Discussions";
 import Files from "../pages/Files";
 import Home from "../pages/Home";
-import Lessons from "../pages/Lessons";
+import Lessons from "../lessons/Lessons";
 import Notes from "../pages/Notes";
 import Syllabus from "../pages/Syllabus";
 import Zoom from "../pages/Zoom";
@@ -15,7 +15,7 @@ function NavRoutes() {
   let { path } = useRouteMatch();
 
   return (
-    <div style={{ width: "100%" }}>
+    <div style={{ width: "100vw", marginLeft: "180px" }}>
       <Switch>
         <ProtectedRoutes path={`${path}/home`} component={Home} />
         <ProtectedRoutes

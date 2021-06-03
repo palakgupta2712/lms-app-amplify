@@ -4,9 +4,9 @@ import { makeStyles } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   sidebar: {
-    position: "absolute",
+    position: "fixed",
     backgroundColor: theme.palette.primary.main,
-    height: "100vh",
+    height: "100%",
     width: "120px",
   },
 }));

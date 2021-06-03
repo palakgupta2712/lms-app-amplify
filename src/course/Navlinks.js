@@ -96,6 +96,7 @@ const useStyles = makeStyles({
     paddingTop: "50px",
     width: "160px",
     height: "100vh",
+    position: "fixed",
   },
   links: {
     padding: "10px",
