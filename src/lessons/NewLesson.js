@@ -50,6 +50,7 @@ export default function NewLesson(props) {
     setTitle("");
     setSummary("");
     setURL("");
+    setOpen(false);
   }
   return (
     <div>
