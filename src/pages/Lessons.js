@@ -6,7 +6,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import Navigation from "../components/Navigation";
 import Navlinks from "../course/Navlinks";
 
-export default function Discussions() {
+export default function Lessons() {
   const classes = useStyles();
   const theme = useTheme();
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -60,7 +60,7 @@ export default function Discussions() {
           </Hidden>
         </Grid>
         <Grid container xs={12} md={7}>
-          Discussions
+          Lessons
         </Grid>
       </Grid>
     </React.Fragment>

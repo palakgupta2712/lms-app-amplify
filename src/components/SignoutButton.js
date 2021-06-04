@@ -1,6 +1,6 @@
 import React from "react";
 import Auth from "@aws-amplify/auth";
-import { Box, Typography } from "@material-ui/core";
+import { Box, Hidden, Typography } from "@material-ui/core";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 
 function SignoutButton() {
@@ -8,7 +8,7 @@ function SignoutButton() {
     <div>
       <Box
         align="center"
-        m={2}
+        m={1}
         onClick={() => {
           Auth.signOut();
           window.location.reload();
@@ -16,7 +16,9 @@ function SignoutButton() {
         }}
         style={{ cursor: "pointer" }}
       >
-        <ExitToAppIcon fontSize="large" />
+        <Hidden smDown>
+          <ExitToAppIcon fontSize="large" />
+        </Hidden>
         <Typography>Logout</Typography>
       </Box>
     </div>
