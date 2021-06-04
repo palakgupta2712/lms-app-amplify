@@ -1,19 +1,31 @@
 import React from "react";
-import Sidebar from "../components/Sidebar";
+import { makeStyles } from "@material-ui/core/styles";
+import Grid from "@material-ui/core/Grid";
+import Navigation from "./Navigation";
 
-function Connect() {
+export default function Connect() {
+  const classes = useStyles();
+
   return (
-    <div>
-      <Sidebar />
-      <div
-        style={{
-          marginLeft: "120px",
-        }}
-      >
-        <h1>Connect</h1>
-      </div>
-    </div>
+    <React.Fragment>
+      <Grid container>
+        <Grid item xs={12} md={1} className={classes.sidebar}>
+          <Navigation />
+        </Grid>
+        <Grid item xs={12} md={10}>
+          Connect
+        </Grid>
+      </Grid>
+    </React.Fragment>
   );
 }
 
-export default Connect;
+const useStyles = makeStyles((theme) => ({
+  sidebar: {
+    height: "100%",
+    background: theme.palette.primary.main,
+    [theme.breakpoints.up("md")]: {
+      height: "100vh",
+    },
+  },
+}));

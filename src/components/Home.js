@@ -1,23 +1,34 @@
 import React from "react";
-import { isLoggedIn } from "../routes/isLoggedIn";
+import { makeStyles } from "@material-ui/core/styles";
+import Grid from "@material-ui/core/Grid";
+import Navigation from "./Navigation";
 import LandingPage from "./LandingPage";
-import Sidebar from "./Sidebar";
-import Welcome from "./Welcome";
-function Home() {
+import { isLoggedIn } from "../routes/isLoggedIn";
+export default function Account() {
+  const classes = useStyles();
+
   return !isLoggedIn() ? (
     <LandingPage />
   ) : (
-    <div>
-      <Sidebar />
-      <div
-        style={{
-          marginLeft: "120px",
-        }}
-      >
-        <Welcome />
-      </div>
-    </div>
+    <React.Fragment>
+      <Grid container>
+        <Grid item xs={12} md={1} className={classes.sidebar}>
+          <Navigation />
+        </Grid>
+        <Grid item xs={12} md={10}>
+          Home
+        </Grid>
+      </Grid>
+    </React.Fragment>
   );
 }
 
-export default Home;
+const useStyles = makeStyles((theme) => ({
+  sidebar: {
+    height: "100%",
+    background: theme.palette.primary.main,
+    [theme.breakpoints.up("md")]: {
+      height: "100vh",
+    },
+  },
+}));

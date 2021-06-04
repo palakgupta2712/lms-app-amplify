@@ -1,81 +1,69 @@
-import React, { useEffect, useState } from "react";
-import ReactPlayer from "react-player/youtube";
-import NewLesson from "./NewLesson";
-import { DataStore } from "@aws-amplify/datastore";
-import { Lesson } from "../models";
-import { useParams } from "react-router";
-import {
-  Avatar,
-  Box,
-  Card,
-  CardHeader,
-  Grid,
-  IconButton,
-} from "@material-ui/core";
-import { Delete, Edit } from "@material-ui/icons";
+import React from "react";
+import { useTheme } from "@material-ui/core/styles";
+import { useStyles } from "../pages/useStyles";
+import { Box, Drawer, Grid, Hidden } from "@material-ui/core";
+import MenuIcon from "@material-ui/icons/Menu";
+import Navigation from "../components/Navigation";
+import Navlinks from "../course/Navlinks";
+import LessonsList from "./LessonsList";
 
-function Lessons({ isEducator }) {
-  let { id } = useParams();
-  const [lessons, setLessons] = useState([]);
+export default function Lessons() {
+  const classes = useStyles();
+  const theme = useTheme();
+  const [mobileOpen, setMobileOpen] = React.useState(false);
 
-  useEffect(() => {
-    getLessons();
-  }, []);
-  async function getLessons() {
-    const models = (await DataStore.query(Lesson)).filter(
-      (c) => c.courseID === id
-    );
-    setLessons(models);
-  }
-  async function handleDelete(id) {
-    const modelToDelete = await DataStore.query(Lesson, id);
-    DataStore.delete(modelToDelete);
-  }
+  const handleDrawerToggle = () => {
+    setMobileOpen(!mobileOpen);
+  };
+
+  const drawer = (
+    <div>
+      <Navlinks />
+    </div>
+  );
   return (
     <React.Fragment>
-      <div>{isEducator && <NewLesson />}</div>
-      {lessons.map((lesson, index) => (
-        <div key={index}>
-          <div>
-            <Grid container>
-              <Grid item xs={12} md={12}>
-                <Box>
-                  <Card style={{ margin: "20px", padding: "20px" }}>
-                    <CardHeader
-                      title={lesson.title}
-                      subheader={lesson.summary}
-                      action={
-                        isEducator && (
-                          <div>
-                            {" "}
-                            <IconButton>
-                              <Edit />
-                            </IconButton>
-                            <IconButton
-                              onClick={() => {
-                                handleDelete(lesson.id);
-                              }}
-                            >
-                              <Delete />
-                            </IconButton>{" "}
-                          </div>
-                        )
-                      }
-                      avatar={<Avatar>{index + 1}</Avatar>}
-                    />
-                    <ReactPlayer
-                      url={lesson.videoURL}
-                      style={{ marginLeft: "120px" }}
-                    />
-                  </Card>
-                </Box>
-              </Grid>
-            </Grid>
+      <Grid container>
+        <Grid item xs={12} md={1} className={classes.sidebar}>
+          <div
+            color="inherit"
+            aria-label="open drawer"
+            edge="start"
+            onClick={handleDrawerToggle}
+            className={classes.menuButton}
+          >
+            <MenuIcon />
           </div>
-        </div>
-      ))}
+          <Box className={classes.nav}>
+            {" "}
+            <Navigation />
+          </Box>
+        </Grid>
+        <Grid container xs={12} md={2}>
+          <Hidden smUp implementation="css">
+            <Drawer
+              variant="temporary"
+              anchor={theme.direction === "rtl" ? "right" : "left"}
+              open={mobileOpen}
+              onClose={handleDrawerToggle}
+              classes={{
+                paper: classes.drawerPaper,
+              }}
+              ModalProps={{
+                keepMounted: true,
+              }}
+            >
+              {drawer}
+            </Drawer>
+          </Hidden>
+          <Hidden xsDown implementation="css">
+            {drawer}
+          </Hidden>
+        </Grid>
+        <Grid container xs={12} md={9} className={classes.root}>
+          <LessonsList />
+        </Grid>
+      </Grid>
     </React.Fragment>
   );
 }
-
-export default Lessons;

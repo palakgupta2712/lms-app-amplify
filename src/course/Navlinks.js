@@ -1,105 +1,77 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core";
-import { useRouteMatch } from "react-router";
+import { CssBaseline, List, ListItem, makeStyles } from "@material-ui/core";
+import { useParams } from "react-router";
 import { NavLink } from "react-router-dom";
 
 function Navlinks() {
   let classes = useStyles();
-  let { url } = useRouteMatch();
-
+  let { id } = useParams();
   return (
     <React.Fragment>
-      <div className={classes.navlinks}>
-        <NavLink
-          to={`${url}/home`}
-          activeClassName={classes.activeLinks}
-          className={classes.links}
-        >
-          Home
-        </NavLink>
-        <NavLink
-          to={`${url}/announcements`}
-          activeClassName={classes.activeLinks}
-          className={classes.links}
-        >
-          Announcements
-        </NavLink>
-        <NavLink
-          to={`${url}/assignments`}
-          activeClassName={classes.activeLinks}
-          className={classes.links}
-        >
-          Assignments
-        </NavLink>
-        <NavLink
-          to={`${url}/lessons`}
-          activeStyle={{}}
-          activeClassName={classes.activeLinks}
-          className={classes.links}
-        >
-          Lessons
-        </NavLink>
-        <NavLink
-          to={`${url}/discussions`}
-          activeClassName={classes.activeLinks}
-          className={classes.links}
-        >
-          Discussions
-        </NavLink>
-        <NavLink
-          to={`${url}/syllabus`}
-          activeClassName={classes.activeLinks}
-          className={classes.links}
-        >
-          Syllabus
-        </NavLink>
-        <NavLink
-          to={`${url}/files`}
-          activeClassName={classes.activeLinks}
-          className={classes.links}
-        >
-          Files
-        </NavLink>
-        <NavLink
-          to={`${url}/notes`}
-          activeClassName={classes.activeLinks}
-          className={classes.links}
-        >
-          Notes(personal)
-        </NavLink>
-        <NavLink
-          to={`${url}/zoom`}
-          activeClassName={classes.activeLinks}
-          className={classes.links}
-        >
-          Zoom
-        </NavLink>
-        <NavLink
-          to={`${url}/chat`}
-          activeClassName={classes.activeLinks}
-          className={classes.links}
-        >
-          Chat
-        </NavLink>
-      </div>
+      <CssBaseline />
+      <List className={classes.root}>
+        <ListItem>
+          <NavLink
+            to={`/course/${id}/announcements`}
+            activeClassName={classes.activeLinks}
+            className={classes.links}
+          >
+            Announcements
+          </NavLink>
+        </ListItem>
+        <ListItem>
+          <NavLink
+            to={`/course/${id}/assignments`}
+            activeClassName={classes.activeLinks}
+            className={classes.links}
+          >
+            Assignments
+          </NavLink>
+        </ListItem>
+        <ListItem>
+          <NavLink
+            to={`/course/${id}/lessons`}
+            activeClassName={classes.activeLinks}
+            className={classes.links}
+          >
+            Lessons
+          </NavLink>
+        </ListItem>
+        <ListItem>
+          <NavLink
+            to={`/course/${id}/discussions`}
+            activeClassName={classes.activeLinks}
+            className={classes.links}
+          >
+            Discussion
+          </NavLink>
+        </ListItem>
+        <ListItem>
+          <NavLink
+            to={`/course/${id}/syllabus`}
+            activeClassName={classes.activeLinks}
+            className={classes.links}
+          >
+            Syllabus
+          </NavLink>
+        </ListItem>
+      </List>
     </React.Fragment>
   );
 }
 
 export default Navlinks;
 
-const useStyles = makeStyles({
-  navlinks: {
-    display: "flex",
-    flexDirection: "column",
-    padding: "20px",
-    paddingTop: "50px",
-    width: "160px",
-    height: "100vh",
-    position: "fixed",
+const useStyles = makeStyles((theme) => ({
+  root: {
+    [theme.breakpoints.up("md")]: {
+      position: "fixed",
+      left: 100,
+      padding: "20px",
+    },
   },
   links: {
-    padding: "10px",
+    padding: "5px",
     "&:hover": {
       fontWeight: "bold",
     },
@@ -108,5 +80,6 @@ const useStyles = makeStyles({
     fontWeight: "bold",
     color: "black",
     borderLeft: "3px solid black",
+    padding: "5px",
   },
-});
+}));

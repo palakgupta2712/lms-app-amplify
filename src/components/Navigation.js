@@ -1,18 +1,103 @@
 import React from "react";
-import { Box, List, makeStyles, Typography } from "@material-ui/core";
+import { makeStyles, Grid, Hidden, Typography } from "@material-ui/core";
+import { NavLink } from "react-router-dom";
 import AccountCircleOutlinedIcon from "@material-ui/icons/AccountCircleOutlined";
 import DashboardRoundedIcon from "@material-ui/icons/DashboardRounded";
 import LibraryBooksRoundedIcon from "@material-ui/icons/LibraryBooksRounded";
 import DateRangeRoundedIcon from "@material-ui/icons/DateRangeRounded";
 import LinkRoundedIcon from "@material-ui/icons/LinkRounded";
-import { NavLink } from "react-router-dom";
 import SignoutButton from "./SignoutButton";
+function Nav() {
+  const classes = useStyles();
+
+  return (
+    <div className={classes.nav}>
+      <NavLink
+        to="/account"
+        activeClassName={classes.navActive}
+        className={classes.navlink}
+      >
+        <Grid item className={classes.navItem}>
+          <Hidden smDown>
+            <AccountCircleOutlinedIcon fontSize="large" />
+          </Hidden>
+          <Typography>Account</Typography>
+        </Grid>
+      </NavLink>
+
+      <NavLink
+        to="/dashboard"
+        activeClassName={classes.navActive}
+        className={classes.navlink}
+      >
+        <Grid item className={classes.navItem}>
+          <Hidden smDown>
+            <DashboardRoundedIcon fontSize="large" />
+          </Hidden>
+          <Typography>Dashboard</Typography>
+        </Grid>
+      </NavLink>
+
+      <NavLink
+        to="/courses"
+        activeClassName={classes.navActive}
+        className={classes.navlink}
+      >
+        <Grid item className={classes.navItem}>
+          <Hidden smDown>
+            <LibraryBooksRoundedIcon fontSize="large" />
+          </Hidden>
+          <Typography>Courses</Typography>
+        </Grid>
+      </NavLink>
+
+      <NavLink
+        to="/calendar"
+        activeClassName={classes.navActive}
+        className={classes.navlink}
+      >
+        <Grid item className={classes.navItem}>
+          <Hidden smDown>
+            <DateRangeRoundedIcon fontSize="large" />
+          </Hidden>
+          <Typography>Calendar</Typography>
+        </Grid>
+      </NavLink>
+
+      <NavLink
+        to="/connect"
+        activeClassName={classes.navActive}
+        className={classes.navlink}
+      >
+        <Grid item className={classes.navItem}>
+          <Hidden smDown>
+            <LinkRoundedIcon fontSize="large" />
+          </Hidden>
+          <Typography>Connect</Typography>
+        </Grid>
+      </NavLink>
+      <SignoutButton />
+    </div>
+  );
+}
+
+export default Nav;
+
 const useStyles = makeStyles((theme) => ({
   nav: {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     color: "white",
+  },
+  navItem: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    padding: "4px",
+    [theme.breakpoints.up("md")]: {
+      padding: "15px",
+    },
   },
   navlink: {
     textDecoration: "none",
@@ -28,71 +113,3 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.secondary.main,
   },
 }));
-
-function Navigation() {
-  const classes = useStyles();
-
-  return (
-    <div>
-      <List className={classes.nav}>
-        <NavLink
-          to="/account"
-          activeClassName={classes.navActive}
-          className={classes.navlink}
-        >
-          <Box align="center" m={2}>
-            <AccountCircleOutlinedIcon fontSize="large" />
-            <Typography>Account</Typography>
-          </Box>
-        </NavLink>
-
-        <NavLink
-          to="/dashboard"
-          activeClassName={classes.navActive}
-          className={classes.navlink}
-        >
-          <Box align="center" m={2}>
-            <DashboardRoundedIcon fontSize="large" />
-            <Typography>Dashboard</Typography>
-          </Box>
-        </NavLink>
-        <Box align="center" m={2}>
-          <NavLink
-            to="/courses"
-            activeClassName={classes.navActive}
-            className={classes.navlink}
-          >
-            <LibraryBooksRoundedIcon fontSize="large" />
-            <Typography>Courses</Typography>
-          </NavLink>
-        </Box>
-        <Box align="center" m={2}>
-          <NavLink
-            to="/calendar"
-            activeClassName={classes.navActive}
-            className={classes.navlink}
-          >
-            <DateRangeRoundedIcon fontSize="large" />
-            <Typography>Calendar</Typography>
-          </NavLink>
-        </Box>
-
-        <Box align="center" m={2}>
-          <NavLink
-            to="/connect"
-            activeClassName={classes.navActive}
-            className={classes.navlink}
-          >
-            <LinkRoundedIcon fontSize="large" />
-            <Typography>Connect</Typography>
-          </NavLink>
-        </Box>
-        <Box className={classes.navlink}>
-          <SignoutButton />
-        </Box>
-      </List>
-    </div>
-  );
-}
-
-export default Navigation;

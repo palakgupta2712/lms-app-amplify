@@ -1,12 +1,12 @@
 import React from "react";
 import { useTheme } from "@material-ui/core/styles";
-import { useStyles } from "./useStyles";
+import { useStyles } from "../pages/useStyles";
 import { Box, Drawer, Grid, Hidden } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import Navigation from "../components/Navigation";
 import Navlinks from "../course/Navlinks";
 
-export default function Discussions() {
+export default function CourseDetails() {
   const classes = useStyles();
   const theme = useTheme();
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -59,8 +59,8 @@ export default function Discussions() {
             {drawer}
           </Hidden>
         </Grid>
-        <Grid container xs={12} md={7} className={classes.root}>
-          Discussions
+        <Grid container xs={12} md={7}>
+          Course Details
         </Grid>
       </Grid>
     </React.Fragment>
