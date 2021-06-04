@@ -25,7 +25,7 @@ export default function Lessons() {
     <React.Fragment>
       <Grid container>
         <Grid item xs={12} md={1} className={classes.sidebar}>
-          <Box
+          <div
             color="inherit"
             aria-label="open drawer"
             edge="start"
@@ -33,7 +33,7 @@ export default function Lessons() {
             className={classes.menuButton}
           >
             <MenuIcon />
-          </Box>
+          </div>
           <Box className={classes.nav}>
             {" "}
             <Navigation />
@@ -60,7 +60,7 @@ export default function Lessons() {
             {drawer}
           </Hidden>
         </Grid>
-        <Grid container xs={12} md={7}>
+        <Grid container xs={12} md={9} className={classes.root}>
           <LessonsList />
         </Grid>
       </Grid>

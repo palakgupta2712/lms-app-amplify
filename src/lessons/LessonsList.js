@@ -4,14 +4,7 @@ import NewLesson from "./NewLesson";
 import { DataStore } from "@aws-amplify/datastore";
 import { Lesson } from "../models";
 import { useParams } from "react-router";
-import {
-  Avatar,
-  Box,
-  Card,
-  CardHeader,
-  Grid,
-  IconButton,
-} from "@material-ui/core";
+import { Avatar, Card, CardHeader, Grid, IconButton } from "@material-ui/core";
 import { Delete, Edit } from "@material-ui/icons";
 import { UserContext } from "../context/UserContext";
 
@@ -36,47 +29,50 @@ function Lessons() {
   }
   return (
     <React.Fragment>
-      <div>{user.isEducator && <NewLesson />}</div>
-      {lessons.map((lesson, index) => (
-        <div key={index}>
-          <div>
-            <Grid container>
-              <Grid item xs={12} md={12}>
-                <Box>
-                  <Card style={{ margin: "20px", padding: "20px" }}>
-                    <CardHeader
-                      title={lesson.title}
-                      subheader={lesson.summary}
-                      action={
-                        user.isEducator && (
-                          <div>
-                            {" "}
-                            <IconButton>
-                              <Edit />
-                            </IconButton>
-                            <IconButton
-                              onClick={() => {
-                                handleDelete(lesson.id);
-                              }}
-                            >
-                              <Delete />
-                            </IconButton>{" "}
-                          </div>
-                        )
-                      }
-                      avatar={<Avatar>{index + 1}</Avatar>}
-                    />
-                    <ReactPlayer
-                      url={lesson.videoURL}
-                      style={{ marginLeft: "120px" }}
-                    />
-                  </Card>
-                </Box>
+      <div>
+        <div>{user.isEducator && <NewLesson />}</div>
+        <div>
+          <Grid container>
+            {lessons.map((lesson, index) => (
+              <Grid
+                item
+                xs={12}
+                md={12}
+                style={{ margin: "10px", padding: "30px" }}
+              >
+                <Card>
+                  <CardHeader
+                    title={lesson.title}
+                    subheader={lesson.summary}
+                    action={
+                      user.isEducator && (
+                        <div>
+                          <IconButton>
+                            <Edit />
+                          </IconButton>
+                          <IconButton
+                            onClick={() => {
+                              handleDelete(lesson.id);
+                            }}
+                          >
+                            <Delete />
+                          </IconButton>
+                        </div>
+                      )
+                    }
+                    avatar={<Avatar>{index + 1}</Avatar>}
+                  />
+                  <ReactPlayer
+                    url={lesson.videoURL}
+                    width="auto"
+                    style={{ height: "100vh", padding: "20px" }}
+                  />
+                </Card>
               </Grid>
-            </Grid>
-          </div>
+            ))}
+          </Grid>
         </div>
-      ))}
+      </div>
     </React.Fragment>
   );
 }

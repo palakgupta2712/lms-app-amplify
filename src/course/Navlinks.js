@@ -9,7 +9,7 @@ function Navlinks() {
   return (
     <React.Fragment>
       <CssBaseline />
-      <List>
+      <List className={classes.root}>
         <ListItem>
           <NavLink
             to={`/course/${id}/announcements`}
@@ -62,15 +62,13 @@ function Navlinks() {
 
 export default Navlinks;
 
-const useStyles = makeStyles({
-  navlinks: {
-    display: "flex",
-    flexDirection: "column",
-    padding: "20px",
-    paddingTop: "50px",
-    width: "160px",
-    height: "100vh",
-    position: "fixed",
+const useStyles = makeStyles((theme) => ({
+  root: {
+    [theme.breakpoints.up("md")]: {
+      position: "fixed",
+      left: 100,
+      padding: "20px",
+    },
   },
   links: {
     padding: "5px",
@@ -84,4 +82,4 @@ const useStyles = makeStyles({
     borderLeft: "3px solid black",
     padding: "5px",
   },
-});
+}));

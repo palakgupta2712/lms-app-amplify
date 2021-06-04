@@ -14,7 +14,9 @@ import { DataStore } from "@aws-amplify/datastore";
 import { Lesson } from "../models";
 const useStyles = makeStyles((theme) => ({
   form: {
-    minWidth: 500,
+    [theme.breakpoints.up("md")]: {
+      minWidth: 500,
+    },
   },
 }));
 

@@ -59,7 +59,7 @@ export default function Discussions() {
             {drawer}
           </Hidden>
         </Grid>
-        <Grid container xs={12} md={7}>
+        <Grid container xs={12} md={7} className={classes.root}>
           Discussions
         </Grid>
       </Grid>
