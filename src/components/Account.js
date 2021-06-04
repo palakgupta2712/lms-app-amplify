@@ -2,6 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Navigation from "./Navigation";
+import Profile from "./Profile";
 
 export default function Account() {
   const classes = useStyles();
@@ -13,7 +14,7 @@ export default function Account() {
           <Navigation />
         </Grid>
         <Grid item xs={12} md={10}>
-          Account
+          <Profile />
         </Grid>
       </Grid>
     </React.Fragment>
