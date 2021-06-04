@@ -10,7 +10,7 @@ export const useStyles = makeStyles((theme) => ({
   },
   menuButton: {
     position: "fixed",
-    background: "red",
+
     padding: "10px",
     width: "100%",
     [theme.breakpoints.up("sm")]: {

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-
 import { DataStore, Predicates, SortDirection } from "@aws-amplify/datastore";
 import { Course } from "../models";
 import {

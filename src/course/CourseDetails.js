@@ -6,7 +6,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import Navigation from "../components/Navigation";
 import Navlinks from "../course/Navlinks";
 
-export default function Announcements() {
+export default function CourseDetails() {
   const classes = useStyles();
   const theme = useTheme();
   const [mobileOpen, setMobileOpen] = React.useState(false);

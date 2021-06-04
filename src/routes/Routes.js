@@ -11,7 +11,7 @@ import Home from "../components/Home";
 import Courses from "../course/Courses";
 // import NewCourse from "../course/NewCourse";
 import PrivateRoute from "./PrivateRoute";
-import ProtectedRoute from "./ProtectedRoute";
+// import ProtectedRoute from "./ProtectedRoute";
 import { UserContext } from "../context/UserContext";
 import Auth from "@aws-amplify/auth";
 import { DataStore } from "@aws-amplify/datastore";
@@ -19,7 +19,7 @@ import { User } from "../models";
 import CourseDetails from "../course/CourseDetails";
 import Assignments from "../pages/Assignments";
 import Announcements from "../pages/Announcements";
-import Lessons from "../pages/Lessons";
+import Lessons from "../lessons/Lessons";
 import Discussions from "../pages/Discussions";
 import Syllabus from "../pages/Syllabus";
 export default function Routes() {
@@ -48,7 +48,6 @@ export default function Routes() {
         path="/course/:id/announcements"
         component={Announcements}
       />
-      <PrivateRoute path="/course/:id/lessons" component={Lessons} />
       <PrivateRoute path="/course/:id/discussions" component={Discussions} />
       <PrivateRoute path="/course/:id/syllabus" component={Syllabus} />
 
@@ -61,6 +60,7 @@ export default function Routes() {
           <PrivateRoute path="/account/" component={Account} />
           <PrivateRoute path="/calendar/" component={Calendar} />
           <PrivateRoute path="/connect/" component={Connect} />
+          <PrivateRoute path="/course/:id/lessons" component={Lessons} />
         </UserContext.Provider>
       ))}
 

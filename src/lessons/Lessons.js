@@ -1,10 +1,11 @@
 import React from "react";
 import { useTheme } from "@material-ui/core/styles";
-import { useStyles } from "./useStyles";
+import { useStyles } from "../pages/useStyles";
 import { Box, Drawer, Grid, Hidden } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import Navigation from "../components/Navigation";
 import Navlinks from "../course/Navlinks";
+import LessonsList from "./LessonsList";
 
 export default function Lessons() {
   const classes = useStyles();
@@ -60,7 +61,7 @@ export default function Lessons() {
           </Hidden>
         </Grid>
         <Grid container xs={12} md={7}>
-          Lessons
+          <LessonsList />
         </Grid>
       </Grid>
     </React.Fragment>
