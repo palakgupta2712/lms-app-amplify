@@ -18,10 +18,12 @@ import { DataStore } from "@aws-amplify/datastore";
 import { User } from "../models";
 import CourseDetails from "../course/CourseDetails";
 import Assignments from "../pages/Assignments";
-import Announcements from "../pages/Announcements";
+import Announcements from "../../src/announcements/Announcements";
 import Lessons from "../lessons/Lessons";
 import Discussions from "../pages/Discussions";
 import Syllabus from "../pages/Syllabus";
+import EditAnnouncement from "../announcements/EditAnnouncement";
+import ProtectedRoute from "./ProtectedRoute";
 export default function Routes() {
   let { url } = useRouteMatch();
 
@@ -44,10 +46,6 @@ export default function Routes() {
       <Route path="/signup/" component={SignUp} />
       <PrivateRoute exact path="/course/:id" component={CourseDetails} />
       <PrivateRoute path="/course/:id/assignments" component={Assignments} />
-      <PrivateRoute
-        path="/course/:id/announcements"
-        component={Announcements}
-      />
       <PrivateRoute path="/course/:id/discussions" component={Discussions} />
       <PrivateRoute path="/course/:id/syllabus" component={Syllabus} />
 
@@ -61,6 +59,15 @@ export default function Routes() {
           <PrivateRoute path="/calendar/" component={Calendar} />
           <PrivateRoute path="/connect/" component={Connect} />
           <PrivateRoute path="/course/:id/lessons" component={Lessons} />
+          <PrivateRoute
+            exact
+            path="/course/:id/announcements"
+            component={Announcements}
+          />
+          <ProtectedRoute
+            path="/course/:id/:aID/edit"
+            component={EditAnnouncement}
+          />
         </UserContext.Provider>
       ))}
 

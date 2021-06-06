@@ -4,11 +4,11 @@ import { schema } from './schema';
 
 
 
-const { AnnouncementModel, Lesson, Course, User } = initSchema(schema);
+const { AnnouncementsModel, User, Lesson, Course } = initSchema(schema);
 
 export {
-  AnnouncementModel,
+  AnnouncementsModel,
+  User,
   Lesson,
-  Course,
-  User
+  Course
 };

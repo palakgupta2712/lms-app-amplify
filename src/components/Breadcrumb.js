@@ -25,7 +25,7 @@ function Breadcrumb() {
   }
   return (
     <div>
-      <Breadcrumbs>
+      <Breadcrumbs style={{ marginTop: "15px", marginLeft: "15px" }}>
         <Link to={`/courses`}>Courses</Link>
         <Link to={`/course/${id}`}>{course.title}</Link>
         <Link>{pathCapitalized}</Link>
