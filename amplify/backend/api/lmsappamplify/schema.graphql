@@ -1,3 +1,11 @@
+type AnnouncementModel @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  title: String
+  content: String
+  createdBy: String
+  createdAt: String
+}
+
 type Lesson @model @auth(rules: [{allow: public}]) @key(name: "byCourse", fields: ["courseID"]) {
   id: ID!
   title: String

@@ -4,6 +4,17 @@ import { ModelInit, MutableModel, PersistentModelConstructor } from "@aws-amplif
 
 
 
+export declare class AnnouncementModel {
+  readonly id: string;
+  readonly title?: string;
+  readonly content?: string;
+  readonly createdBy?: string;
+  readonly createdAt?: string;
+  readonly updatedAt?: string;
+  constructor(init: ModelInit<AnnouncementModel>);
+  static copyOf(source: AnnouncementModel, mutator: (draft: MutableModel<AnnouncementModel>) => MutableModel<AnnouncementModel> | void): AnnouncementModel;
+}
+
 export declare class Lesson {
   readonly id: string;
   readonly title?: string;
