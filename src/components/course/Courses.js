@@ -1,10 +1,10 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
-import Navigation from "./Navigation";
-import Profile from "./Profile";
+import Navigation from "../Navigation";
+import CourseList from "./CourseList";
 
-export default function Account() {
+export default function Courses() {
   const classes = useStyles();
 
   return (
@@ -13,8 +13,8 @@ export default function Account() {
         <Grid item xs={12} md={1} className={classes.sidebar}>
           <Navigation />
         </Grid>
-        <Grid item xs={12} md={10}>
-          <Profile />
+        <Grid container xs={12} md={10}>
+          <CourseList />
         </Grid>
       </Grid>
     </React.Fragment>

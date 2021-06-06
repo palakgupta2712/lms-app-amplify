@@ -2,9 +2,9 @@ import React, { useContext, useEffect, useState } from "react";
 import Announcement from "./Announcement";
 import NewAnnouncement from "./NewAnnouncement";
 import { DataStore, Predicates, SortDirection } from "@aws-amplify/datastore";
-import { AnnouncementsModel, Course } from "../models";
+import { AnnouncementsModel, Course } from "../../models";
 import { useParams } from "react-router";
-import { UserContext } from "../context/UserContext";
+import { UserContext } from "../../context/UserContext";
 
 function AnnouncementList() {
   const { id } = useParams();

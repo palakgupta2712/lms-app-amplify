@@ -1,13 +1,14 @@
 import React from "react";
 import { useTheme } from "@material-ui/core/styles";
-import { useStyles } from "../utils/useStyles";
+import { useStyles } from "../../utils/useStyles";
 import { Box, Drawer, Grid, Hidden } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
-import Navigation from "../components/Navigation";
-import Navlinks from "../course/Navlinks";
-import Breadcrumb from "../components/Breadcrumb";
+import Navigation from "../../components/Navigation";
+import Navlinks from "../../components/course/Navlinks";
+import Breadcrumb from "../../components/Breadcrumb";
+import DisplayAnnouncements from "./DisplayAnnouncements";
 
-export default function CourseDetails() {
+export default function Announcements() {
   const classes = useStyles();
   const theme = useTheme();
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -61,7 +62,12 @@ export default function CourseDetails() {
           </Hidden>
         </Grid>
         <Grid container xs={12} md={7} className={classes.root}>
-          <Breadcrumb />
+          <Grid item xs={12}>
+            <Breadcrumb />
+          </Grid>
+          <Grid item xs={12}>
+            <DisplayAnnouncements />
+          </Grid>
         </Grid>
       </Grid>
     </React.Fragment>

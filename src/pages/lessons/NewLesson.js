@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import {
   Button,
   TextField,
@@ -11,9 +11,7 @@ import AddIcon from "@material-ui/icons/Add";
 import { makeStyles } from "@material-ui/core/styles";
 import { useParams } from "react-router";
 import { DataStore } from "@aws-amplify/datastore";
-import { AnnouncementsModel } from "../models";
-import { UserContext } from "../context/UserContext";
-
+import { Lesson } from "../../models";
 const useStyles = makeStyles((theme) => ({
   form: {
     [theme.breakpoints.up("md")]: {
@@ -22,13 +20,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function NewAnnouncement() {
-  const user = useContext(UserContext);
+export default function NewLesson(props) {
   const classes = useStyles();
   let { id } = useParams();
   const [open, setOpen] = useState(false);
   const [title, setTitle] = useState();
-  const [content, setContent] = useState();
+  const [summary, setSummary] = useState();
+  const [url, setURL] = useState();
 
   const handleOpen = () => {
     setOpen(true);
@@ -36,35 +34,36 @@ export default function NewAnnouncement() {
 
   const handleClose = () => {
     setTitle("");
-    setContent("");
+    setSummary("");
+    setURL("");
     setOpen(false);
   };
 
   async function handleSubmit(event) {
     event.preventDefault();
     await DataStore.save(
-      new AnnouncementsModel({
+      new Lesson({
         title: title,
-        content: content,
-        createdAt: new Date().toLocaleString(),
+        summary: summary,
+        videoURL: url,
         courseID: id,
-        User: user,
       })
     );
     setTitle("");
-    setContent("");
+    setSummary("");
+    setURL("");
     setOpen(false);
   }
   return (
     <div>
       <Button
-        aria-label="Add Announcement"
+        aria-label="Add Lesson"
         color="primary"
         variant="contained"
         onClick={handleOpen}
         style={{ float: "right", margin: "20px" }}
       >
-        <AddIcon /> &nbsp; New Announcement
+        <AddIcon /> &nbsp; New Lesson
       </Button>
       <Dialog
         open={open}
@@ -72,9 +71,7 @@ export default function NewAnnouncement() {
         aria-labelledby="form-dialog-title"
       >
         <div className={classes.form}>
-          <DialogTitle id="form-dialog-title">
-            Create New Announcement
-          </DialogTitle>
+          <DialogTitle id="form-dialog-title">Add New Lesson</DialogTitle>
           <DialogContent>
             <TextField
               margin="dense"
@@ -92,8 +89,17 @@ export default function NewAnnouncement() {
               multiline
               rows="5"
               fullWidth
-              value={content}
-              onChange={(event) => setContent(event.target.value)}
+              value={summary}
+              onChange={(event) => setSummary(event.target.value)}
+            />
+            <br />
+            <TextField
+              margin="dense"
+              label="Resource link"
+              type="text"
+              fullWidth
+              value={url}
+              onChange={(event) => setURL(event.target.value)}
             />
             <br />
           </DialogContent>

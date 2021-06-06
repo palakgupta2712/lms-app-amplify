@@ -4,7 +4,7 @@ import { useStyles } from "../utils/useStyles";
 import { Box, Drawer, Grid, Hidden } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import Navigation from "../components/Navigation";
-import Navlinks from "../course/Navlinks";
+import Navlinks from "../components/course/Navlinks";
 import Breadcrumb from "../components/Breadcrumb";
 
 export default function Discussions() {

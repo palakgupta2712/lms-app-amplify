@@ -1,10 +1,10 @@
 import React from "react";
 import { useTheme } from "@material-ui/core/styles";
-import { useStyles } from "../utils/useStyles";
+import { useStyles } from "../../utils/useStyles";
 import { Box, Drawer, Grid, Hidden } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
-import Navigation from "../components/Navigation";
-import Navlinks from "../course/Navlinks";
+import Navigation from "../../components/Navigation";
+import Navlinks from "../../components/course/Navlinks";
 import Edit from "./Edit";
 
 export default function EditAnnouncement() {

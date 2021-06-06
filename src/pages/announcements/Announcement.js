@@ -14,7 +14,7 @@ import {
 } from "@material-ui/core";
 import CreateIcon from "@material-ui/icons/Create";
 import DeleteIcon from "@material-ui/icons/Delete";
-import { UserContext } from "../context/UserContext";
+import { UserContext } from "../../context/UserContext";
 import { Link, useParams } from "react-router-dom";
 
 function Announcement({ announcement, handleDelete }) {

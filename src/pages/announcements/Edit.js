@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router";
 import { DataStore } from "@aws-amplify/datastore";
-import { AnnouncementsModel } from "../models";
+import { AnnouncementsModel } from "../../models";
 import {
   Box,
   Button,

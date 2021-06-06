@@ -1,13 +1,13 @@
 import React from "react";
 import { useTheme } from "@material-ui/core/styles";
-import { useStyles } from "../utils/useStyles";
+import { useStyles } from "../../utils/useStyles";
 import { Box, Drawer, Grid, Hidden } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
-import Navigation from "../components/Navigation";
-import Navlinks from "../course/Navlinks";
-import LessonsList from "./LessonsList";
+import Navigation from "../Navigation";
+import Navlinks from "./Navlinks";
+import Breadcrumb from "../Breadcrumb";
 
-export default function Lessons() {
+export default function CourseDetails() {
   const classes = useStyles();
   const theme = useTheme();
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -25,7 +25,7 @@ export default function Lessons() {
     <React.Fragment>
       <Grid container>
         <Grid item xs={12} md={1} className={classes.sidebar}>
-          <div
+          <Box
             color="inherit"
             aria-label="open drawer"
             edge="start"
@@ -33,7 +33,7 @@ export default function Lessons() {
             className={classes.menuButton}
           >
             <MenuIcon />
-          </div>
+          </Box>
           <Box className={classes.nav}>
             {" "}
             <Navigation />
@@ -60,8 +60,8 @@ export default function Lessons() {
             {drawer}
           </Hidden>
         </Grid>
-        <Grid container xs={12} md={9} className={classes.root}>
-          <LessonsList />
+        <Grid container xs={12} md={7} className={classes.root}>
+          <Breadcrumb />
         </Grid>
       </Grid>
     </React.Fragment>

@@ -1,14 +1,13 @@
 import React from "react";
 import { useTheme } from "@material-ui/core/styles";
-import { useStyles } from "../utils/useStyles";
+import { useStyles } from "../../utils/useStyles";
 import { Box, Drawer, Grid, Hidden } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
-import Navigation from "../components/Navigation";
-import Navlinks from "../course/Navlinks";
-import Breadcrumb from "../components/Breadcrumb";
-import DisplayAnnouncements from "./DisplayAnnouncements";
+import Navigation from "../../components/Navigation";
+import Navlinks from "../../components/course/Navlinks";
+import LessonsList from "./LessonsList";
 
-export default function Announcements() {
+export default function Lessons() {
   const classes = useStyles();
   const theme = useTheme();
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -26,7 +25,7 @@ export default function Announcements() {
     <React.Fragment>
       <Grid container>
         <Grid item xs={12} md={1} className={classes.sidebar}>
-          <Box
+          <div
             color="inherit"
             aria-label="open drawer"
             edge="start"
@@ -34,7 +33,7 @@ export default function Announcements() {
             className={classes.menuButton}
           >
             <MenuIcon />
-          </Box>
+          </div>
           <Box className={classes.nav}>
             {" "}
             <Navigation />
@@ -61,13 +60,8 @@ export default function Announcements() {
             {drawer}
           </Hidden>
         </Grid>
-        <Grid container xs={12} md={7} className={classes.root}>
-          <Grid item xs={12}>
-            <Breadcrumb />
-          </Grid>
-          <Grid item xs={12}>
-            <DisplayAnnouncements />
-          </Grid>
+        <Grid container xs={12} md={9} className={classes.root}>
+          <LessonsList />
         </Grid>
       </Grid>
     </React.Fragment>

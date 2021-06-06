@@ -10,9 +10,9 @@ import {
   TextField,
   Switch,
 } from "@material-ui/core";
-import { UserContext } from "../context/UserContext";
+import { UserContext } from "../../context/UserContext";
 import { DataStore } from "@aws-amplify/datastore";
-import { User } from "../models";
+import { User } from "../../models";
 
 export default function Profile() {
   const classes = useStyles();
