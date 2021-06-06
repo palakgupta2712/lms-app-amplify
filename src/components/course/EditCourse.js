@@ -1,32 +1,17 @@
-import React, { useContext, useEffect, useState } from "react";
+import React from "react";
 import { useTheme } from "@material-ui/core/styles";
 import { useStyles } from "../../utils/useStyles";
 import { Box, Drawer, Grid, Hidden } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
-import Navigation from "../Navigation";
-import Navlinks from "./Navlinks";
-import Breadcrumb from "../Breadcrumb";
-import { UserContext } from "../../context/UserContext";
-import { DataStore } from "@aws-amplify/datastore";
-import { Course } from "../../models";
-import { useParams } from "react-router";
-import DeleteButton from "./DeleteButton";
-import EditButton from "./EditButton";
+import Navigation from "../../components/Navigation";
+import Navlinks from "../../components/course/Navlinks";
+import Edit from "./Edit";
 
-export default function CourseDetails() {
-  const user = useContext(UserContext);
+export default function EditCourse() {
   const classes = useStyles();
   const theme = useTheme();
-  const { id } = useParams();
-  const [course, setCourse] = useState([]);
   const [mobileOpen, setMobileOpen] = React.useState(false);
-  useEffect(() => {
-    getCourses();
-  }, []);
-  async function getCourses() {
-    const models = await DataStore.query(Course, id);
-    setCourse(models);
-  }
+
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
@@ -54,7 +39,7 @@ export default function CourseDetails() {
             <Navigation />
           </Box>
         </Grid>
-        <Grid item xs={12} md={2}>
+        <Grid container xs={12} md={2}>
           <Hidden smUp implementation="css">
             <Drawer
               variant="temporary"
@@ -75,17 +60,9 @@ export default function CourseDetails() {
             {drawer}
           </Hidden>
         </Grid>
-        <Grid item xs={12} md={7} className={classes.root}>
+        <Grid container xs={12} md={7} className={classes.root}>
           <Grid item xs={12}>
-            <Breadcrumb />
-          </Grid>
-          <Grid item xs={12}>
-            {course.createdBy === user.username && (
-              <div>
-                <DeleteButton />
-                <EditButton />
-              </div>
-            )}
+            <Edit />
           </Grid>
         </Grid>
       </Grid>

@@ -37,58 +37,64 @@ function CourseList() {
   }
 
   return (
-    <Container maxWidth="md" style={{ marginTop: "50px", display: "flex" }}>
-      <Grid container spacing={2}>
-        {courses.map((course) => (
-          <Grid item xs={12} md={4}>
-            <Card>
-              <div
-                style={{ background: "pink", width: "100%", height: "20vh" }}
-              ></div>
-              <CardHeader
-                avatar={
-                  <Avatar>{course.createdBy.charAt(0).toUpperCase()}</Avatar>
-                }
-                title={course.title}
-                subheader={"By " + course.createdBy}
-              />
-              <CardContent>
-                <Typography variant="body2" color="textSecondary" component="p">
-                  {course.desc}
-                </Typography>
-              </CardContent>
-              <CardActions>
-                <Tooltip title="Like">
-                  <IconButton>
-                    <FavoriteIcon />
-                  </IconButton>
-                </Tooltip>
-                <Tooltip title="Like">
-                  <ShareLinkModal id={course.id} />
-                </Tooltip>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  style={{ marginLeft: "auto" }}
-                >
-                  <Link
-                    to={`/course/${course.id}`}
-                    style={{
-                      textDecoration: "none",
-                      color: "white",
-                      display: "flex",
-                      alignItems: "center",
-                    }}
+    <div>
+      <Container maxWidth="md" style={{ marginTop: "50px", display: "flex" }}>
+        <Grid container spacing={2}>
+          {courses.map((course, index) => (
+            <Grid item xs={12} md={4} key={index}>
+              <Card>
+                <div
+                  style={{ background: "pink", width: "100%", height: "20vh" }}
+                ></div>
+                <CardHeader
+                  avatar={
+                    <Avatar>{course.createdBy.charAt(0).toUpperCase()}</Avatar>
+                  }
+                  title={course.title}
+                  subheader={"By " + course.createdBy}
+                />
+                <CardContent>
+                  <Typography
+                    variant="body2"
+                    color="textSecondary"
+                    component="p"
                   >
-                    Continue <ArrowForwardIosIcon fontSize="small" />
-                  </Link>
-                </Button>
-              </CardActions>
-            </Card>
-          </Grid>
-        ))}
-      </Grid>
-    </Container>
+                    {course.desc}
+                  </Typography>
+                </CardContent>
+                <CardActions>
+                  <Tooltip title="Like">
+                    <IconButton>
+                      <FavoriteIcon />
+                    </IconButton>
+                  </Tooltip>
+                  <Tooltip title="Like">
+                    <ShareLinkModal id={course.id} />
+                  </Tooltip>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    style={{ marginLeft: "auto" }}
+                  >
+                    <Link
+                      to={`/course/${course.id}`}
+                      style={{
+                        textDecoration: "none",
+                        color: "white",
+                        display: "flex",
+                        alignItems: "center",
+                      }}
+                    >
+                      Continue <ArrowForwardIosIcon fontSize="small" />
+                    </Link>
+                  </Button>
+                </CardActions>
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
+      </Container>
+    </div>
   );
 }
 

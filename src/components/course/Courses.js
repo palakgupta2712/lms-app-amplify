@@ -1,20 +1,25 @@
-import React from "react";
+import React, { useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Navigation from "../Navigation";
 import CourseList from "./CourseList";
+import NewCourse from "./NewCourse";
+import { UserContext } from "../../context/UserContext";
 
 export default function Courses() {
   const classes = useStyles();
-
+  const user = useContext(UserContext);
   return (
     <React.Fragment>
       <Grid container>
         <Grid item xs={12} md={1} className={classes.sidebar}>
           <Navigation />
         </Grid>
-        <Grid container xs={12} md={10}>
-          <CourseList />
+        <Grid item xs={12} md={10}>
+          <Grid item>{user.isEducator && <NewCourse />}</Grid>
+          <Grid item>
+            <CourseList />
+          </Grid>
         </Grid>
       </Grid>
     </React.Fragment>
