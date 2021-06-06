@@ -11,6 +11,11 @@ function Navlinks() {
       <CssBaseline />
       <List className={classes.root}>
         <ListItem>
+          <NavLink to={`/course/${id}`} className={classes.links}>
+            Home
+          </NavLink>
+        </ListItem>
+        <ListItem>
           <NavLink
             to={`/course/${id}/announcements`}
             activeClassName={classes.activeLinks}

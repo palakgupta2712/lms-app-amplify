@@ -11,24 +11,31 @@ import {
   Container,
   Grid,
   IconButton,
+  Tooltip,
   Typography,
 } from "@material-ui/core";
-import ShareIcon from "@material-ui/icons/Share";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 import { Link } from "react-router-dom";
-
+import ShareLinkModal from "./ShareLinkModal";
 function CourseList() {
   const [courses, setCourses] = useState([]);
+
   useEffect(() => {
     getCourses();
+    const subscription = DataStore.observe(Course).subscribe((msg) => {
+      getCourses();
+    });
+    return () => subscription.unsubscribe();
   }, []);
+
   async function getCourses() {
     const models = await DataStore.query(Course, Predicates.ALL, {
       sort: (s) => s.createdAt(SortDirection.DESCENDING),
     });
     setCourses(models);
   }
+
   return (
     <Container maxWidth="md" style={{ marginTop: "50px", display: "flex" }}>
       <Grid container spacing={2}>
@@ -45,20 +52,20 @@ function CourseList() {
                 title={course.title}
                 subheader={"By " + course.createdBy}
               />
-
               <CardContent>
                 <Typography variant="body2" color="textSecondary" component="p">
                   {course.desc}
                 </Typography>
               </CardContent>
               <CardActions>
-                <IconButton>
-                  <FavoriteIcon />
-                </IconButton>
-                <IconButton>
-                  <ShareIcon />
-                </IconButton>
-
+                <Tooltip title="Like">
+                  <IconButton>
+                    <FavoriteIcon />
+                  </IconButton>
+                </Tooltip>
+                <Tooltip title="Like">
+                  <ShareLinkModal id={course.id} />
+                </Tooltip>
                 <Button
                   variant="contained"
                   color="primary"

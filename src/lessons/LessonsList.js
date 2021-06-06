@@ -7,6 +7,7 @@ import { useParams } from "react-router";
 import { Avatar, Card, CardHeader, Grid, IconButton } from "@material-ui/core";
 import { Delete, Edit } from "@material-ui/icons";
 import { UserContext } from "../context/UserContext";
+import Breadcrumb from "../components/Breadcrumb";
 
 function Lessons() {
   let { id } = useParams();
@@ -15,6 +16,10 @@ function Lessons() {
 
   useEffect(() => {
     getLessons();
+    const subscription = DataStore.observe(Lesson).subscribe((msg) => {
+      getLessons();
+    });
+    return () => subscription.unsubscribe();
   }, []);
   async function getLessons() {
     const models = (await DataStore.query(Lesson)).filter(
@@ -30,6 +35,10 @@ function Lessons() {
   return (
     <React.Fragment>
       <div>
+        <div>
+          {" "}
+          <Breadcrumb />
+        </div>
         <div>{user.isEducator && <NewLesson />}</div>
         <div>
           <Grid container>
