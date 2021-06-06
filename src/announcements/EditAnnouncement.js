@@ -5,9 +5,9 @@ import { Box, Drawer, Grid, Hidden } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import Navigation from "../components/Navigation";
 import Navlinks from "../course/Navlinks";
-import Breadcrumb from "../components/Breadcrumb";
+import Edit from "./Edit";
 
-export default function Announcements() {
+export default function EditAnnouncement() {
   const classes = useStyles();
   const theme = useTheme();
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -61,7 +61,9 @@ export default function Announcements() {
           </Hidden>
         </Grid>
         <Grid container xs={12} md={7} className={classes.root}>
-          <Breadcrumb />
+          <Grid item xs={12}>
+            <Edit />
+          </Grid>
         </Grid>
       </Grid>
     </React.Fragment>
