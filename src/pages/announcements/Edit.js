@@ -9,20 +9,39 @@ import {
   TextField,
   Typography,
 } from "@material-ui/core";
+import { Editor } from "react-draft-wysiwyg";
+import {
+  EditorState,
+  convertToRaw,
+  ContentState,
+  convertFromHTML,
+} from "draft-js";
+import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import draftToHtml from "draftjs-to-html";
 
 function Edit() {
   const [title, setTitle] = useState();
   const [content, setContent] = useState();
+  const [editorState, setEditorState] = useState();
   const { aID } = useParams();
   let history = useHistory();
   useEffect(() => {
     fetchAnnouncementModels();
   }, []);
 
+  function onEditorStateChange(editorState) {
+    setContent(draftToHtml(convertToRaw(editorState.getCurrentContent())));
+    setEditorState(editorState);
+  }
   async function fetchAnnouncementModels() {
     const models = await DataStore.query(AnnouncementsModel, aID);
     setTitle(models.title);
     setContent(models.content);
+    setEditorState(
+      EditorState.createWithContent(
+        ContentState.createFromBlockArray(convertFromHTML(models.content))
+      )
+    );
   }
 
   async function handleSubmit(event) {
@@ -66,7 +85,7 @@ function Edit() {
         onChange={(event) => setTitle(event.target.value)}
       />
       <br />
-      <TextField
+      {/* <TextField
         margin="dense"
         label="Content"
         type="text"
@@ -77,7 +96,27 @@ function Edit() {
         defaultValue={{ content }}
         value={content}
         onChange={(event) => setContent(event.target.value)}
-      />
+      /> */}
+      <Box>
+        <Editor
+          style={{ height: "350px", boxSizing: "content-box" }}
+          editorState={editorState}
+          toolbarClassName="rdw-editor-toolbar"
+          wrapperClassName="wrapper-class"
+          editorClassName="home-editor rdw-editor-main"
+          onEditorStateChange={onEditorStateChange}
+          placeholder="Enter the description..."
+          toolbar={{
+            options: ["inline", "blockType", "fontSize", "list", "textAlign"],
+            inline: { inDropdown: false },
+            list: { inDropdown: true },
+            textAlign: { inDropdown: true },
+            link: { inDropdown: true },
+            history: { inDropdown: true },
+          }}
+        />
+      </Box>
+
       <Box style={{ display: "flex", marginLeft: "auto", marginTop: "10px" }}>
         <Button
           color="primary"

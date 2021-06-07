@@ -16,6 +16,7 @@ import CreateIcon from "@material-ui/icons/Create";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { UserContext } from "../../context/UserContext";
 import { Link, useParams } from "react-router-dom";
+import ReactHtmlParser from "react-html-parser";
 
 function Announcement({ announcement, handleDelete }) {
   const { id } = useParams();
@@ -29,7 +30,6 @@ function Announcement({ announcement, handleDelete }) {
   };
 
   const handleCloseEdit = () => {
-    // handleDelete(announcement.id);
     setOpenEdit(false);
   };
   const handleCancelEdit = () => {
@@ -139,11 +139,13 @@ function Announcement({ announcement, handleDelete }) {
                 </Box>
               )}
             </Box>
-            <Box>
+            <Box style={{ marginLeft: "10px" }}>
               <Typography variant="h6" style={{ fontWeight: "700" }}>
                 {announcement.title}
               </Typography>
-              <Typography variant="body1">{announcement.content}</Typography>
+              <Typography variant="body1">
+                {ReactHtmlParser(announcement.content)}
+              </Typography>
             </Box>
           </Paper>
         </Grid>

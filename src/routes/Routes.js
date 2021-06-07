@@ -55,7 +55,7 @@ export default function Routes() {
         <UserContext.Provider value={user}>
           <Route exact path="/courses/" component={Courses} />
           <PrivateRoute exact path="/course/:id" component={CourseDetails} />
-          <PrivateRoute path="/course/:id/edit-course" component={EditCourse} />
+          <PrivateRoute path="/course/:id/edit" component={EditCourse} />
 
           <PrivateRoute path="/dashboard/" component={Dashboard} />
           <PrivateRoute path="/account/" component={Account} />

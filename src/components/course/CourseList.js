@@ -18,6 +18,8 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 import { Link } from "react-router-dom";
 import ShareLinkModal from "./ShareLinkModal";
+import ReactHtmlParser from "react-html-parser";
+
 function CourseList() {
   const [courses, setCourses] = useState([]);
 
@@ -59,7 +61,7 @@ function CourseList() {
                     color="textSecondary"
                     component="p"
                   >
-                    {course.desc}
+                    {ReactHtmlParser(course.desc)}
                   </Typography>
                 </CardContent>
                 <CardActions>
