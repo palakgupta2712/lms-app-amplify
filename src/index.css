@@ -16,3 +16,18 @@ code {
   margin: 0;
   padding: 0;
 }
+
+.home-editor {
+  border: 1px solid #403f4f !important;
+  padding: 10px !important;
+  border-radius: 5px !important;
+  height: 25vh !important;
+}
+.rdw-editor-main {
+  height: 100%;
+  overflow: auto;
+  box-sizing: border-box;
+}
+.wrapper-class {
+  box-sizing: content-box;
+}
