@@ -19,10 +19,12 @@ type Course @model @auth(rules: [{allow: public}]) {
   id: ID!
   title: String
   desc: String
+  introduction: String
   createdBy: String
-  createdAt: String
   Lessons: [Lesson] @connection(keyName: "byCourse", fields: ["id"])
   AnnouncementsModels: [AnnouncementsModel] @connection(keyName: "byCourse", fields: ["id"])
+  createdAt: String
+  User: User @connection
 }
 
 type User @model @auth(rules: [{allow: public}]) {

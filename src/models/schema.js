@@ -287,15 +287,15 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
-                "createdBy": {
-                    "name": "createdBy",
+                "introduction": {
+                    "name": "introduction",
                     "isArray": false,
                     "type": "String",
                     "isRequired": false,
                     "attributes": []
                 },
-                "createdAt": {
-                    "name": "createdAt",
+                "createdBy": {
+                    "name": "createdBy",
                     "isArray": false,
                     "type": "String",
                     "isRequired": false,
@@ -327,6 +327,26 @@ export const schema = {
                     "association": {
                         "connectionType": "HAS_MANY",
                         "associatedWith": "courseID"
+                    }
+                },
+                "createdAt": {
+                    "name": "createdAt",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "User": {
+                    "name": "User",
+                    "isArray": false,
+                    "type": {
+                        "model": "User"
+                    },
+                    "isRequired": false,
+                    "attributes": [],
+                    "association": {
+                        "connectionType": "BELONGS_TO",
+                        "targetName": "courseUserId"
                     }
                 },
                 "updatedAt": {
@@ -366,5 +386,5 @@ export const schema = {
     },
     "enums": {},
     "nonModels": {},
-    "version": "5ccd239ec8547153080b5a783296e080"
+    "version": "dc3aae244d76c4c8080e85e0f6f77767"
 };

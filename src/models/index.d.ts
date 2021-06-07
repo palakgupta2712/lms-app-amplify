@@ -44,10 +44,12 @@ export declare class Course {
   readonly id: string;
   readonly title?: string;
   readonly desc?: string;
+  readonly introduction?: string;
   readonly createdBy?: string;
-  readonly createdAt?: string;
   readonly Lessons?: (Lesson | null)[];
   readonly AnnouncementsModels?: (AnnouncementsModel | null)[];
+  readonly createdAt?: string;
+  readonly User?: User;
   readonly updatedAt?: string;
   constructor(init: ModelInit<Course>);
   static copyOf(source: Course, mutator: (draft: MutableModel<Course>) => MutableModel<Course> | void): Course;
