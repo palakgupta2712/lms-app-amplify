@@ -22,6 +22,7 @@ import draftToHtml from "draftjs-to-html";
 function Edit() {
   const [title, setTitle] = useState();
   const [desc, setDesc] = useState();
+  const [introduction, setIntroduction] = useState();
   const [editorState, setEditorState] = useState();
   const { id } = useParams();
   let history = useHistory();
@@ -30,16 +31,17 @@ function Edit() {
   }, []);
 
   function onEditorStateChange(editorState) {
-    setDesc(draftToHtml(convertToRaw(editorState.getCurrentContent())));
+    setIntroduction(draftToHtml(convertToRaw(editorState.getCurrentContent())));
     setEditorState(editorState);
   }
   async function fetchCourse() {
     const models = await DataStore.query(Course, id);
     setTitle(models.title);
     setDesc(models.desc);
+    setIntroduction(models.introduction);
     setEditorState(
       EditorState.createWithContent(
-        ContentState.createFromBlockArray(convertFromHTML(models.desc))
+        ContentState.createFromBlockArray(convertFromHTML(models.introduction))
       )
     );
   }
@@ -55,6 +57,7 @@ function Edit() {
         Course.copyOf(original, (updated) => {
           updated.title = title;
           updated.desc = desc;
+          updated.introduction = introduction;
         })
       );
       history.goBack();
@@ -82,6 +85,16 @@ function Edit() {
         variant="outlined"
         defaultValue={{ title }}
         value={title}
+        onChange={(event) => setTitle(event.target.value)}
+      />
+      <TextField
+        margin="dense"
+        label="Title"
+        type="text"
+        fullWidth
+        variant="outlined"
+        defaultValue={{ desc }}
+        value={desc}
         onChange={(event) => setTitle(event.target.value)}
       />
       <br />

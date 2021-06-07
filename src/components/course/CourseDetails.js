@@ -12,6 +12,7 @@ import { Course } from "../../models";
 import { useParams } from "react-router";
 import DeleteButton from "./DeleteButton";
 import EditButton from "./EditButton";
+import CourseIntro from "./CourseIntro";
 
 export default function CourseDetails() {
   const user = useContext(UserContext);
@@ -75,7 +76,7 @@ export default function CourseDetails() {
             {drawer}
           </Hidden>
         </Grid>
-        <Grid item xs={12} md={7} className={classes.root}>
+        <Grid container xs={12} md={7} className={classes.root}>
           <Grid item xs={12}>
             <Breadcrumb />
           </Grid>
@@ -86,6 +87,9 @@ export default function CourseDetails() {
                 <EditButton />
               </div>
             )}
+          </Grid>
+          <Grid item xs={12}>
+            <CourseIntro />
           </Grid>
         </Grid>
       </Grid>

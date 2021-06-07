@@ -44,8 +44,10 @@ export default function NewCourse() {
       new Course({
         title: title,
         desc: desc,
+        introduction: "",
         createdBy: user.username,
         createdAt: new Date().toLocaleString(),
+        User: user,
       })
     );
     setTitle("");
