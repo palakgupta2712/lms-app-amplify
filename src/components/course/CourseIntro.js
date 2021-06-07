@@ -2,20 +2,14 @@ import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { DataStore } from "@aws-amplify/datastore";
 import { Course } from "../../models";
-import {
-  Avatar,
-  Box,
-  Button,
-  Container,
-  Paper,
-  Typography,
-} from "@material-ui/core";
+import { Box, Button, Container, Paper, Typography } from "@material-ui/core";
 import { Editor } from "react-draft-wysiwyg";
 import { convertToRaw } from "draft-js";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import draftToHtml from "draftjs-to-html";
 import ReactHtmlParser from "react-html-parser";
 import { UserContext } from "../../context/UserContext";
+import Avatar from "boring-avatars";
 
 function CourseIntro() {
   const user = useContext(UserContext);
@@ -69,7 +63,12 @@ function CourseIntro() {
           }}
         >
           <Typography>Meet your instructor</Typography>
-          <Avatar></Avatar>
+          <Avatar
+            size={60}
+            name={course.createdBy}
+            variant="beam"
+            colors={["#A70267", "#F10C49", "#FB6B41", "#F6D86B", "#339194"]}
+          />
           <Typography>@{course.createdBy}</Typography>
         </Paper>
       </Box>

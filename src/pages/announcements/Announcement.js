@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import {
-  Avatar,
   Box,
   Button,
   Dialog,
@@ -17,6 +16,7 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import { UserContext } from "../../context/UserContext";
 import { Link, useParams } from "react-router-dom";
 import ReactHtmlParser from "react-html-parser";
+import Avatar from "boring-avatars";
 
 function Announcement({ announcement, handleDelete }) {
   const { id } = useParams();
@@ -54,7 +54,19 @@ function Announcement({ announcement, handleDelete }) {
           <Paper className={classes.paper}>
             <Box className={classes.root}>
               <Box className={classes.header}>
-                <Avatar className={classes.avatar}>P</Avatar>
+                <Avatar
+                  style={{ marginRight: "5px" }}
+                  size={50}
+                  name={announcement.User.username}
+                  variant="beam"
+                  colors={[
+                    "#A70267",
+                    "#F10C49",
+                    "#FB6B41",
+                    "#F6D86B",
+                    "#339194",
+                  ]}
+                />
                 <Box>
                   <Typography>{announcement.User.name}</Typography>
                   <Typography variant="subtitle2">

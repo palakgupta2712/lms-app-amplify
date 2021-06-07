@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { DataStore, Predicates, SortDirection } from "@aws-amplify/datastore";
 import { Course } from "../../models";
 import {
-  Avatar,
   Button,
   Card,
   CardActions,
@@ -19,7 +18,7 @@ import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 import { Link } from "react-router-dom";
 import ShareLinkModal from "./ShareLinkModal";
 import ReactHtmlParser from "react-html-parser";
-
+import Avatar from "boring-avatars";
 function CourseList() {
   const [courses, setCourses] = useState([]);
 
@@ -50,7 +49,18 @@ function CourseList() {
                 ></div>
                 <CardHeader
                   avatar={
-                    <Avatar>{course.createdBy.charAt(0).toUpperCase()}</Avatar>
+                    <Avatar
+                      size={60}
+                      name={course.createdBy}
+                      variant="beam"
+                      colors={[
+                        "#A70267",
+                        "#F10C49",
+                        "#FB6B41",
+                        "#F6D86B",
+                        "#339194",
+                      ]}
+                    />
                   }
                   title={course.title}
                   subheader={"By " + course.createdBy}

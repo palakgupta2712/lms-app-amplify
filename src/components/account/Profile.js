@@ -5,7 +5,6 @@ import {
   Container,
   Grid,
   Typography,
-  Avatar,
   Box,
   TextField,
   Switch,
@@ -13,6 +12,7 @@ import {
 import { UserContext } from "../../context/UserContext";
 import { DataStore } from "@aws-amplify/datastore";
 import { User } from "../../models";
+import Avatar from "boring-avatars";
 
 export default function Profile() {
   const classes = useStyles();
@@ -51,7 +51,14 @@ export default function Profile() {
                 padding: "10px",
               }}
             >
-              <Avatar className={classes.avatar}>{user.name.charAt(0)}</Avatar>
+              <Avatar
+                size={60}
+                name={user.username}
+                variant="beam"
+                colors={["#A70267", "#F10C49", "#FB6B41", "#F6D86B", "#339194"]}
+                className={classes.avatar}
+              />
+
               <div>
                 <Typography>{user.name}</Typography>
                 <Typography variant="subtitle2">@{user.username}</Typography>
@@ -130,11 +137,8 @@ export default function Profile() {
 
 const useStyles = makeStyles((theme) => ({
   avatar: {
-    backgroundColor: theme.palette.primary.main,
-    width: theme.spacing(6),
-    height: theme.spacing(6),
-    padding: theme.spacing(2),
-    margin: theme.spacing(2),
+    padding: theme.spacing(1),
+    margin: theme.spacing(1),
   },
   container: {
     backgroundColor: "white",
