@@ -85,18 +85,6 @@ function Edit() {
         onChange={(event) => setTitle(event.target.value)}
       />
       <br />
-      {/* <TextField
-        margin="dense"
-        label="Content"
-        type="text"
-        multiline
-        rows="5"
-        fullWidth
-        variant="outlined"
-        defaultValue={{ content }}
-        value={content}
-        onChange={(event) => setContent(event.target.value)}
-      /> */}
       <Box>
         <Editor
           style={{ height: "350px", boxSizing: "content-box" }}

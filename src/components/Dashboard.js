@@ -2,7 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Navigation from "./Navigation";
-
+import Welcome from "./Welcome";
 export default function Dashboard() {
   const classes = useStyles();
 
@@ -12,8 +12,8 @@ export default function Dashboard() {
         <Grid item xs={12} md={1} className={classes.sidebar}>
           <Navigation />
         </Grid>
-        <Grid item xs={12} md={10}>
-          Dashboard
+        <Grid item xs={12} md={11}>
+          <Welcome />
         </Grid>
       </Grid>
     </React.Fragment>

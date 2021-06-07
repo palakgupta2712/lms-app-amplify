@@ -42,7 +42,9 @@ function AnnouncementList() {
   }
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
-      {courses.createdBy === user.username && <NewAnnouncement />}
+      {courses.createdBy === user.username && user.isEducator && (
+        <NewAnnouncement />
+      )}
 
       {announcements.map((announcement, index) => (
         <Announcement

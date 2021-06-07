@@ -81,7 +81,7 @@ export default function CourseDetails() {
             <Breadcrumb />
           </Grid>
           <Grid item xs={12}>
-            {course.createdBy === user.username && (
+            {course.createdBy === user.username && user.isEducator && (
               <div>
                 <DeleteButton />
                 <EditButton />

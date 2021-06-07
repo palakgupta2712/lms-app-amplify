@@ -75,7 +75,7 @@ function CourseIntro() {
 
       {course.introduction === "" ? (
         <Container>
-          {course.createdBy === user.username && (
+          {course.createdBy === user.username && user.isEducator && (
             <div>
               <Typography
                 variant="h5"
@@ -100,6 +100,7 @@ function CourseIntro() {
                       "fontSize",
                       "list",
                       "textAlign",
+                      "link",
                     ],
                     inline: { inDropdown: false },
                     list: { inDropdown: true },

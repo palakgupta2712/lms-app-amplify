@@ -74,7 +74,7 @@ function Announcement({ announcement, handleDelete }) {
                   </Typography>
                 </Box>
               </Box>
-              {user.username === announcement.User.username && (
+              {user.username === announcement.User.username && user.isEducator && (
                 <Box className={classes.icons}>
                   <Box>
                     <CreateIcon
