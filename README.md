@@ -1,70 +1,111 @@
-# Getting Started with Create React App
+# Cloud Based Learning Management System
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+_A cloud-based learning management system is a management system intended for educational institution for managing their educational content.  
+Serverless Application using AWS Amplify, React.js, GraphQL and Datastore._
 
-## Available Scripts
+## Table of Contents
 
-In the project directory, you can run:
+- [About this project ](#about-this-project)
+- [One-Click Deployment with amplify console](#one-click-deploy-with-the-amplify-console)
+- [Local Deployment](#local-deployment)
+  - [Prerequisites](#prerequisites)
+  - [Install and configure the Amplify CLI](#install-and-configure-the-amplify-cli)
+  - [Installation](#installation)
+- [Resources](#resources)
 
-### `npm start`
+## About this project
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Architecture Diagram
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+<img width="auto" alt="ArchitectureDiagram" src="https://user-images.githubusercontent.com/61227144/121209864-d63f7800-c898-11eb-9a6f-773a13e34f37.png">
 
-### `npm test`
+## One-Click Deploy with the Amplify Console
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Click the button to deploy this application to the Amplify console.
 
-### `npm run build`
+<p align="center">
+    <a href="https://console.aws.amazon.com/amplify/home#/deploy?repo=https://github.com/palakgupta2712/lms-app-amplify" target="_blank">
+        <img src="https://oneclick.amplifyapp.com/button.svg" alt="Deploy to Amplify Console">
+    </a>
+</p>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Local Deployment
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Prerequisites
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Make sure you have the following installed:
 
-### `npm run eject`
+- [Node.js](https://nodejs.org/en/) v12.x or later
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- [npm](https://www.npmjs.com/) v5.x or later
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- [git](https://git-scm.com/) v2.14.1 or later
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Install and configure the Amplify CLI
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+To install and configure
 
-## Learn More
+```
+npm install -g @aws-amplify/cli
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+amplify configure
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+For complete instructions on how to install and configure Amplify CLI, refer [official documentation](https://docs.amplify.aws/start/getting-started/installation/q/integration/react)
 
-### Code Splitting
+### Installation
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+1. Clone the repo, install dependencies
 
-### Analyzing the Bundle Size
+   ```
+   https://github.com/palakgupta2712/lms-app-amplify.git
+   cd lms-app-amplify
+   npm install
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+2. Initialize the amplify project
 
-### Making a Progressive Web App
+   ```
+   amplify init
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+3. Add Authentication service
 
-### Advanced Configuration
+   ```
+   amplify add auth
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+4. Add S3 storage bucket
 
-### Deployment
+   ```
+   amplify add storage
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+   and select _Content_ in prompted options:
 
-### `npm run build` fails to minify
+   `? Please select from one of the below mentioned services (Use arrow keys)`  
+    `❯ Content (Images, audio, video, etc.)`  
+    `NoSQL Database`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+5. Deploy the services on the cloud
+
+   ```
+   amplify push
+   ```
+
+   Once all the resources are deployed to the cloud, the _`src/aws-exports.js`_ file gets created.  
+   To view deployed services, go to amplify console by running the following command:- `amplify console`
+
+6. Run the app
+   ```
+   npm start
+   ```
+   Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+## Resources
+
+- Amplify documentation: https://docs.amplify.aws
+- Amplify CLI documentation: https://docs.amplify.aws/cli
+- Amplify DataStore: https://docs.amplify.aws/lib/datastore/getting-started/q/platform/js
+- Amplify Authentication: https://docs.amplify.aws/lib/auth/emailpassword/q/platform/js
+- Custom Authentication Flow: https://docs.amplify.aws/guides/authentication/custom-auth-flow/q/platform/js
