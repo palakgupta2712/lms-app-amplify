@@ -69,25 +69,7 @@ For complete instructions on how to install and configure Amplify CLI, refer [of
    amplify init
    ```
 
-3. Add Authentication service
-
-   ```
-   amplify add auth
-   ```
-
-4. Add S3 storage bucket
-
-   ```
-   amplify add storage
-   ```
-
-   and select _Content_ in prompted options:
-
-   `? Please select from one of the below mentioned services (Use arrow keys)`  
-    `❯ Content (Images, audio, video, etc.)`  
-    `NoSQL Database`
-
-5. Deploy the services on the cloud
+3. Deploy the services on the cloud
 
    ```
    amplify push
@@ -96,7 +78,7 @@ For complete instructions on how to install and configure Amplify CLI, refer [of
    Once all the resources are deployed to the cloud, the _`src/aws-exports.js`_ file gets created.  
    To view deployed services, go to amplify console by running the following command:- `amplify console`
 
-6. Run the app
+4. Run the app
    ```
    npm start
    ```
