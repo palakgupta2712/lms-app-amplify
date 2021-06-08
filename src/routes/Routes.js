@@ -12,7 +12,7 @@ import SignUp from "../auth/SignUp";
 import Account from "../components/account/Account";
 import Calendar from "../components/Calendar";
 import Connect from "../components/Connect";
-import Dashboard from "../components/Dashboard";
+import Dashboard from "../components/dashboard/Dashboard";
 import Error404 from "../components/Error404";
 import Home from "../components/Home";
 import Courses from "../components/course/Courses";
