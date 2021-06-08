@@ -59,4 +59,4 @@ type User @model @auth(rules: [{allow: public}]) {
   username: String
   isEducator: Boolean
 }
- 
+  
