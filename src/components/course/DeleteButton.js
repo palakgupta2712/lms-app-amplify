@@ -38,7 +38,6 @@ export default function DeleteButton() {
         color="primary"
         variant="contained"
         onClick={handleOpen}
-        style={{ float: "right", margin: "20px" }}
       >
         <DeleteIcon style={{ fontSize: "18px" }} /> Delete
       </Button>

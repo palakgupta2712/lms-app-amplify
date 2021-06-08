@@ -5,7 +5,7 @@ import { useHistory, useParams } from "react-router-dom";
 import { DataStore } from "@aws-amplify/datastore";
 import { Course, CourseStatus } from "../../models";
 
-export default function EditButton() {
+export default function PublishButton() {
   const [open, setOpen] = useState(false);
   const { id } = useParams();
   let history = useHistory();
@@ -29,12 +29,7 @@ export default function EditButton() {
   }
   return (
     <div>
-      <Button
-        color="primary"
-        variant="contained"
-        onClick={handleOpen}
-        style={{ float: "right", margin: "20px" }}
-      >
+      <Button color="primary" variant="contained" onClick={handleOpen}>
         <PublishIcon style={{ fontSize: "18px" }} /> Publish
       </Button>
       <Dialog

@@ -18,12 +18,14 @@ import {
 } from "draft-js";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import draftToHtml from "draftjs-to-html";
+import CourseStatus from "./CourseStatus";
 
 function Edit() {
   const [title, setTitle] = useState();
   const [desc, setDesc] = useState();
   const [introduction, setIntroduction] = useState();
   const [editorState, setEditorState] = useState();
+  const [course, setCourse] = useState([]);
   const { id } = useParams();
   let history = useHistory();
   useEffect(() => {
@@ -36,6 +38,7 @@ function Edit() {
   }
   async function fetchCourse() {
     const models = await DataStore.query(Course, id);
+    setCourse(models);
     setTitle(models.title);
     setDesc(models.desc);
     setIntroduction(models.introduction);
@@ -77,6 +80,7 @@ function Edit() {
       <Typography variant="h5" style={{ padding: "20px" }}>
         Edit Course
       </Typography>
+      <CourseStatus course={course} />
       <TextField
         margin="dense"
         label="Title"
@@ -89,7 +93,7 @@ function Edit() {
       />
       <TextField
         margin="dense"
-        label="Title"
+        label="Description"
         type="text"
         fullWidth
         variant="outlined"

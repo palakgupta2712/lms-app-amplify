@@ -16,12 +16,7 @@ export default function EditButton() {
 
   return (
     <div>
-      <Button
-        color="primary"
-        variant="contained"
-        onClick={handleOpen}
-        style={{ float: "right", margin: "20px" }}
-      >
+      <Button color="primary" variant="contained" onClick={handleOpen}>
         <CreateIcon style={{ fontSize: "18px" }} /> Edit
       </Button>
       <Dialog

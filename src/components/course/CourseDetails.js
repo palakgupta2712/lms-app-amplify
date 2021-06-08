@@ -14,6 +14,7 @@ import DeleteButton from "./DeleteButton";
 import EditButton from "./EditButton";
 import CourseIntro from "./CourseIntro";
 import PublishButton from "./PublishButton";
+import CourseStatus from "./CourseStatus";
 
 export default function CourseDetails() {
   const user = useContext(UserContext);
@@ -83,10 +84,18 @@ export default function CourseDetails() {
           </Grid>
           <Grid item xs={12}>
             {course.createdBy === user.username && user.isEducator && (
-              <div>
-                <DeleteButton />
-                <EditButton />
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-evenly",
+                  alignItems: "center",
+                  margin: "20px",
+                }}
+              >
+                <CourseStatus course={course} />
                 {course.status === "DRAFT" && <PublishButton />}
+                <EditButton />
+                <DeleteButton />
               </div>
             )}
           </Grid>
