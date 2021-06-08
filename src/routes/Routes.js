@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Switch, Route, useRouteMatch } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
 import { DataStore } from "@aws-amplify/datastore";
 import { User } from "../models";
@@ -25,12 +25,9 @@ import Discussions from "../pages/Discussions";
 import Syllabus from "../pages/Syllabus";
 import EditAnnouncement from "../pages/announcements/EditAnnouncement";
 export default function Routes() {
-  let { url } = useRouteMatch();
-
   const [currentUser, setCurrentUser] = useState([]);
   useEffect(() => {
     getUser();
-    console.log(url);
   }, []);
   async function getUser() {
     const user = await Auth.currentAuthenticatedUser();
@@ -49,10 +46,8 @@ export default function Routes() {
       <PrivateRoute path="/course/:id/discussions" component={Discussions} />
       <PrivateRoute path="/course/:id/syllabus" component={Syllabus} />
 
-      {/* <ProtectedRoute path="/courses/new" component={NewCourse} /> */}
-
-      {currentUser.map((user) => (
-        <UserContext.Provider value={user}>
+      {currentUser.map((user, index) => (
+        <UserContext.Provider key={index} value={user}>
           <Route exact path="/courses/" component={Courses} />
           <PrivateRoute exact path="/course/:id" component={CourseDetails} />
           <PrivateRoute path="/course/:id/edit" component={EditCourse} />

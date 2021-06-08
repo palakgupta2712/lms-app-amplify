@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { DataStore, Predicates, SortDirection } from "@aws-amplify/datastore";
+import { DataStore, SortDirection } from "@aws-amplify/datastore";
 import { Course, CourseStatus } from "../../models";
 import {
   Button,
@@ -10,7 +10,6 @@ import {
   Container,
   Grid,
   IconButton,
-  Tooltip,
   Typography,
 } from "@material-ui/core";
 import FavoriteIcon from "@material-ui/icons/Favorite";
@@ -79,14 +78,10 @@ function CourseList() {
                   </Typography>
                 </CardContent>
                 <CardActions>
-                  <Tooltip title="Like">
-                    <IconButton>
-                      <FavoriteIcon />
-                    </IconButton>
-                  </Tooltip>
-                  <Tooltip title="Like">
-                    <ShareLinkModal id={course.id} />
-                  </Tooltip>
+                  <IconButton>
+                    <FavoriteIcon />
+                  </IconButton>
+                  <ShareLinkModal id={course.id} />
                   <Button
                     variant="contained"
                     color="primary"
