@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import {
   Button,
   TextField,
@@ -12,6 +12,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { useParams } from "react-router";
 import { DataStore } from "@aws-amplify/datastore";
 import { Lesson } from "../../models";
+import { UserContext } from "../../context/UserContext";
 const useStyles = makeStyles((theme) => ({
   form: {
     [theme.breakpoints.up("md")]: {
@@ -21,6 +22,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function NewLesson(props) {
+  const user = useContext(UserContext);
   const classes = useStyles();
   let { id } = useParams();
   const [open, setOpen] = useState(false);
@@ -47,6 +49,7 @@ export default function NewLesson(props) {
         summary: summary,
         videoURL: url,
         courseID: id,
+        createdBy: user.username,
       })
     );
     setTitle("");

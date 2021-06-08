@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { DataStore, Predicates, SortDirection } from "@aws-amplify/datastore";
-import { Course } from "../../models";
+import { Course, CourseStatus } from "../../models";
 import {
   Button,
   Card,
@@ -31,9 +31,13 @@ function CourseList() {
   }, []);
 
   async function getCourses() {
-    const models = await DataStore.query(Course, Predicates.ALL, {
-      sort: (s) => s.createdAt(SortDirection.DESCENDING),
-    });
+    const models = await DataStore.query(
+      Course,
+      (c) => c.status("eq", CourseStatus.PUBLISHED),
+      {
+        sort: (s) => s.createdAt(SortDirection.DESCENDING),
+      }
+    );
     setCourses(models);
   }
 

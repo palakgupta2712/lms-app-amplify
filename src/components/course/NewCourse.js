@@ -10,7 +10,7 @@ import {
 import AddIcon from "@material-ui/icons/Add";
 import { makeStyles } from "@material-ui/core/styles";
 import { DataStore } from "@aws-amplify/datastore";
-import { Course } from "../../models";
+import { Course, CourseStatus } from "../../models";
 import { UserContext } from "../../context/UserContext";
 
 const useStyles = makeStyles((theme) => ({
@@ -40,6 +40,7 @@ export default function NewCourse() {
 
   async function handleSubmit(event) {
     event.preventDefault();
+
     await DataStore.save(
       new Course({
         title: title,
@@ -48,6 +49,7 @@ export default function NewCourse() {
         createdBy: user.username,
         createdAt: new Date().toLocaleString(),
         User: user,
+        status: CourseStatus.DRAFT,
       })
     );
     setTitle("");

@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import ReactPlayer from "react-player/youtube";
 import NewLesson from "./NewLesson";
 import { DataStore } from "@aws-amplify/datastore";
-import { Lesson } from "../../models";
+import { Course, Lesson } from "../../models";
 import { useParams } from "react-router";
 import { Avatar, Card, CardHeader, Grid, IconButton } from "@material-ui/core";
 import { Delete, Edit } from "@material-ui/icons";
@@ -13,8 +13,10 @@ function Lessons() {
   let { id } = useParams();
   const user = useContext(UserContext);
   const [lessons, setLessons] = useState([]);
+  const [courses, setCourses] = useState([]);
 
   useEffect(() => {
+    getCourses();
     getLessons();
     const subscription = DataStore.observe(Lesson).subscribe((msg) => {
       getLessons();
@@ -28,6 +30,10 @@ function Lessons() {
     setLessons(models);
   }
 
+  async function getCourses() {
+    const models = await DataStore.query(Course, id);
+    setCourses(models);
+  }
   async function handleDelete(id) {
     const modelToDelete = await DataStore.query(Lesson, id);
     DataStore.delete(modelToDelete);
@@ -39,7 +45,11 @@ function Lessons() {
           {" "}
           <Breadcrumb />
         </div>
-        <div>{user.isEducator && <NewLesson />}</div>
+        <div>
+          {courses.createdBy === user.username && user.isEducator && (
+            <NewLesson />
+          )}
+        </div>
         <div>
           <Grid container>
             {lessons.map((lesson, index) => (

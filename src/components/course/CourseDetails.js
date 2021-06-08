@@ -13,6 +13,7 @@ import { useParams } from "react-router";
 import DeleteButton from "./DeleteButton";
 import EditButton from "./EditButton";
 import CourseIntro from "./CourseIntro";
+import PublishButton from "./PublishButton";
 
 export default function CourseDetails() {
   const user = useContext(UserContext);
@@ -85,6 +86,7 @@ export default function CourseDetails() {
               <div>
                 <DeleteButton />
                 <EditButton />
+                {course.status === "DRAFT" && <PublishButton />}
               </div>
             )}
           </Grid>
