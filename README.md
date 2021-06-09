@@ -13,11 +13,62 @@ Serverless Application using AWS Amplify, React.js, GraphQL and Datastore._
   - [Installation](#installation)
 - [Resources](#resources)
 
-## About this project
+### About this project
 
-### Architecture Diagram
+## Architecture Diagram
 
 <img width="auto" alt="ArchitectureDiagram" src="https://user-images.githubusercontent.com/61227144/121209864-d63f7800-c898-11eb-9a6f-773a13e34f37.png">
+
+## Built with
+
+<a href="https://reactjs.org/">
+<img
+src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB"
+alt="react"
+style={{ padding: "10px" }}
+/>
+</a>
+<a href="https://reactrouter.com/web/guides/quick-start">
+<img
+src="https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white"
+alt="react-router-dom"
+style={{ padding: "10px" }}
+/>
+</a>
+<a href="https://material-ui.com/">
+<img
+src="https://img.shields.io/badge/Material--UI-0081CB?style=for-the-badge&logo=material-ui&logoColor=white"
+alt="material-ui"
+style={{ padding: "10px" }}
+/>
+</a>
+<a href="https://aws.amazon.com/">
+<img
+src="https://img.shields.io/badge/Amazon_AWS-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white"
+alt="aws"
+style={{ padding: "10px" }}
+/>
+</a>
+<a href="https://graphql.org/">
+<img
+src="https://img.shields.io/badge/GraphQl-E10098?style=for-the-badge&logo=graphql&logoColor=white"
+alt="graphql"
+style={{ padding: "10px" }}
+/>
+</a>
+<a href="hhttps://docs.amplify.aws/lib/">
+<img
+src="https://img.shields.io/badge/AWS-Amplify-FFBB05?style=for-the-badge&logo=AWS&logoColor=white"
+alt="aws-amplify"
+style={{ padding: "10px" }}
+/>
+</a><a href="https://www.npmjs.com/">
+<img
+src="https://img.shields.io/badge/npm-20232A?style=for-the-badge&logo=npm&logoColor=white"
+alt="npm"
+style={{ padding: "10px" }}
+/>
+</a>
 
 ## One-Click Deploy with the Amplify Console
 
