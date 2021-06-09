@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useTheme } from "@material-ui/core/styles";
 import { useStyles } from "../../utils/useStyles";
-import { Box, Drawer, Grid, Hidden } from "@material-ui/core";
+import { AppBar, Box, Drawer, Grid, Hidden, Toolbar } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import Navigation from "../Navigation";
 import Navlinks from "./Navlinks";
@@ -43,15 +43,22 @@ export default function CourseDetails() {
     <React.Fragment>
       <Grid container>
         <Grid item xs={12} md={1} className={classes.sidebar}>
-          <Box
-            color="inherit"
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
-            className={classes.menuButton}
-          >
-            <MenuIcon />
-          </Box>
+          <Hidden smUp>
+            <AppBar>
+              <Toolbar>
+                <Box
+                  color="inherit"
+                  aria-label="open drawer"
+                  edge="start"
+                  onClick={handleDrawerToggle}
+                  className={classes.menuButton}
+                >
+                  <MenuIcon />
+                </Box>
+              </Toolbar>
+            </AppBar>
+          </Hidden>
+
           <Box className={classes.nav}>
             {" "}
             <Navigation />

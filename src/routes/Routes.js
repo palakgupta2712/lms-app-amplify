@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
 import { DataStore } from "@aws-amplify/datastore";
 import { User } from "../models";
@@ -14,7 +14,6 @@ import Calendar from "../components/Calendar";
 import Connect from "../components/Connect";
 import Dashboard from "../components/dashboard/Dashboard";
 import Error404 from "../components/Error404";
-import Home from "../components/Home";
 import Courses from "../components/course/Courses";
 import CourseDetails from "../components/course/CourseDetails";
 import EditCourse from "../components/course/EditCourse";
@@ -38,7 +37,14 @@ export default function Routes() {
   }
   return (
     <Switch>
-      <Route exact path="/" component={Home} />
+      {/* Redirect "/" to "/courses" */}
+      <Route
+        exact
+        path="/"
+        render={() => {
+          return <Redirect to="/courses" />;
+        }}
+      />
       <Route path="/signin/" component={SignIn} />
       <Route path="/signup/" component={SignUp} />
 

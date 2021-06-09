@@ -56,6 +56,10 @@ export default function SimpleTabs() {
 
   useEffect(() => {
     getCourses();
+    const subscription = DataStore.observe(Course).subscribe((msg) => {
+      getCourses();
+    });
+    return () => subscription.unsubscribe();
   }, []);
   async function getCourses() {
     const models = (await DataStore.query(Course)).filter(

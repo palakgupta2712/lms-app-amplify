@@ -11,32 +11,18 @@ import {
   Paper,
   Typography,
 } from "@material-ui/core";
-import CreateIcon from "@material-ui/icons/Create";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { UserContext } from "../../context/UserContext";
-import { Link, useParams } from "react-router-dom";
 import ReactHtmlParser from "react-html-parser";
 import Avatar from "boring-avatars";
 import AddComment from "./AddComment";
 import DisplayComments from "./DisplayComments";
 
 function Discussion({ discussion, handleDelete }) {
-  const { id } = useParams();
   const classes = useStyles();
   const user = useContext(UserContext);
-  const [openEdit, setOpenEdit] = React.useState(false);
   const [open, setOpen] = React.useState(false);
 
-  const handleClickOpenEdit = () => {
-    setOpenEdit(true);
-  };
-
-  const handleCloseEdit = () => {
-    setOpenEdit(false);
-  };
-  const handleCancelEdit = () => {
-    setOpenEdit(false);
-  };
   const handleClickOpen = () => {
     setOpen(true);
   };

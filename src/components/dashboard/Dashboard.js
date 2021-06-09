@@ -5,6 +5,7 @@ import Navigation from "../Navigation";
 import Welcome from "../Welcome";
 import EducatorDashboard from "./EducatorDashboard";
 import { UserContext } from "../../context/UserContext";
+import NewCourse from "../course/NewCourse";
 
 export default function Dashboard() {
   const user = useContext(UserContext);
@@ -18,6 +19,8 @@ export default function Dashboard() {
         </Grid>
         <Grid item xs={12} md={11}>
           <Welcome />
+          {/* New Course button removed from courses */}
+          {user.isEducator && <NewCourse />}
           {user.isEducator && <EducatorDashboard />}
         </Grid>
       </Grid>
