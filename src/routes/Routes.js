@@ -17,7 +17,7 @@ import Error404 from "../components/Error404";
 import Courses from "../components/course/Courses";
 import CourseDetails from "../components/course/CourseDetails";
 import EditCourse from "../components/course/EditCourse";
-import Assignments from "../pages/Assignments";
+import Assignments from "../pages/assignments/Assignments";
 import Announcements from "../pages/announcements/Announcements";
 import Lessons from "../pages/lessons/Lessons";
 import Discussions from "../pages/discussions/Discussions";
@@ -48,15 +48,11 @@ export default function Routes() {
       <Route path="/signin/" component={SignIn} />
       <Route path="/signup/" component={SignUp} />
 
-      <PrivateRoute path="/course/:id/assignments" component={Assignments} />
-      <PrivateRoute path="/course/:id/syllabus" component={Syllabus} />
-
       {currentUser.map((user, index) => (
         <UserContext.Provider key={index} value={user}>
           <Route exact path="/courses/" component={Courses} />
           <PrivateRoute exact path="/course/:id" component={CourseDetails} />
           <PrivateRoute path="/course/:id/edit" component={EditCourse} />
-
           <PrivateRoute path="/dashboard/" component={Dashboard} />
           <PrivateRoute path="/account/" component={Account} />
           <PrivateRoute path="/calendar/" component={Calendar} />
@@ -74,6 +70,11 @@ export default function Routes() {
           <PrivateRoute
             path="/course/:id/discussions"
             component={Discussions}
+          />
+          <PrivateRoute path="/course/:id/syllabus" component={Syllabus} />
+          <PrivateRoute
+            path="/course/:id/assignments"
+            component={Assignments}
           />
         </UserContext.Provider>
       ))}

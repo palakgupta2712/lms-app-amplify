@@ -1,11 +1,12 @@
 import React from "react";
 import { useTheme } from "@material-ui/core/styles";
-import { useStyles } from "../utils/useStyles";
+import { useStyles } from "../../utils/useStyles";
 import { Box, Drawer, Grid, Hidden } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
-import Navigation from "../components/Navigation";
-import Navlinks from "../components/course/Navlinks";
-import Breadcrumb from "../components/Breadcrumb";
+import Navigation from "../../components/Navigation";
+import Navlinks from "../../components/course/Navlinks";
+import Breadcrumb from "../../components/Breadcrumb";
+import DisplayAssignments from "./DisplayAssignments";
 
 export default function Assignments() {
   const classes = useStyles();
@@ -62,7 +63,12 @@ export default function Assignments() {
           </Hidden>
         </Grid>
         <Grid container xs={12} md={7} className={classes.root}>
-          <Breadcrumb />
+          <Grid item xs={12}>
+            <Breadcrumb />
+          </Grid>
+          <Grid item xs={12}>
+            <DisplayAssignments />
+          </Grid>
         </Grid>
       </Grid>
     </React.Fragment>

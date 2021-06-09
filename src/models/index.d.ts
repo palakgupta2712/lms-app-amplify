@@ -7,6 +7,33 @@ export enum CourseStatus {
 
 
 
+export declare class AssignmentModel {
+  readonly id: string;
+  readonly title?: string;
+  readonly content?: string;
+  readonly S3Key?: string;
+  readonly courseID?: string;
+  readonly uploadedBy?: string;
+  readonly uploadedAt?: string;
+  readonly createdAt?: string;
+  readonly updatedAt?: string;
+  constructor(init: ModelInit<AssignmentModel>);
+  static copyOf(source: AssignmentModel, mutator: (draft: MutableModel<AssignmentModel>) => MutableModel<AssignmentModel> | void): AssignmentModel;
+}
+
+export declare class SyllabusModel {
+  readonly id: string;
+  readonly title?: string;
+  readonly S3Key?: string;
+  readonly courseID?: string;
+  readonly uploadedBy?: string;
+  readonly uploadedAt?: string;
+  readonly createdAt?: string;
+  readonly updatedAt?: string;
+  constructor(init: ModelInit<SyllabusModel>);
+  static copyOf(source: SyllabusModel, mutator: (draft: MutableModel<SyllabusModel>) => MutableModel<SyllabusModel> | void): SyllabusModel;
+}
+
 export declare class CommentModel {
   readonly id: string;
   readonly comment?: string;
@@ -81,6 +108,8 @@ export declare class Course {
   readonly User?: User;
   readonly status?: CourseStatus | keyof typeof CourseStatus;
   readonly PostModels?: (PostModel | null)[];
+  readonly SyllabusModels?: (SyllabusModel | null)[];
+  readonly AssignmentModels?: (AssignmentModel | null)[];
   readonly updatedAt?: string;
   constructor(init: ModelInit<Course>);
   static copyOf(source: Course, mutator: (draft: MutableModel<Course>) => MutableModel<Course> | void): Course;
