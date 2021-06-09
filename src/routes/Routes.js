@@ -21,7 +21,7 @@ import EditCourse from "../components/course/EditCourse";
 import Assignments from "../pages/Assignments";
 import Announcements from "../pages/announcements/Announcements";
 import Lessons from "../pages/lessons/Lessons";
-import Discussions from "../pages/Discussions";
+import Discussions from "../pages/discussions/Discussions";
 import Syllabus from "../pages/Syllabus";
 import EditAnnouncement from "../pages/announcements/EditAnnouncement";
 export default function Routes() {
@@ -43,7 +43,6 @@ export default function Routes() {
       <Route path="/signup/" component={SignUp} />
 
       <PrivateRoute path="/course/:id/assignments" component={Assignments} />
-      <PrivateRoute path="/course/:id/discussions" component={Discussions} />
       <PrivateRoute path="/course/:id/syllabus" component={Syllabus} />
 
       {currentUser.map((user, index) => (
@@ -65,6 +64,10 @@ export default function Routes() {
           <ProtectedRoute
             path="/course/:id/:aID/edit"
             component={EditAnnouncement}
+          />
+          <PrivateRoute
+            path="/course/:id/discussions"
+            component={Discussions}
           />
         </UserContext.Provider>
       ))}
