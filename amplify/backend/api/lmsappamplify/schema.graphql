@@ -9,6 +9,7 @@ type CommentModel @model @auth(rules: [{allow: public}]) @key(name: "byPostModel
   createdBy: String
   createdAt: String
   postmodelID: ID
+  User: User @connection
 }
 
 type PostModel @model @auth(rules: [{allow: public}]) @key(name: "byCourse", fields: ["courseID"]) {
@@ -18,6 +19,7 @@ type PostModel @model @auth(rules: [{allow: public}]) @key(name: "byCourse", fie
   createdAt: String
   CommentModels: [CommentModel] @connection(keyName: "byPostModel", fields: ["id"])
   courseID: ID
+  User: User @connection
 }
 
 type AnnouncementsModel @model @auth(rules: [{allow: public}]) @key(name: "byCourse", fields: ["courseID"]) {
@@ -59,4 +61,4 @@ type User @model @auth(rules: [{allow: public}]) {
   username: String
   isEducator: Boolean
 }
-  
+ 

@@ -13,9 +13,22 @@ export declare class CommentModel {
   readonly createdBy?: string;
   readonly createdAt?: string;
   readonly postmodelID?: string;
+  readonly User?: User;
   readonly updatedAt?: string;
   constructor(init: ModelInit<CommentModel>);
   static copyOf(source: CommentModel, mutator: (draft: MutableModel<CommentModel>) => MutableModel<CommentModel> | void): CommentModel;
+}
+
+export declare class User {
+  readonly id: string;
+  readonly name?: string;
+  readonly email?: string;
+  readonly username?: string;
+  readonly isEducator?: boolean;
+  readonly createdAt?: string;
+  readonly updatedAt?: string;
+  constructor(init: ModelInit<User>);
+  static copyOf(source: User, mutator: (draft: MutableModel<User>) => MutableModel<User> | void): User;
 }
 
 export declare class PostModel {
@@ -25,6 +38,7 @@ export declare class PostModel {
   readonly createdAt?: string;
   readonly CommentModels?: (CommentModel | null)[];
   readonly courseID?: string;
+  readonly User?: User;
   readonly updatedAt?: string;
   constructor(init: ModelInit<PostModel>);
   static copyOf(source: PostModel, mutator: (draft: MutableModel<PostModel>) => MutableModel<PostModel> | void): PostModel;
@@ -40,18 +54,6 @@ export declare class AnnouncementsModel {
   readonly updatedAt?: string;
   constructor(init: ModelInit<AnnouncementsModel>);
   static copyOf(source: AnnouncementsModel, mutator: (draft: MutableModel<AnnouncementsModel>) => MutableModel<AnnouncementsModel> | void): AnnouncementsModel;
-}
-
-export declare class User {
-  readonly id: string;
-  readonly name?: string;
-  readonly email?: string;
-  readonly username?: string;
-  readonly isEducator?: boolean;
-  readonly createdAt?: string;
-  readonly updatedAt?: string;
-  constructor(init: ModelInit<User>);
-  static copyOf(source: User, mutator: (draft: MutableModel<User>) => MutableModel<User> | void): User;
 }
 
 export declare class Lesson {
