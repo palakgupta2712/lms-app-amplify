@@ -1,3 +1,22 @@
+type AssignmentModel @model @auth(rules: [{allow: public}]) @key(name: "byCourse", fields: ["courseID"]) {
+  id: ID!
+  title: String
+  content: String
+  S3Key: String
+  courseID: ID
+  uploadedBy: String
+  uploadedAt: String
+}
+
+type SyllabusModel @model @auth(rules: [{allow: public}]) @key(name: "byCourse", fields: ["courseID"]) {
+  id: ID!
+  title: String
+  S3Key: String
+  courseID: ID
+  uploadedBy: String
+  uploadedAt: String
+}
+
 enum CourseStatus {
   PUBLISHED
   DRAFT
@@ -52,6 +71,8 @@ type Course @model @auth(rules: [{allow: public}]) {
   User: User @connection
   status: CourseStatus
   PostModels: [PostModel] @connection(keyName: "byCourse", fields: ["id"])
+  SyllabusModels: [SyllabusModel] @connection(keyName: "byCourse", fields: ["id"])
+  AssignmentModels: [AssignmentModel] @connection(keyName: "byCourse", fields: ["id"])
 }
 
 type User @model @auth(rules: [{allow: public}]) {
