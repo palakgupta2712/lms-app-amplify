@@ -14,7 +14,7 @@ export const useStyles = makeStyles((theme) => ({
     background: theme.palette.primary.main,
     padding: "10px",
     width: "100%",
-    [theme.breakpoints.up("sm")]: {
+    [theme.breakpoints.up("lg")]: {
       display: "none",
     },
   },

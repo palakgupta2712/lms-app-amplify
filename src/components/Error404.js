@@ -38,11 +38,18 @@ function Error404() {
         <Typography variant="body2" gutterBottom>
           Sorry, the page you're looking for doesn't exist.
         </Typography>
-
         <Button variant="contained" color="primary" style={{ margin: "20px" }}>
           <Link to="/" className={classes.link}>
             Back to home
           </Link>
+        </Button>
+        - O R -
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={window.location.reload}
+        >
+          Reload
         </Button>
       </div>
     </React.Fragment>

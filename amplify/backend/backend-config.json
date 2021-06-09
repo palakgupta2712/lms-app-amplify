@@ -28,5 +28,11 @@
         }
       }
     }
+  },
+  "storage": {
+    "lmsBucket": {
+      "service": "S3",
+      "providerPlugin": "awscloudformation"
+    }
   }
 }
