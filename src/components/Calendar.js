@@ -2,6 +2,8 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Navigation from "./Navigation";
+import noDdata from "../pages/nodata.svg";
+import { Container } from "@material-ui/core";
 
 export default function Calendar() {
   const classes = useStyles();
@@ -13,7 +15,14 @@ export default function Calendar() {
           <Navigation />
         </Grid>
         <Grid item xs={12} md={10}>
-          Calendar
+          <Container align="center">
+            <img
+              src={noDdata}
+              alt="page-yet-to-be-created"
+              height="80%"
+              width="80%"
+            />
+          </Container>
         </Grid>
       </Grid>
     </React.Fragment>

@@ -18,6 +18,8 @@ import { Link } from "react-router-dom";
 import ShareLinkModal from "./ShareLinkModal";
 import ReactHtmlParser from "react-html-parser";
 import Avatar from "boring-avatars";
+import noDdata from "../../no-data.svg";
+
 function CourseList() {
   const [courses, setCourses] = useState([]);
 
@@ -44,65 +46,78 @@ function CourseList() {
     <div>
       <Container maxWidth="md" style={{ marginTop: "50px", display: "flex" }}>
         <Grid container spacing={2}>
-          {courses.map((course, index) => (
-            <Grid item xs={12} md={4} key={index}>
-              <Card>
-                <div
-                  style={{ background: "pink", width: "100%", height: "20vh" }}
-                ></div>
-                <CardHeader
-                  avatar={
-                    <Avatar
-                      size={60}
-                      name={course.createdBy}
-                      variant="beam"
-                      colors={[
-                        "#A70267",
-                        "#F10C49",
-                        "#FB6B41",
-                        "#F6D86B",
-                        "#339194",
-                      ]}
-                    />
-                  }
-                  title={course.title}
-                  subheader={"By " + course.createdBy}
-                />
-                <CardContent>
-                  <Typography
-                    variant="body2"
-                    color="textSecondary"
-                    component="p"
-                  >
-                    {ReactHtmlParser(course.desc)}
-                  </Typography>
-                </CardContent>
-                <CardActions>
-                  <IconButton>
-                    <FavoriteIcon />
-                  </IconButton>
-                  <ShareLinkModal id={course.id} />
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    style={{ marginLeft: "auto" }}
-                  >
-                    <Link
-                      to={`/course/${course.id}`}
+          {courses.length > 0 ? (
+            <>
+              {courses.map((course, index) => (
+                <Grid item xs={12} md={4} key={index}>
+                  <Card>
+                    <div
                       style={{
-                        textDecoration: "none",
-                        color: "white",
-                        display: "flex",
-                        alignItems: "center",
+                        background: "pink",
+                        width: "100%",
+                        height: "20vh",
                       }}
-                    >
-                      Continue <ArrowForwardIosIcon fontSize="small" />
-                    </Link>
-                  </Button>
-                </CardActions>
-              </Card>
-            </Grid>
-          ))}
+                    ></div>
+                    <CardHeader
+                      avatar={
+                        <Avatar
+                          size={60}
+                          name={course.createdBy}
+                          variant="beam"
+                          colors={[
+                            "#A70267",
+                            "#F10C49",
+                            "#FB6B41",
+                            "#F6D86B",
+                            "#339194",
+                          ]}
+                        />
+                      }
+                      title={course.title}
+                      subheader={"By " + course.createdBy}
+                    />
+                    <CardContent>
+                      <Typography
+                        variant="body2"
+                        color="textSecondary"
+                        component="p"
+                      >
+                        {ReactHtmlParser(course.desc)}
+                      </Typography>
+                    </CardContent>
+                    <CardActions>
+                      <IconButton>
+                        <FavoriteIcon />
+                      </IconButton>
+                      <ShareLinkModal id={course.id} />
+                      <Button
+                        variant="contained"
+                        color="primary"
+                        style={{ marginLeft: "auto" }}
+                      >
+                        <Link
+                          to={`/course/${course.id}`}
+                          style={{
+                            textDecoration: "none",
+                            color: "white",
+                            display: "flex",
+                            alignItems: "center",
+                          }}
+                        >
+                          Continue <ArrowForwardIosIcon fontSize="small" />
+                        </Link>
+                      </Button>
+                    </CardActions>
+                  </Card>
+                </Grid>
+              ))}
+            </>
+          ) : (
+            <Container align="center" maxWidth="md">
+              <img src={noDdata} alt="no-course" height="80%" width="80%" />
+              <Typography> No Course!</Typography>
+            </Container>
+          )}
         </Grid>
       </Container>
     </div>
