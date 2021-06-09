@@ -1,6 +1,6 @@
 {
     "identityPoolName": "lmsappamplify77733d32_identitypool_77733d32",
-    "allowUnauthenticatedIdentities": false,
+    "allowUnauthenticatedIdentities": true,
     "resourceNameTruncated": "lmsapp77733d32",
     "userPoolName": "lmsappamplify77733d32_userpool_77733d32",
     "autoVerifiedAttributes": [
