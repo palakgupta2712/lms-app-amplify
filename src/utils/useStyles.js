@@ -10,11 +10,12 @@ export const useStyles = makeStyles((theme) => ({
     },
   },
   menuButton: {
+    color: "white",
     position: "fixed",
     background: theme.palette.primary.main,
     padding: "10px",
     width: "100%",
-    [theme.breakpoints.up("lg")]: {
+    [theme.breakpoints.up("sm")]: {
       display: "none",
     },
   },

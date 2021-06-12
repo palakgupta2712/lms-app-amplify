@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
 import { DataStore } from "@aws-amplify/datastore";
 import { User } from "../models";
@@ -14,6 +14,7 @@ import Calendar from "../components/Calendar";
 import Connect from "../components/Connect";
 import Dashboard from "../components/dashboard/Dashboard";
 import Error404 from "../components/Error404";
+import Home from "../components/Home";
 import Courses from "../components/course/Courses";
 import CourseDetails from "../components/course/CourseDetails";
 import EditCourse from "../components/course/EditCourse";
@@ -21,7 +22,7 @@ import Assignments from "../pages/assignments/Assignments";
 import Announcements from "../pages/announcements/Announcements";
 import Lessons from "../pages/lessons/Lessons";
 import Discussions from "../pages/discussions/Discussions";
-import Syllabus from "../pages/Syllabus";
+import Syllabus from "../pages/syllabus/Syllabus";
 import EditAnnouncement from "../pages/announcements/EditAnnouncement";
 export default function Routes() {
   const [currentUser, setCurrentUser] = useState([]);
@@ -37,14 +38,7 @@ export default function Routes() {
   }
   return (
     <Switch>
-      {/* Redirect "/" to "/courses" */}
-      <Route
-        exact
-        path="/"
-        render={() => {
-          return <Redirect to="/courses" />;
-        }}
-      />
+      <Route exact path="/" component={Home} />
       <Route path="/signin/" component={SignIn} />
       <Route path="/signup/" component={SignUp} />
 
@@ -53,6 +47,7 @@ export default function Routes() {
           <Route exact path="/courses/" component={Courses} />
           <PrivateRoute exact path="/course/:id" component={CourseDetails} />
           <PrivateRoute path="/course/:id/edit" component={EditCourse} />
+
           <PrivateRoute path="/dashboard/" component={Dashboard} />
           <PrivateRoute path="/account/" component={Account} />
           <PrivateRoute path="/calendar/" component={Calendar} />
@@ -68,14 +63,14 @@ export default function Routes() {
             component={EditAnnouncement}
           />
           <PrivateRoute
+            path="/course/:id/assignments"
+            component={Assignments}
+          />
+          <PrivateRoute
             path="/course/:id/discussions"
             component={Discussions}
           />
           <PrivateRoute path="/course/:id/syllabus" component={Syllabus} />
-          <PrivateRoute
-            path="/course/:id/assignments"
-            component={Assignments}
-          />
         </UserContext.Provider>
       ))}
 

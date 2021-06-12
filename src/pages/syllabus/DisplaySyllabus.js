@@ -1,0 +1,58 @@
+import React, { useEffect, useState } from "react";
+import { Container } from "@material-ui/core";
+import nodata from "../nodata.svg";
+import { DataStore } from "@aws-amplify/datastore";
+import { SyllabusModel } from "../../models";
+import { useParams } from "react-router";
+import NewSyllabus from "./NewSyllabus";
+import PreviewSyllabus from "./PreviewSyllabus";
+
+function DisplaySyllabus() {
+  const { id } = useParams();
+  const [syllabus, setSyllabus] = useState([]);
+  useEffect(() => {
+    getSyllabus();
+    const subscription = DataStore.observe(SyllabusModel).subscribe((msg) => {
+      getSyllabus();
+    });
+    return () => subscription.unsubscribe();
+  }, []);
+  async function getSyllabus() {
+    const models = (await DataStore.query(SyllabusModel)).filter(
+      (c) => c.courseID === id
+    );
+    setSyllabus(models);
+  }
+  async function handleDelete(id) {
+    const todelete = await DataStore.query(SyllabusModel, id);
+    DataStore.delete(todelete);
+  }
+  return (
+    <React.Fragment>
+      <Container maxWidth="sm">
+        {syllabus.length > 0 ? (
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              flexDirection: "row",
+            }}
+          >
+            {syllabus.map((item, index) => (
+              <div key={index} style={{ margin: "10px" }}>
+                <PreviewSyllabus syllabus={item} handleDelete={handleDelete} />
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div>
+            <NewSyllabus />
+            <img src={nodata} alt="no-syllabus" style={{ padding: "20px" }} />
+          </div>
+        )}
+      </Container>
+    </React.Fragment>
+  );
+}
+
+export default DisplaySyllabus;
