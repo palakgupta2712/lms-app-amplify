@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Grid, makeStyles } from "@material-ui/core";
 import Navigation from "./Navigation";
-import LandingPage from "./LandingPage";
+import LandingPage from "./landingPage/LandingPage";
 import { isLoggedIn } from "../routes/isLoggedIn";
 import home from "./home.svg";
 import { Link } from "react-router-dom";
