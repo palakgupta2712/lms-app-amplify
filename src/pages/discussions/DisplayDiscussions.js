@@ -4,6 +4,8 @@ import { PostModel } from "../../models";
 import { useParams } from "react-router";
 import NewDiscussion from "./NewDiscussion";
 import Discussion from "./Discussion";
+import discussionImg from "./discussionImg.svg";
+import { Box, Typography } from "@material-ui/core";
 
 function DisplayDiscussions() {
   const { id } = useParams();
@@ -13,7 +15,6 @@ function DisplayDiscussions() {
     const subscription = DataStore.observe(PostModel).subscribe((msg) => {
       getDiscussions();
     });
-
     return () => subscription.unsubscribe();
   }, []);
 
@@ -33,14 +34,27 @@ function DisplayDiscussions() {
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
       <NewDiscussion />
-
-      {discussions.map((discussion, index) => (
-        <Discussion
-          key={index}
-          discussion={discussion}
-          handleDelete={handleDelete}
-        />
-      ))}
+      {discussions.length > 0 ? (
+        <>
+          {discussions.map((discussion, index) => (
+            <Discussion
+              key={index}
+              discussion={discussion}
+              handleDelete={handleDelete}
+            />
+          ))}
+        </>
+      ) : (
+        <Box align="center">
+          <img
+            src={discussionImg}
+            alt="no-discussion"
+            height="100%"
+            width="60%"
+          />
+          <Typography variant="h5"> No discussion!</Typography>
+        </Box>
+      )}
     </div>
   );
 }

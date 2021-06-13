@@ -51,13 +51,6 @@ function CourseList() {
               {courses.map((course, index) => (
                 <Grid item xs={12} md={4} key={index}>
                   <Card>
-                    <div
-                      style={{
-                        background: "pink",
-                        width: "100%",
-                        height: "20vh",
-                      }}
-                    ></div>
                     <CardHeader
                       avatar={
                         <Avatar

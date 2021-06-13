@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Grid, makeStyles } from "@material-ui/core";
+import { Grid, makeStyles } from "@material-ui/core";
 import org from "./org.svg";
 import student from "./student.svg";
 import teacher from "./teacher.svg";

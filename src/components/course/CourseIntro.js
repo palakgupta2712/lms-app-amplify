@@ -114,7 +114,7 @@ function CourseIntro() {
                 onClick={handleSubmit}
                 variant="contained"
                 color="primary"
-                style={{ float: "right" }}
+                style={{ float: "right", marginTop: "15px" }}
               >
                 Save
               </Button>{" "}
