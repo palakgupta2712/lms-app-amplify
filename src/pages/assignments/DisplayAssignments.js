@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Box, Container } from "@material-ui/core";
 import nodata from "../nodata.svg";
 import { DataStore } from "@aws-amplify/datastore";
@@ -6,12 +6,21 @@ import { AssignmentModel } from "../../models";
 import AddAssignment from "./AddAssignment";
 import Assignment from "./Assignment";
 import { useParams } from "react-router";
+import { UserContext } from "../../context/UserContext";
+import useCourses from "../../customHook/useCourses";
 
-function DisplaySyllabus() {
+function DisplayAssignments() {
   const { id } = useParams();
+  const user = useContext(UserContext);
+  const course = useCourses(id);
+
   const [assignments, setAssignments] = useState([]);
   useEffect(() => {
     getAssignments();
+    const subscription = DataStore.observe(AssignmentModel).subscribe((msg) => {
+      getAssignments();
+    });
+    return () => subscription.unsubscribe();
   }, []);
   async function getAssignments() {
     const models = (await DataStore.query(AssignmentModel)).filter(
@@ -22,9 +31,11 @@ function DisplaySyllabus() {
   return (
     <React.Fragment>
       <Container maxWidth="sm">
-        <Box style={{ margin: "50px 0px" }}>
-          <AddAssignment />
-        </Box>
+        {user.username === course.createdBy && user.isEducator && (
+          <Box style={{ margin: "50px 0px" }}>
+            <AddAssignment />
+          </Box>
+        )}
 
         {assignments.length > 0 ? (
           <div
@@ -36,7 +47,6 @@ function DisplaySyllabus() {
           >
             {assignments.map((assignment) => (
               <div style={{ margin: "10px" }}>
-                {" "}
                 <Assignment assignment={assignment} />
               </div>
             ))}
@@ -49,4 +59,4 @@ function DisplaySyllabus() {
   );
 }
 
-export default DisplaySyllabus;
+export default DisplayAssignments;

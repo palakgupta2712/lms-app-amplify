@@ -2,8 +2,10 @@ import React, { useEffect, useState } from "react";
 import { DataStore, Predicates, SortDirection } from "@aws-amplify/datastore";
 import { PostModel } from "../../models";
 import { useParams } from "react-router";
+import { Box, Typography } from "@material-ui/core";
 import NewDiscussion from "./NewDiscussion";
 import Discussion from "./Discussion";
+import noDiscussionImg from "./noDiscussionImg.svg";
 
 function DisplayDiscussions() {
   const { id } = useParams();
@@ -33,14 +35,27 @@ function DisplayDiscussions() {
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
       <NewDiscussion />
-
-      {discussions.map((discussion, index) => (
-        <Discussion
-          key={index}
-          discussion={discussion}
-          handleDelete={handleDelete}
-        />
-      ))}
+      {discussions.length > 0 ? (
+        <>
+          {discussions.map((discussion, index) => (
+            <Discussion
+              key={index}
+              discussion={discussion}
+              handleDelete={handleDelete}
+            />
+          ))}
+        </>
+      ) : (
+        <Box align="center">
+          <img
+            src={noDiscussionImg}
+            alt="no-discussion"
+            height="100%"
+            width="60%"
+          />
+          <Typography variant="h5"> No Discussions!</Typography>
+        </Box>
+      )}
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Container } from "@material-ui/core";
 import nodata from "../nodata.svg";
 import { DataStore } from "@aws-amplify/datastore";
@@ -6,9 +6,14 @@ import { SyllabusModel } from "../../models";
 import { useParams } from "react-router";
 import NewSyllabus from "./NewSyllabus";
 import PreviewSyllabus from "./PreviewSyllabus";
+import { UserContext } from "../../context/UserContext";
+import useCourses from "../../customHook/useCourses";
 
 function DisplaySyllabus() {
   const { id } = useParams();
+  const course = useCourses(id);
+  const user = useContext(UserContext);
+
   const [syllabus, setSyllabus] = useState([]);
   useEffect(() => {
     getSyllabus();
@@ -46,7 +51,9 @@ function DisplaySyllabus() {
           </div>
         ) : (
           <div>
-            <NewSyllabus />
+            {user.username === course.createdBy && user.isEducator && (
+              <NewSyllabus />
+            )}
             <img src={nodata} alt="no-syllabus" style={{ padding: "20px" }} />
           </div>
         )}
