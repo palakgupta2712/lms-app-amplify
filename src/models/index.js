@@ -7,16 +7,17 @@ const CourseStatus = {
   "DRAFT": "DRAFT"
 };
 
-const { AssignmentModel, SyllabusModel, CommentModel, User, PostModel, AnnouncementsModel, Lesson, Course } = initSchema(schema);
+const { AssignmentModel, SyllabusModel, CommentModel, User, CourseUser, Course, Lesson, AnnouncementsModel, PostModel } = initSchema(schema);
 
 export {
   AssignmentModel,
   SyllabusModel,
   CommentModel,
   User,
-  PostModel,
-  AnnouncementsModel,
-  Lesson,
+  CourseUser,
   Course,
+  Lesson,
+  AnnouncementsModel,
+  PostModel,
   CourseStatus
 };

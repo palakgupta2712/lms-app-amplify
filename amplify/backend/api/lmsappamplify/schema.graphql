@@ -73,6 +73,8 @@ type Course @model @auth(rules: [{allow: public}]) {
   PostModels: [PostModel] @connection(keyName: "byCourse", fields: ["id"])
   SyllabusModels: [SyllabusModel] @connection(keyName: "byCourse", fields: ["id"])
   AssignmentModels: [AssignmentModel] @connection(keyName: "byCourse", fields: ["id"])
+  enrolledStudents: [String]
+  CourseUsers: [CourseUser] @connection(keyName: "byCourse", fields: ["id"])
 }
 
 type User @model @auth(rules: [{allow: public}]) {
@@ -81,5 +83,14 @@ type User @model @auth(rules: [{allow: public}]) {
   email: String
   username: String
   isEducator: Boolean
+  courses: [CourseUser] @connection(keyName: "byUser", fields: ["id"])
+}
+
+type CourseUser @model(queries: null) @key(name: "byCourse", fields: ["courseID", "userID"]) @key(name: "byUser", fields: ["userID", "courseID"]) @auth(rules: [{allow: public}, {allow: public}]) {
+  id: ID!
+  courseID: ID!
+  userID: ID!
+  course: Course! @connection(fields: ["courseID"])
+  user: User! @connection(fields: ["userID"])
 }
  
