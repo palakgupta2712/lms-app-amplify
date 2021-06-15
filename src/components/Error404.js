@@ -47,7 +47,9 @@ function Error404() {
         <Button
           variant="contained"
           color="primary"
-          onClick={window.location.reload}
+          onClick={() => {
+            window.location.reload();
+          }}
         >
           Reload
         </Button>
