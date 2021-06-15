@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { DataStore, SortDirection } from "@aws-amplify/datastore";
 import { Course, CourseStatus } from "../../models";
+import { API } from "aws-amplify";
+import * as mutations from "../../graphql/mutations";
 import {
   Button,
   Card,
@@ -18,9 +20,13 @@ import ShareLinkModal from "./ShareLinkModal";
 import ReactHtmlParser from "react-html-parser";
 import Avatar from "boring-avatars";
 import noDdata from "../../no-data.svg";
+import { UserContext } from "../../context/UserContext";
+import ContinueButton from "./ContinueButton";
+import EnrollButton from "./EnrollButton";
 
 function CourseList() {
   const [courses, setCourses] = useState([]);
+  const user = useContext(UserContext);
 
   useEffect(() => {
     getCourses();
@@ -40,6 +46,17 @@ function CourseList() {
     );
     setCourses(models);
   }
+  async function handleUpdate(courseID) {
+    const updateCourseDetails = {
+      id: courseID,
+      enrolledStudents: user.id,
+    };
+    const updatedTodo = await API.graphql({
+      query: mutations.updateCourse,
+      variables: { input: updateCourseDetails },
+    });
+    console.log(updatedTodo);
+  }
 
   return (
     <div>
@@ -50,33 +67,25 @@ function CourseList() {
               {courses.map((course, index) => (
                 <Grid item xs={12} md={4} key={index}>
                   <Card>
-                    <Link
-                      to={`/course/${course.id}`}
-                      style={{
-                        textDecoration: "none",
-                        color: "black",
-                      }}
-                    >
-                      <CardHeader
-                        avatar={
-                          <Avatar
-                            size={60}
-                            name={course.createdBy}
-                            variant="beam"
-                            colors={[
-                              "#A70267",
-                              "#F10C49",
-                              "#FB6B41",
-                              "#F6D86B",
-                              "#339194",
-                            ]}
-                          />
-                        }
-                        title={course.title}
-                        fontWeight="900"
-                        subheader={"By " + course.createdBy}
-                      />
-                    </Link>
+                    <CardHeader
+                      avatar={
+                        <Avatar
+                          size={60}
+                          name={course.createdBy}
+                          variant="beam"
+                          colors={[
+                            "#A70267",
+                            "#F10C49",
+                            "#FB6B41",
+                            "#F6D86B",
+                            "#339194",
+                          ]}
+                        />
+                      }
+                      title={course.title}
+                      fontWeight="900"
+                      subheader={"By " + course.createdBy}
+                    />
                     <CardContent>
                       <Typography
                         variant="body2"
@@ -93,24 +102,26 @@ function CourseList() {
                         )}
                       </Typography>
                     </CardContent>
-                    <CardActions></CardActions>
-                    <CardActions>
-                      <IconButton>
+                    <CardActions
+                      style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                        padding: "14px",
+                      }}
+                    >
+                      <Button>
                         <FavoriteBorderRoundedIcon />
-                      </IconButton>
-
+                      </Button>
                       <ShareLinkModal id={course.id} />
-                      <Link
-                        to={`/course/${course.id}`}
-                        style={{
-                          textDecoration: "none",
-                          color: "black",
-                        }}
-                      >
-                        <Button size="small" color="primary">
-                          Learn More
-                        </Button>
-                      </Link>
+
+                      {course.enrolledStudents.includes(user.id) ? (
+                        <ContinueButton course={course} />
+                      ) : (
+                        <EnrollButton
+                          course={course}
+                          handleUpdate={handleUpdate}
+                        />
+                      )}
                     </CardActions>
                   </Card>
                 </Grid>

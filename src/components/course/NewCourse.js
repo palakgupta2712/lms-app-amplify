@@ -50,6 +50,7 @@ export default function NewCourse() {
         createdAt: new Date().toLocaleString(),
         User: user,
         status: CourseStatus.DRAFT,
+        enrolledStudents: user.id,
       })
     );
     setTitle("");
