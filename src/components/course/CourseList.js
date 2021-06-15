@@ -12,8 +12,7 @@ import {
   IconButton,
   Typography,
 } from "@material-ui/core";
-import FavoriteIcon from "@material-ui/icons/Favorite";
-import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
+import FavoriteBorderRoundedIcon from "@material-ui/icons/FavoriteBorderRounded";
 import { Link } from "react-router-dom";
 import ShareLinkModal from "./ShareLinkModal";
 import ReactHtmlParser from "react-html-parser";
@@ -51,62 +50,67 @@ function CourseList() {
               {courses.map((course, index) => (
                 <Grid item xs={12} md={4} key={index}>
                   <Card>
-                    <div
+                    <Link
+                      to={`/course/${course.id}`}
                       style={{
-                        background: "pink",
-                        width: "100%",
-                        height: "20vh",
+                        textDecoration: "none",
+                        color: "black",
                       }}
-                    ></div>
-                    <CardHeader
-                      avatar={
-                        <Avatar
-                          size={60}
-                          name={course.createdBy}
-                          variant="beam"
-                          colors={[
-                            "#A70267",
-                            "#F10C49",
-                            "#FB6B41",
-                            "#F6D86B",
-                            "#339194",
-                          ]}
-                        />
-                      }
-                      title={course.title}
-                      subheader={"By " + course.createdBy}
-                    />
+                    >
+                      <CardHeader
+                        avatar={
+                          <Avatar
+                            size={60}
+                            name={course.createdBy}
+                            variant="beam"
+                            colors={[
+                              "#A70267",
+                              "#F10C49",
+                              "#FB6B41",
+                              "#F6D86B",
+                              "#339194",
+                            ]}
+                          />
+                        }
+                        title={course.title}
+                        fontWeight="900"
+                        subheader={"By " + course.createdBy}
+                      />
+                    </Link>
                     <CardContent>
                       <Typography
                         variant="body2"
                         color="textSecondary"
                         component="p"
                       >
-                        {ReactHtmlParser(course.desc)}
+                        Created on : {course.createdAt.split(",")[0]}
+                        {ReactHtmlParser(course.desc.length) > 80 ? (
+                          <div>
+                            {ReactHtmlParser(course.desc.substring(0, 80))}..
+                          </div>
+                        ) : (
+                          <div>{ReactHtmlParser(course.desc)}</div>
+                        )}
                       </Typography>
                     </CardContent>
+                    <CardActions></CardActions>
                     <CardActions>
                       <IconButton>
-                        <FavoriteIcon />
+                        <FavoriteBorderRoundedIcon />
                       </IconButton>
+
                       <ShareLinkModal id={course.id} />
-                      <Button
-                        variant="contained"
-                        color="primary"
-                        style={{ marginLeft: "auto" }}
+                      <Link
+                        to={`/course/${course.id}`}
+                        style={{
+                          textDecoration: "none",
+                          color: "black",
+                        }}
                       >
-                        <Link
-                          to={`/course/${course.id}`}
-                          style={{
-                            textDecoration: "none",
-                            color: "white",
-                            display: "flex",
-                            alignItems: "center",
-                          }}
-                        >
-                          Continue <ArrowForwardIosIcon fontSize="small" />
-                        </Link>
-                      </Button>
+                        <Button size="small" color="primary">
+                          Learn More
+                        </Button>
+                      </Link>
                     </CardActions>
                   </Card>
                 </Grid>

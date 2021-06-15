@@ -1,8 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
-import { Button, IconButton, TextField } from "@material-ui/core";
-import ShareIcon from "@material-ui/icons/Share";
+import { Button, TextField } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -64,9 +63,9 @@ export default function SimpleModal({ id }) {
 
   return (
     <div>
-      <IconButton onClick={handleOpen}>
-        <ShareIcon />
-      </IconButton>
+      <Button size="small" color="primary" onClick={handleOpen}>
+        Share
+      </Button>
 
       <Modal
         open={open}
