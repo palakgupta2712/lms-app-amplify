@@ -1,10 +1,13 @@
-import { Box, Button, Modal } from "@material-ui/core";
-import React from "react";
+import React, { useState } from "react";
+import { Box, Button, Modal, TextField } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import useCourses from "../../customHook/useCourses";
 
 function EnrollButton({ course, handleUpdate }) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
+  const [coursePin, setCoursePin] = useState();
+  const courses = useCourses(course.id);
 
   const handleOpen = () => {
     setOpen(true);
@@ -22,9 +25,17 @@ function EnrollButton({ course, handleUpdate }) {
       }}
       className={classes.paper}
     >
-      <h2 id="simple-modal-title">
-        Are you sure you want to enroll in this course?
-      </h2>
+      <h2 id="simple-modal-title">Enter the course pin</h2>
+      <TextField
+        margin="dense"
+        label="Course Pin"
+        type="number"
+        fullWidth
+        variant="outlined"
+        defaultValue={{ coursePin }}
+        value={coursePin}
+        onChange={(event) => setCoursePin(event.target.value)}
+      />
       <Box style={{ float: "right", marginTop: "30px" }}>
         <Button
           variant="outlined"
@@ -38,11 +49,16 @@ function EnrollButton({ course, handleUpdate }) {
           variant="contained"
           color="primary"
           onClick={() => {
-            handleUpdate(course.id);
+            if (coursePin === courses.coursePin) {
+              handleUpdate(course.id);
+            } else {
+              alert("Wrong Course Pin!");
+              setCoursePin();
+            }
             setOpen(false);
           }}
         >
-          Yes
+          Enroll
         </Button>
       </Box>
     </Box>

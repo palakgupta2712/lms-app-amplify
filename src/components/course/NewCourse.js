@@ -27,6 +27,7 @@ export default function NewCourse() {
   const [open, setOpen] = useState(false);
   const [title, setTitle] = useState();
   const [desc, setDesc] = useState();
+  const [coursePin, setCoursePin] = useState();
 
   const handleOpen = () => {
     setOpen(true);
@@ -40,7 +41,6 @@ export default function NewCourse() {
 
   async function handleSubmit(event) {
     event.preventDefault();
-
     await DataStore.save(
       new Course({
         title: title,
@@ -51,6 +51,7 @@ export default function NewCourse() {
         User: user,
         status: CourseStatus.DRAFT,
         enrolledStudents: [user.id],
+        coursePin: coursePin,
       })
     ).then((res) => async () => {
       await DataStore.save(
@@ -88,6 +89,7 @@ export default function NewCourse() {
               margin="dense"
               label="Title"
               type="text"
+              required
               fullWidth
               value={title}
               onChange={(event) => setTitle(event.target.value)}
@@ -98,10 +100,21 @@ export default function NewCourse() {
               label="Content"
               type="text"
               multiline
+              required
               rows="5"
               fullWidth
               value={desc}
               onChange={(event) => setDesc(event.target.value)}
+            />
+            <br />
+            <TextField
+              margin="dense"
+              label="Create a 4-digit course pin"
+              required
+              type="number"
+              fullWidth
+              value={coursePin}
+              onChange={(event) => setCoursePin(event.target.value)}
             />
             <br />
           </DialogContent>
@@ -110,7 +123,12 @@ export default function NewCourse() {
             <Button onClick={handleSubmit} color="primary" variant="contained">
               Add
             </Button>
-            <Button onClick={handleClose} color="primary" variant="outlined">
+            <Button
+              type="submit"
+              onClick={handleClose}
+              color="primary"
+              variant="outlined"
+            >
               Cancel
             </Button>
           </DialogActions>
