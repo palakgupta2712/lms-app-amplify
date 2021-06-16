@@ -19,6 +19,7 @@ import {
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import draftToHtml from "draftjs-to-html";
 import CourseStatus from "./CourseStatus";
+import { Chip } from "@material-ui/core";
 
 function Edit() {
   const [title, setTitle] = useState();
@@ -26,6 +27,7 @@ function Edit() {
   const [introduction, setIntroduction] = useState();
   const [editorState, setEditorState] = useState();
   const [course, setCourse] = useState([]);
+  const [coursePin, setCoursePin] = useState();
   const { id } = useParams();
   let history = useHistory();
   useEffect(() => {
@@ -42,6 +44,8 @@ function Edit() {
     setTitle(models.title);
     setDesc(models.desc);
     setIntroduction(models.introduction);
+    setCoursePin(models.coursePin);
+
     setEditorState(
       EditorState.createWithContent(
         ContentState.createFromBlockArray(convertFromHTML(models.introduction))
@@ -61,6 +65,7 @@ function Edit() {
           updated.title = title;
           updated.desc = desc;
           updated.introduction = introduction;
+          updated.coursePin = coursePin;
         })
       );
       history.goBack();
@@ -80,7 +85,16 @@ function Edit() {
       <Typography variant="h5" style={{ padding: "20px" }}>
         Edit Course
       </Typography>
-      <CourseStatus course={course} />
+      <Box style={{ display: "flex" }}>
+        <CourseStatus course={course} />
+        <Chip
+          label={"Pin:" + course.coursePin}
+          variant="outlined"
+          color="primary"
+          style={{ margin: "0px 10px" }}
+        />
+      </Box>
+
       <TextField
         margin="dense"
         label="Title"
@@ -100,6 +114,16 @@ function Edit() {
         defaultValue={{ desc }}
         value={desc}
         onChange={(event) => setTitle(event.target.value)}
+      />
+      <TextField
+        margin="dense"
+        label="Course Pin"
+        type="number"
+        fullWidth
+        variant="outlined"
+        defaultValue={{ coursePin }}
+        value={coursePin}
+        onChange={(event) => setCoursePin(event.target.value)}
       />
       <br />
       <Box>

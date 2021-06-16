@@ -49,7 +49,7 @@ export default function CustomizedTables() {
             <StyledTableCell align="center">Course Description</StyledTableCell>
             <StyledTableCell align="center">Status</StyledTableCell>
             <StyledTableCell align="center">Created on</StyledTableCell>
-            <StyledTableCell align="center">Enrolled Students</StyledTableCell>
+            <StyledTableCell align="center">Course Pin</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -88,7 +88,13 @@ export default function CustomizedTables() {
                     {course.createdAt}
                   </StyledTableCell>
                   <StyledTableCell align="center">
-                    {course.students}
+                    {
+                      <Chip
+                        label={course.coursePin}
+                        color="primary"
+                        style={{ letterSpacing: "2px" }}
+                      />
+                    }
                   </StyledTableCell>
                 </StyledTableRow>
               )}

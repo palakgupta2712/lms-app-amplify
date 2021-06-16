@@ -1,7 +1,15 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useTheme } from "@material-ui/core/styles";
 import { useStyles } from "../../utils/useStyles";
-import { AppBar, Box, Drawer, Grid, Hidden, Toolbar } from "@material-ui/core";
+import {
+  AppBar,
+  Box,
+  Chip,
+  Drawer,
+  Grid,
+  Hidden,
+  Toolbar,
+} from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import Navigation from "../Navigation";
 import Navlinks from "./Navlinks";
@@ -97,12 +105,19 @@ export default function CourseDetails() {
                   justifyContent: "space-evenly",
                   alignItems: "center",
                   margin: "20px",
+                  flexWrap: "wrap",
+                  gap: "10px",
                 }}
               >
                 <CourseStatus course={course} />
                 {course.status === "DRAFT" && <PublishButton />}
                 <EditButton />
                 <DeleteButton />
+                <Chip
+                  label={"Pin:" + course.coursePin}
+                  variant="outlined"
+                  color="primary"
+                />
               </div>
             )}
           </Grid>

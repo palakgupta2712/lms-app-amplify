@@ -35,7 +35,7 @@ export default function EditButton() {
           <Link to={`/course/${id}/edit`} style={{ textDecoration: "none" }}>
             <Button
               variant="contained"
-              style={{ background: "#36122C", color: "white" }}
+              style={{ background: "#12355B", color: "white" }}
             >
               Edit
             </Button>
