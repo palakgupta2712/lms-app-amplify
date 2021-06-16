@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { DataStore, SortDirection } from "@aws-amplify/datastore";
-import { Course, CourseStatus } from "../../models";
+import { Course, CourseStatus, CourseUser } from "../../models";
 import { API } from "aws-amplify";
 import * as mutations from "../../graphql/mutations";
 import {
@@ -11,11 +11,9 @@ import {
   CardHeader,
   Container,
   Grid,
-  IconButton,
   Typography,
 } from "@material-ui/core";
 import FavoriteBorderRoundedIcon from "@material-ui/icons/FavoriteBorderRounded";
-import { Link } from "react-router-dom";
 import ShareLinkModal from "./ShareLinkModal";
 import ReactHtmlParser from "react-html-parser";
 import Avatar from "boring-avatars";
@@ -47,15 +45,22 @@ function CourseList() {
     setCourses(models);
   }
   async function handleUpdate(courseID) {
+    const models = await DataStore.query(Course, courseID);
+
+    await DataStore.save(
+      new CourseUser({
+        course: models,
+        user: user,
+      })
+    );
     const updateCourseDetails = {
       id: courseID,
       enrolledStudents: user.id,
     };
-    const updatedTodo = await API.graphql({
+    await API.graphql({
       query: mutations.updateCourse,
       variables: { input: updateCourseDetails },
     });
-    console.log(updatedTodo);
   }
 
   return (

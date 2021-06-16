@@ -10,7 +10,7 @@ import {
 import AddIcon from "@material-ui/icons/Add";
 import { makeStyles } from "@material-ui/core/styles";
 import { DataStore } from "@aws-amplify/datastore";
-import { Course, CourseStatus } from "../../models";
+import { Course, CourseStatus, CourseUser } from "../../models";
 import { UserContext } from "../../context/UserContext";
 
 const useStyles = makeStyles((theme) => ({
@@ -50,9 +50,17 @@ export default function NewCourse() {
         createdAt: new Date().toLocaleString(),
         User: user,
         status: CourseStatus.DRAFT,
-        enrolledStudents: user.id,
+        enrolledStudents: [user.id],
       })
-    );
+    ).then((res) => async () => {
+      await DataStore.save(
+        new CourseUser({
+          course: res,
+          user: user,
+        })
+      );
+    });
+
     setTitle("");
     setDesc("");
     setOpen(false);
