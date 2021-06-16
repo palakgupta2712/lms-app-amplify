@@ -4,6 +4,7 @@ import Grid from "@material-ui/core/Grid";
 import Navigation from "../Navigation";
 import Welcome from "../Welcome";
 import EducatorDashboard from "./EducatorDashboard";
+import StudentDashboard from "./StudentDashboard";
 import { UserContext } from "../../context/UserContext";
 import NewCourse from "../course/NewCourse";
 
@@ -21,7 +22,7 @@ export default function Dashboard() {
           <Welcome />
           {/* New Course button removed from courses */}
           {user.isEducator && <NewCourse />}
-          {user.isEducator && <EducatorDashboard />}
+          {user.isEducator ? <EducatorDashboard /> : <StudentDashboard />}
         </Grid>
       </Grid>
     </React.Fragment>
