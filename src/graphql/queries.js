@@ -483,6 +483,7 @@ export const getCourse = /* GraphQL */ `
       createdAt
       status
       enrolledStudents
+      coursePin
       _version
       _deleted
       _lastChangedAt
@@ -542,6 +543,7 @@ export const listCourses = /* GraphQL */ `
         createdAt
         status
         enrolledStudents
+        coursePin
         _version
         _deleted
         _lastChangedAt
@@ -574,6 +576,7 @@ export const syncCourses = /* GraphQL */ `
         createdAt
         status
         enrolledStudents
+        coursePin
         _version
         _deleted
         _lastChangedAt

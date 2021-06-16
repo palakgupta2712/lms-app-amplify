@@ -423,6 +423,7 @@ export const onCreateCourse = /* GraphQL */ `
       createdAt
       status
       enrolledStudents
+      coursePin
       _version
       _deleted
       _lastChangedAt
@@ -477,6 +478,7 @@ export const onUpdateCourse = /* GraphQL */ `
       createdAt
       status
       enrolledStudents
+      coursePin
       _version
       _deleted
       _lastChangedAt
@@ -531,6 +533,7 @@ export const onDeleteCourse = /* GraphQL */ `
       createdAt
       status
       enrolledStudents
+      coursePin
       _version
       _deleted
       _lastChangedAt
@@ -654,6 +657,7 @@ export const onCreateCourseUser = /* GraphQL */ `
         createdAt
         status
         enrolledStudents
+        coursePin
         _version
         _deleted
         _lastChangedAt
@@ -694,6 +698,7 @@ export const onUpdateCourseUser = /* GraphQL */ `
         createdAt
         status
         enrolledStudents
+        coursePin
         _version
         _deleted
         _lastChangedAt
@@ -734,6 +739,7 @@ export const onDeleteCourseUser = /* GraphQL */ `
         createdAt
         status
         enrolledStudents
+        coursePin
         _version
         _deleted
         _lastChangedAt

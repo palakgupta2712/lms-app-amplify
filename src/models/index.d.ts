@@ -85,6 +85,7 @@ export declare class Course {
   readonly AssignmentModels?: (AssignmentModel | null)[];
   readonly enrolledStudents?: (string | null)[];
   readonly CourseUsers?: (CourseUser | null)[];
+  readonly coursePin?: string;
   readonly updatedAt?: string;
   constructor(init: ModelInit<Course>);
   static copyOf(source: Course, mutator: (draft: MutableModel<Course>) => MutableModel<Course> | void): Course;

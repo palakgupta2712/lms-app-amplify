@@ -75,6 +75,7 @@ type Course @model @auth(rules: [{allow: public}]) {
   AssignmentModels: [AssignmentModel] @connection(keyName: "byCourse", fields: ["id"])
   enrolledStudents: [String]
   CourseUsers: [CourseUser] @connection(keyName: "byCourse", fields: ["id"])
+  coursePin: String
 }
 
 type User @model @auth(rules: [{allow: public}]) {

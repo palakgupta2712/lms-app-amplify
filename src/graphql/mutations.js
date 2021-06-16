@@ -480,6 +480,7 @@ export const createCourse = /* GraphQL */ `
       createdAt
       status
       enrolledStudents
+      coursePin
       _version
       _deleted
       _lastChangedAt
@@ -537,6 +538,7 @@ export const updateCourse = /* GraphQL */ `
       createdAt
       status
       enrolledStudents
+      coursePin
       _version
       _deleted
       _lastChangedAt
@@ -594,6 +596,7 @@ export const deleteCourse = /* GraphQL */ `
       createdAt
       status
       enrolledStudents
+      coursePin
       _version
       _deleted
       _lastChangedAt
@@ -729,6 +732,7 @@ export const createCourseUser = /* GraphQL */ `
         createdAt
         status
         enrolledStudents
+        coursePin
         _version
         _deleted
         _lastChangedAt
@@ -772,6 +776,7 @@ export const updateCourseUser = /* GraphQL */ `
         createdAt
         status
         enrolledStudents
+        coursePin
         _version
         _deleted
         _lastChangedAt
@@ -815,6 +820,7 @@ export const deleteCourseUser = /* GraphQL */ `
         createdAt
         status
         enrolledStudents
+        coursePin
         _version
         _deleted
         _lastChangedAt

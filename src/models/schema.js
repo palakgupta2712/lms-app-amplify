@@ -655,6 +655,13 @@ export const schema = {
                         "associatedWith": "course"
                     }
                 },
+                "coursePin": {
+                    "name": "coursePin",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
                 "updatedAt": {
                     "name": "updatedAt",
                     "isArray": false,
@@ -998,5 +1005,5 @@ export const schema = {
         }
     },
     "nonModels": {},
-    "version": "b3dc447592c10af0d816af2cbd79a286"
+    "version": "35218898cfb15056112b2f5e95c3e4f7"
 };
