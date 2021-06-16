@@ -2,10 +2,12 @@ import React from "react";
 import { CssBaseline, List, ListItem, makeStyles } from "@material-ui/core";
 import { useParams } from "react-router";
 import { NavLink } from "react-router-dom";
+import { UserContext } from "../../context/UserContext";
 
 function Navlinks() {
   let classes = useStyles();
   let { id } = useParams();
+  const user = React.useContext(UserContext);
   return (
     <React.Fragment>
       <CssBaseline />
@@ -60,6 +62,17 @@ function Navlinks() {
             Syllabus
           </NavLink>
         </ListItem>
+        {user.isEducator && (
+          <ListItem>
+            <NavLink
+              to={`/course/${id}/students`}
+              activeClassName={classes.activeLinks}
+              className={classes.links}
+            >
+              Students
+            </NavLink>
+          </ListItem>
+        )}
       </List>
     </React.Fragment>
   );

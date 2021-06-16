@@ -24,6 +24,8 @@ import Lessons from "../pages/lessons/Lessons";
 import Discussions from "../pages/discussions/Discussions";
 import Syllabus from "../pages/syllabus/Syllabus";
 import EditAnnouncement from "../pages/announcements/EditAnnouncement";
+import Students from "../pages/students/Students";
+
 export default function Routes() {
   const [currentUser, setCurrentUser] = useState([]);
   useEffect(() => {
@@ -71,6 +73,9 @@ export default function Routes() {
             component={Discussions}
           />
           <PrivateRoute path="/course/:id/syllabus" component={Syllabus} />
+          {user.isEducator && (
+            <PrivateRoute path="/course/:id/students" component={Students} />
+          )}
         </UserContext.Provider>
       ))}
 
