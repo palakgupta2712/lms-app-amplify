@@ -6,6 +6,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import Navigation from "../../components/Navigation";
 import Navlinks from "../../components/course/Navlinks";
 import LessonsList from "./LessonsList";
+import Breadcrumb from "../../components/Breadcrumb";
 
 export default function Lessons() {
   const classes = useStyles();
@@ -60,8 +61,13 @@ export default function Lessons() {
             {drawer}
           </Hidden>
         </Grid>
-        <Grid container xs={12} md={9} className={classes.root}>
-          <LessonsList />
+        <Grid container xs={12} md={7} className={classes.root}>
+          <Grid item xs={12}>
+            <Breadcrumb />
+          </Grid>
+          <Grid item xs={12}>
+            <LessonsList />
+          </Grid>
         </Grid>
       </Grid>
     </React.Fragment>
