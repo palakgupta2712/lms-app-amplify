@@ -62,7 +62,8 @@ function SignIn() {
       localStorage.setItem("auth", username);
       history.push("/");
     } catch (err) {
-      console.log("error signing in user...", err);
+      alert(err.message);
+      console.log("error signing in user...", err.message);
     }
   }
 

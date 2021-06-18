@@ -57,7 +57,7 @@ function Lessons() {
                 item
                 xs={12}
                 md={12}
-                style={{ margin: "10px", padding: "30px" }}
+                style={{ margin: "10px", padding: "10px" }}
               >
                 <Card>
                   <CardHeader

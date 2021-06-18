@@ -70,6 +70,7 @@ function SignUp() {
       await Auth.signUp({ username, password, attributes: { email, name } });
       updateFormState(() => ({ ...formState, formType: "confirmSignUp" }));
     } catch (err) {
+      alert(err);
       console.log("error signing up user...", err);
     }
   }
@@ -77,8 +78,6 @@ function SignUp() {
     const { name, email, username, authCode } = formState;
     try {
       await Auth.confirmSignUp(username, authCode);
-      console.log(username, authCode);
-
       //To store User data on SignUp in DataStore model - USER
       await DataStore.save(
         new User({
@@ -91,6 +90,7 @@ function SignUp() {
 
       updateFormState(() => ({ ...formState, formType: "signIn" }));
     } catch (err) {
+      alert(err);
       console.log("error confirming up user...", err);
     }
   }
