@@ -114,10 +114,6 @@ export const onCreateCommentModel = /* GraphQL */ `
       createdBy
       createdAt
       postmodelID
-      _version
-      _deleted
-      _lastChangedAt
-      updatedAt
       User {
         id
         name
@@ -130,6 +126,10 @@ export const onCreateCommentModel = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      _version
+      _deleted
+      _lastChangedAt
+      updatedAt
     }
   }
 `;
@@ -141,10 +141,6 @@ export const onUpdateCommentModel = /* GraphQL */ `
       createdBy
       createdAt
       postmodelID
-      _version
-      _deleted
-      _lastChangedAt
-      updatedAt
       User {
         id
         name
@@ -157,6 +153,10 @@ export const onUpdateCommentModel = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      _version
+      _deleted
+      _lastChangedAt
+      updatedAt
     }
   }
 `;
@@ -168,10 +168,6 @@ export const onDeleteCommentModel = /* GraphQL */ `
       createdBy
       createdAt
       postmodelID
-      _version
-      _deleted
-      _lastChangedAt
-      updatedAt
       User {
         id
         name
@@ -184,6 +180,10 @@ export const onDeleteCommentModel = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      _version
+      _deleted
+      _lastChangedAt
+      updatedAt
     }
   }
 `;
@@ -194,15 +194,11 @@ export const onCreatePostModel = /* GraphQL */ `
       content
       createdBy
       createdAt
-      courseID
-      _version
-      _deleted
-      _lastChangedAt
-      updatedAt
       CommentModels {
         nextToken
         startedAt
       }
+      courseID
       User {
         id
         name
@@ -215,6 +211,10 @@ export const onCreatePostModel = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      _version
+      _deleted
+      _lastChangedAt
+      updatedAt
     }
   }
 `;
@@ -225,15 +225,11 @@ export const onUpdatePostModel = /* GraphQL */ `
       content
       createdBy
       createdAt
-      courseID
-      _version
-      _deleted
-      _lastChangedAt
-      updatedAt
       CommentModels {
         nextToken
         startedAt
       }
+      courseID
       User {
         id
         name
@@ -246,6 +242,10 @@ export const onUpdatePostModel = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      _version
+      _deleted
+      _lastChangedAt
+      updatedAt
     }
   }
 `;
@@ -256,15 +256,11 @@ export const onDeletePostModel = /* GraphQL */ `
       content
       createdBy
       createdAt
-      courseID
-      _version
-      _deleted
-      _lastChangedAt
-      updatedAt
       CommentModels {
         nextToken
         startedAt
       }
+      courseID
       User {
         id
         name
@@ -277,6 +273,10 @@ export const onDeletePostModel = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      _version
+      _deleted
+      _lastChangedAt
+      updatedAt
     }
   }
 `;
@@ -288,10 +288,6 @@ export const onCreateAnnouncementsModel = /* GraphQL */ `
       content
       createdAt
       courseID
-      _version
-      _deleted
-      _lastChangedAt
-      updatedAt
       User {
         id
         name
@@ -304,6 +300,10 @@ export const onCreateAnnouncementsModel = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      _version
+      _deleted
+      _lastChangedAt
+      updatedAt
     }
   }
 `;
@@ -315,10 +315,6 @@ export const onUpdateAnnouncementsModel = /* GraphQL */ `
       content
       createdAt
       courseID
-      _version
-      _deleted
-      _lastChangedAt
-      updatedAt
       User {
         id
         name
@@ -331,6 +327,10 @@ export const onUpdateAnnouncementsModel = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      _version
+      _deleted
+      _lastChangedAt
+      updatedAt
     }
   }
 `;
@@ -342,10 +342,6 @@ export const onDeleteAnnouncementsModel = /* GraphQL */ `
       content
       createdAt
       courseID
-      _version
-      _deleted
-      _lastChangedAt
-      updatedAt
       User {
         id
         name
@@ -358,6 +354,10 @@ export const onDeleteAnnouncementsModel = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      _version
+      _deleted
+      _lastChangedAt
+      updatedAt
     }
   }
 `;
@@ -420,23 +420,7 @@ export const onCreateCourse = /* GraphQL */ `
       desc
       introduction
       createdBy
-      createdAt
-      status
-      enrolledStudents
-      coursePin
-      _version
-      _deleted
-      _lastChangedAt
-      updatedAt
-      AssignmentModels {
-        nextToken
-        startedAt
-      }
-      SyllabusModels {
-        nextToken
-        startedAt
-      }
-      PostModels {
+      Lessons {
         nextToken
         startedAt
       }
@@ -444,10 +428,7 @@ export const onCreateCourse = /* GraphQL */ `
         nextToken
         startedAt
       }
-      Lessons {
-        nextToken
-        startedAt
-      }
+      createdAt
       User {
         id
         name
@@ -460,10 +441,29 @@ export const onCreateCourse = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      status
+      PostModels {
+        nextToken
+        startedAt
+      }
+      SyllabusModels {
+        nextToken
+        startedAt
+      }
+      AssignmentModels {
+        nextToken
+        startedAt
+      }
+      enrolledStudents
       CourseUsers {
         nextToken
         startedAt
       }
+      coursePin
+      _version
+      _deleted
+      _lastChangedAt
+      updatedAt
     }
   }
 `;
@@ -475,23 +475,7 @@ export const onUpdateCourse = /* GraphQL */ `
       desc
       introduction
       createdBy
-      createdAt
-      status
-      enrolledStudents
-      coursePin
-      _version
-      _deleted
-      _lastChangedAt
-      updatedAt
-      AssignmentModels {
-        nextToken
-        startedAt
-      }
-      SyllabusModels {
-        nextToken
-        startedAt
-      }
-      PostModels {
+      Lessons {
         nextToken
         startedAt
       }
@@ -499,10 +483,7 @@ export const onUpdateCourse = /* GraphQL */ `
         nextToken
         startedAt
       }
-      Lessons {
-        nextToken
-        startedAt
-      }
+      createdAt
       User {
         id
         name
@@ -515,10 +496,29 @@ export const onUpdateCourse = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      status
+      PostModels {
+        nextToken
+        startedAt
+      }
+      SyllabusModels {
+        nextToken
+        startedAt
+      }
+      AssignmentModels {
+        nextToken
+        startedAt
+      }
+      enrolledStudents
       CourseUsers {
         nextToken
         startedAt
       }
+      coursePin
+      _version
+      _deleted
+      _lastChangedAt
+      updatedAt
     }
   }
 `;
@@ -530,23 +530,7 @@ export const onDeleteCourse = /* GraphQL */ `
       desc
       introduction
       createdBy
-      createdAt
-      status
-      enrolledStudents
-      coursePin
-      _version
-      _deleted
-      _lastChangedAt
-      updatedAt
-      AssignmentModels {
-        nextToken
-        startedAt
-      }
-      SyllabusModels {
-        nextToken
-        startedAt
-      }
-      PostModels {
+      Lessons {
         nextToken
         startedAt
       }
@@ -554,10 +538,7 @@ export const onDeleteCourse = /* GraphQL */ `
         nextToken
         startedAt
       }
-      Lessons {
-        nextToken
-        startedAt
-      }
+      createdAt
       User {
         id
         name
@@ -570,10 +551,29 @@ export const onDeleteCourse = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      status
+      PostModels {
+        nextToken
+        startedAt
+      }
+      SyllabusModels {
+        nextToken
+        startedAt
+      }
+      AssignmentModels {
+        nextToken
+        startedAt
+      }
+      enrolledStudents
       CourseUsers {
         nextToken
         startedAt
       }
+      coursePin
+      _version
+      _deleted
+      _lastChangedAt
+      updatedAt
     }
   }
 `;
@@ -585,15 +585,15 @@ export const onCreateUser = /* GraphQL */ `
       email
       username
       isEducator
+      courses {
+        nextToken
+        startedAt
+      }
       _version
       _deleted
       _lastChangedAt
       createdAt
       updatedAt
-      courses {
-        nextToken
-        startedAt
-      }
     }
   }
 `;
@@ -605,15 +605,15 @@ export const onUpdateUser = /* GraphQL */ `
       email
       username
       isEducator
+      courses {
+        nextToken
+        startedAt
+      }
       _version
       _deleted
       _lastChangedAt
       createdAt
       updatedAt
-      courses {
-        nextToken
-        startedAt
-      }
     }
   }
 `;
@@ -625,15 +625,15 @@ export const onDeleteUser = /* GraphQL */ `
       email
       username
       isEducator
+      courses {
+        nextToken
+        startedAt
+      }
       _version
       _deleted
       _lastChangedAt
       createdAt
       updatedAt
-      courses {
-        nextToken
-        startedAt
-      }
     }
   }
 `;
@@ -643,11 +643,6 @@ export const onCreateCourseUser = /* GraphQL */ `
       id
       courseID
       userID
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
       course {
         id
         title
@@ -675,6 +670,11 @@ export const onCreateCourseUser = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
     }
   }
 `;
@@ -684,11 +684,6 @@ export const onUpdateCourseUser = /* GraphQL */ `
       id
       courseID
       userID
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
       course {
         id
         title
@@ -716,6 +711,11 @@ export const onUpdateCourseUser = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
     }
   }
 `;
@@ -725,11 +725,6 @@ export const onDeleteCourseUser = /* GraphQL */ `
       id
       courseID
       userID
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
       course {
         id
         title
@@ -757,6 +752,11 @@ export const onDeleteCourseUser = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
     }
   }
 `;

@@ -1,6 +1,38 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const syncAssignmentModels = /* GraphQL */ `
+  query SyncAssignmentModels(
+    $filter: ModelAssignmentModelFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncAssignmentModels(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        id
+        title
+        content
+        S3Key
+        courseID
+        uploadedBy
+        uploadedAt
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
 export const getAssignmentModel = /* GraphQL */ `
   query GetAssignmentModel($id: ID!) {
     getAssignmentModel(id: $id) {
@@ -49,14 +81,14 @@ export const listAssignmentModels = /* GraphQL */ `
     }
   }
 `;
-export const syncAssignmentModels = /* GraphQL */ `
-  query SyncAssignmentModels(
-    $filter: ModelAssignmentModelFilterInput
+export const syncSyllabusModels = /* GraphQL */ `
+  query SyncSyllabusModels(
+    $filter: ModelSyllabusModelFilterInput
     $limit: Int
     $nextToken: String
     $lastSync: AWSTimestamp
   ) {
-    syncAssignmentModels(
+    syncSyllabusModels(
       filter: $filter
       limit: $limit
       nextToken: $nextToken
@@ -65,7 +97,6 @@ export const syncAssignmentModels = /* GraphQL */ `
       items {
         id
         title
-        content
         S3Key
         courseID
         uploadedBy
@@ -123,87 +154,6 @@ export const listSyllabusModels = /* GraphQL */ `
     }
   }
 `;
-export const syncSyllabusModels = /* GraphQL */ `
-  query SyncSyllabusModels(
-    $filter: ModelSyllabusModelFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncSyllabusModels(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        title
-        S3Key
-        courseID
-        uploadedBy
-        uploadedAt
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-      }
-      nextToken
-      startedAt
-    }
-  }
-`;
-export const getCommentModel = /* GraphQL */ `
-  query GetCommentModel($id: ID!) {
-    getCommentModel(id: $id) {
-      id
-      comment
-      createdBy
-      createdAt
-      postmodelID
-      _version
-      _deleted
-      _lastChangedAt
-      updatedAt
-      User {
-        id
-        name
-        email
-        username
-        isEducator
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-      }
-    }
-  }
-`;
-export const listCommentModels = /* GraphQL */ `
-  query ListCommentModels(
-    $filter: ModelCommentModelFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listCommentModels(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        comment
-        createdBy
-        createdAt
-        postmodelID
-        _version
-        _deleted
-        _lastChangedAt
-        updatedAt
-      }
-      nextToken
-      startedAt
-    }
-  }
-`;
 export const syncCommentModels = /* GraphQL */ `
   query SyncCommentModels(
     $filter: ModelCommentModelFilterInput
@@ -233,22 +183,14 @@ export const syncCommentModels = /* GraphQL */ `
     }
   }
 `;
-export const getPostModel = /* GraphQL */ `
-  query GetPostModel($id: ID!) {
-    getPostModel(id: $id) {
+export const getCommentModel = /* GraphQL */ `
+  query GetCommentModel($id: ID!) {
+    getCommentModel(id: $id) {
       id
-      content
+      comment
       createdBy
       createdAt
-      courseID
-      _version
-      _deleted
-      _lastChangedAt
-      updatedAt
-      CommentModels {
-        nextToken
-        startedAt
-      }
+      postmodelID
       User {
         id
         name
@@ -261,22 +203,26 @@ export const getPostModel = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      _version
+      _deleted
+      _lastChangedAt
+      updatedAt
     }
   }
 `;
-export const listPostModels = /* GraphQL */ `
-  query ListPostModels(
-    $filter: ModelPostModelFilterInput
+export const listCommentModels = /* GraphQL */ `
+  query ListCommentModels(
+    $filter: ModelCommentModelFilterInput
     $limit: Int
     $nextToken: String
   ) {
-    listPostModels(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    listCommentModels(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        content
+        comment
         createdBy
         createdAt
-        courseID
+        postmodelID
         _version
         _deleted
         _lastChangedAt
@@ -316,18 +262,18 @@ export const syncPostModels = /* GraphQL */ `
     }
   }
 `;
-export const getAnnouncementsModel = /* GraphQL */ `
-  query GetAnnouncementsModel($id: ID!) {
-    getAnnouncementsModel(id: $id) {
+export const getPostModel = /* GraphQL */ `
+  query GetPostModel($id: ID!) {
+    getPostModel(id: $id) {
       id
-      title
       content
+      createdBy
       createdAt
+      CommentModels {
+        nextToken
+        startedAt
+      }
       courseID
-      _version
-      _deleted
-      _lastChangedAt
-      updatedAt
       User {
         id
         name
@@ -340,24 +286,24 @@ export const getAnnouncementsModel = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      _version
+      _deleted
+      _lastChangedAt
+      updatedAt
     }
   }
 `;
-export const listAnnouncementsModels = /* GraphQL */ `
-  query ListAnnouncementsModels(
-    $filter: ModelAnnouncementsModelFilterInput
+export const listPostModels = /* GraphQL */ `
+  query ListPostModels(
+    $filter: ModelPostModelFilterInput
     $limit: Int
     $nextToken: String
   ) {
-    listAnnouncementsModels(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-    ) {
+    listPostModels(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        title
         content
+        createdBy
         createdAt
         courseID
         _version
@@ -392,6 +338,91 @@ export const syncAnnouncementsModels = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
+        updatedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const getAnnouncementsModel = /* GraphQL */ `
+  query GetAnnouncementsModel($id: ID!) {
+    getAnnouncementsModel(id: $id) {
+      id
+      title
+      content
+      createdAt
+      courseID
+      User {
+        id
+        name
+        email
+        username
+        isEducator
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      updatedAt
+    }
+  }
+`;
+export const listAnnouncementsModels = /* GraphQL */ `
+  query ListAnnouncementsModels(
+    $filter: ModelAnnouncementsModelFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listAnnouncementsModels(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        title
+        content
+        createdAt
+        courseID
+        _version
+        _deleted
+        _lastChangedAt
+        updatedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const syncLessons = /* GraphQL */ `
+  query SyncLessons(
+    $filter: ModelLessonFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncLessons(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        id
+        title
+        summary
+        videoURL
+        courseID
+        createdBy
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
         updatedAt
       }
       nextToken
@@ -441,119 +472,6 @@ export const listLessons = /* GraphQL */ `
     }
   }
 `;
-export const syncLessons = /* GraphQL */ `
-  query SyncLessons(
-    $filter: ModelLessonFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncLessons(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        title
-        summary
-        videoURL
-        courseID
-        createdBy
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-      }
-      nextToken
-      startedAt
-    }
-  }
-`;
-export const getCourse = /* GraphQL */ `
-  query GetCourse($id: ID!) {
-    getCourse(id: $id) {
-      id
-      title
-      desc
-      introduction
-      createdBy
-      createdAt
-      status
-      enrolledStudents
-      coursePin
-      _version
-      _deleted
-      _lastChangedAt
-      updatedAt
-      AssignmentModels {
-        nextToken
-        startedAt
-      }
-      SyllabusModels {
-        nextToken
-        startedAt
-      }
-      PostModels {
-        nextToken
-        startedAt
-      }
-      AnnouncementsModels {
-        nextToken
-        startedAt
-      }
-      Lessons {
-        nextToken
-        startedAt
-      }
-      User {
-        id
-        name
-        email
-        username
-        isEducator
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-      }
-      CourseUsers {
-        nextToken
-        startedAt
-      }
-    }
-  }
-`;
-export const listCourses = /* GraphQL */ `
-  query ListCourses(
-    $filter: ModelCourseFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listCourses(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        title
-        desc
-        introduction
-        createdBy
-        createdAt
-        status
-        enrolledStudents
-        coursePin
-        _version
-        _deleted
-        _lastChangedAt
-        updatedAt
-      }
-      nextToken
-      startedAt
-    }
-  }
-`;
 export const syncCourses = /* GraphQL */ `
   query SyncCourses(
     $filter: ModelCourseFilterInput
@@ -587,34 +505,24 @@ export const syncCourses = /* GraphQL */ `
     }
   }
 `;
-export const getUser = /* GraphQL */ `
-  query GetUser($id: ID!) {
-    getUser(id: $id) {
+export const getCourse = /* GraphQL */ `
+  query GetCourse($id: ID!) {
+    getCourse(id: $id) {
       id
-      name
-      email
-      username
-      isEducator
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
-      courses {
+      title
+      desc
+      introduction
+      createdBy
+      Lessons {
         nextToken
         startedAt
       }
-    }
-  }
-`;
-export const listUsers = /* GraphQL */ `
-  query ListUsers(
-    $filter: ModelUserFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listUsers(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
+      AnnouncementsModels {
+        nextToken
+        startedAt
+      }
+      createdAt
+      User {
         id
         name
         email
@@ -624,6 +532,54 @@ export const listUsers = /* GraphQL */ `
         _deleted
         _lastChangedAt
         createdAt
+        updatedAt
+      }
+      status
+      PostModels {
+        nextToken
+        startedAt
+      }
+      SyllabusModels {
+        nextToken
+        startedAt
+      }
+      AssignmentModels {
+        nextToken
+        startedAt
+      }
+      enrolledStudents
+      CourseUsers {
+        nextToken
+        startedAt
+      }
+      coursePin
+      _version
+      _deleted
+      _lastChangedAt
+      updatedAt
+    }
+  }
+`;
+export const listCourses = /* GraphQL */ `
+  query ListCourses(
+    $filter: ModelCourseFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listCourses(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        title
+        desc
+        introduction
+        createdBy
+        createdAt
+        status
+        enrolledStudents
+        coursePin
+        _version
+        _deleted
+        _lastChangedAt
         updatedAt
       }
       nextToken
@@ -644,6 +600,50 @@ export const syncUsers = /* GraphQL */ `
       nextToken: $nextToken
       lastSync: $lastSync
     ) {
+      items {
+        id
+        name
+        email
+        username
+        isEducator
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const getUser = /* GraphQL */ `
+  query GetUser($id: ID!) {
+    getUser(id: $id) {
+      id
+      name
+      email
+      username
+      isEducator
+      courses {
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listUsers = /* GraphQL */ `
+  query ListUsers(
+    $filter: ModelUserFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listUsers(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
         name
