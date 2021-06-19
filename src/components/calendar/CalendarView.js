@@ -4,18 +4,24 @@ import { ViewState } from "@devexpress/dx-react-scheduler";
 import {
   Scheduler,
   MonthView,
+  Toolbar,
+  DateNavigator,
   Appointments,
+  TodayButton,
 } from "@devexpress/dx-react-scheduler-material-ui";
-
 import { appointments } from "./appointments/appointments";
 
-const currentDate = "2018-07-17";
-export default function CalendarView() {
+export default function Demo() {
+  const currentDate = new Date();
+
   return (
     <Paper>
       <Scheduler data={appointments}>
-        <ViewState currentDate={currentDate} />
+        <ViewState defaultCurrentDate={currentDate} />
         <MonthView />
+        <Toolbar />
+        <DateNavigator />
+        <TodayButton />
         <Appointments />
       </Scheduler>
     </Paper>
