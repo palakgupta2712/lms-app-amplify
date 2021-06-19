@@ -54,6 +54,9 @@ export default function SimpleModal({ id }) {
         onClick={() => {
           navigator.clipboard.writeText(url);
           setButtonText("Copied!");
+          setTimeout(function () {
+            handleClose();
+          }, 1000);
         }}
       >
         {buttonText}
