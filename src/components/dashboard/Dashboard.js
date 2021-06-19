@@ -18,7 +18,7 @@ export default function Dashboard() {
         <Grid item xs={12} md={1} className={classes.sidebar}>
           <Navigation />
         </Grid>
-        <Grid item xs={12} md={11}>
+        <Grid item xs={12} md={12} className={classes.grid}>
           <Welcome />
           {/* New Course button removed from courses */}
           {user.isEducator && <NewCourse />}
@@ -32,9 +32,16 @@ export default function Dashboard() {
 const useStyles = makeStyles((theme) => ({
   sidebar: {
     height: "100%",
+
     background: theme.palette.primary.main,
     [theme.breakpoints.up("md")]: {
       height: "100vh",
+      position: "fixed",
+    },
+  },
+  grid: {
+    [theme.breakpoints.up("md")]: {
+      marginLeft: "100px",
     },
   },
 }));

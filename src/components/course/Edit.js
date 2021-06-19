@@ -117,7 +117,7 @@ function Edit() {
         variant="outlined"
         defaultValue={{ desc }}
         value={desc}
-        onChange={(event) => setTitle(event.target.value)}
+        onChange={(event) => setDesc(event.target.value)}
       />
       <TextField
         margin="dense"
