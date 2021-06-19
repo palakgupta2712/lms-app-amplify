@@ -19,7 +19,7 @@ function PreviewSyllabus({ syllabus, handleDelete }) {
   }
   useEffect(() => {
     loadFileUrl(syllabus);
-  }, []);
+  }, [syllabus]);
 
   const loadFileUrl = async (syllabus) => {
     await Storage.get(syllabus.S3Key).then((res) => {

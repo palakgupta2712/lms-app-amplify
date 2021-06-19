@@ -59,7 +59,11 @@ function CourseCard({ course, handleUpdate }) {
           {course.enrolledStudents.includes(user.id) ? (
             <ContinueButton course={course} />
           ) : (
-            <EnrollButton course={course} handleUpdate={handleUpdate} />
+            <>
+              {user.isEducator && (
+                <EnrollButton course={course} handleUpdate={handleUpdate} />
+              )}
+            </>
           )}
         </CardActions>
       </Card>

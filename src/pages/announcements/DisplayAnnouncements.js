@@ -13,9 +13,18 @@ function DisplayAnnouncement() {
   const { id } = useParams();
   const user = useContext(UserContext);
   const course = useCourses(id);
-
   const [announcements, setAnnouncements] = useState([]);
+
   useEffect(() => {
+    async function getAnnouncements() {
+      const models = (
+        await DataStore.query(AnnouncementsModel, Predicates.ALL, {
+          sort: (s) => s.createdAt(SortDirection.DESCENDING),
+        })
+      ).filter((c) => c.courseID === id);
+
+      setAnnouncements(models);
+    }
     getAnnouncements();
     const subscription = DataStore.observe(AnnouncementsModel).subscribe(
       (msg) => {
@@ -24,17 +33,8 @@ function DisplayAnnouncement() {
     );
 
     return () => subscription.unsubscribe();
-  }, []);
+  }, [id]);
 
-  async function getAnnouncements() {
-    const models = (
-      await DataStore.query(AnnouncementsModel, Predicates.ALL, {
-        sort: (s) => s.createdAt(SortDirection.DESCENDING),
-      })
-    ).filter((c) => c.courseID === id);
-
-    setAnnouncements(models);
-  }
   async function handleDelete(id) {
     const todelete = await DataStore.query(AnnouncementsModel, id);
     DataStore.delete(todelete);

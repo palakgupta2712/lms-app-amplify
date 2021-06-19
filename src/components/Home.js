@@ -27,7 +27,7 @@ export default function Account() {
             }}
           >
             <img src={home} alt="home-page" height="70%" width="50%" />
-            <Link to="/courses">
+            <Link to="/courses" style={{ textDecoration: "none" }}>
               <Button variant="contained" color="primary">
                 EXPLORE
               </Button>

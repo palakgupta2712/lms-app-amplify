@@ -26,22 +26,23 @@ function Edit() {
   const { aID } = useParams();
   let history = useHistory();
   useEffect(() => {
+    async function fetchAnnouncementModels() {
+      const models = await DataStore.query(AnnouncementsModel, aID);
+      setTitle(models.title);
+      setContent(models.content);
+      setEditorState(
+        EditorState.createWithContent(
+          ContentState.createFromBlockArray(convertFromHTML(models.content))
+        )
+      );
+    }
+
     fetchAnnouncementModels();
-  }, []);
+  }, [aID]);
 
   function onEditorStateChange(editorState) {
     setContent(draftToHtml(convertToRaw(editorState.getCurrentContent())));
     setEditorState(editorState);
-  }
-  async function fetchAnnouncementModels() {
-    const models = await DataStore.query(AnnouncementsModel, aID);
-    setTitle(models.title);
-    setContent(models.content);
-    setEditorState(
-      EditorState.createWithContent(
-        ContentState.createFromBlockArray(convertFromHTML(models.content))
-      )
-    );
   }
 
   async function handleSubmit(event) {

@@ -30,27 +30,31 @@ function Edit() {
   const [coursePin, setCoursePin] = useState();
   const { id } = useParams();
   let history = useHistory();
+
   useEffect(() => {
+    async function fetchCourse() {
+      const models = await DataStore.query(Course, id);
+      setCourse(models);
+      setTitle(models.title);
+      setDesc(models.desc);
+      setIntroduction(models.introduction);
+      setCoursePin(models.coursePin);
+
+      setEditorState(
+        EditorState.createWithContent(
+          ContentState.createFromBlockArray(
+            convertFromHTML(models.introduction)
+          )
+        )
+      );
+    }
+
     fetchCourse();
-  }, []);
+  }, [id]);
 
   function onEditorStateChange(editorState) {
     setIntroduction(draftToHtml(convertToRaw(editorState.getCurrentContent())));
     setEditorState(editorState);
-  }
-  async function fetchCourse() {
-    const models = await DataStore.query(Course, id);
-    setCourse(models);
-    setTitle(models.title);
-    setDesc(models.desc);
-    setIntroduction(models.introduction);
-    setCoursePin(models.coursePin);
-
-    setEditorState(
-      EditorState.createWithContent(
-        ContentState.createFromBlockArray(convertFromHTML(models.introduction))
-      )
-    );
   }
 
   async function handleSubmit(event) {

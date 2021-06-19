@@ -15,58 +15,25 @@ import { DataStore } from "@aws-amplify/datastore";
 import { Course } from "../../models";
 import { UserContext } from "../../context/UserContext";
 
-function TabPanel(props) {
-  const { children, value, index, ...other } = props;
-
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
-      {...other}
-    >
-      {value === index && (
-        <Box p={5}>
-          <Typography>{children}</Typography>
-        </Box>
-      )}
-    </div>
-  );
-}
-
-TabPanel.propTypes = {
-  children: PropTypes.node,
-  index: PropTypes.any.isRequired,
-  value: PropTypes.any.isRequired,
-};
-
-function a11yProps(index) {
-  return {
-    id: `simple-tab-${index}`,
-    "aria-controls": `simple-tabpanel-${index}`,
-  };
-}
-
-export default function SimpleTabs() {
+function EducatorDashboard() {
   const user = useContext(UserContext);
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
   const [courses, setCourses] = useState([]);
 
   useEffect(() => {
+    async function getCourses() {
+      const models = (await DataStore.query(Course)).filter(
+        (c) => c.createdBy === user.username
+      );
+      setCourses(models);
+    }
     getCourses();
     const subscription = DataStore.observe(Course).subscribe((msg) => {
       getCourses();
     });
     return () => subscription.unsubscribe();
-  }, []);
-  async function getCourses() {
-    const models = (await DataStore.query(Course)).filter(
-      (c) => c.createdBy === user.username
-    );
-    setCourses(models);
-  }
+  }, [user.username]);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -103,6 +70,7 @@ export default function SimpleTabs() {
     </Container>
   );
 }
+export default EducatorDashboard;
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -111,3 +79,36 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "40px",
   },
 }));
+
+function TabPanel(props) {
+  const { children, value, index, ...other } = props;
+
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`simple-tabpanel-${index}`}
+      aria-labelledby={`simple-tab-${index}`}
+      {...other}
+    >
+      {value === index && (
+        <Box p={5}>
+          <Typography>{children}</Typography>
+        </Box>
+      )}
+    </div>
+  );
+}
+
+TabPanel.propTypes = {
+  children: PropTypes.node,
+  index: PropTypes.any.isRequired,
+  value: PropTypes.any.isRequired,
+};
+
+function a11yProps(index) {
+  return {
+    id: `simple-tab-${index}`,
+    "aria-controls": `simple-tabpanel-${index}`,
+  };
+}
