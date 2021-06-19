@@ -1,13 +1,12 @@
-import { DataStore } from "@aws-amplify/datastore";
-import { Breadcrumbs, Button } from "@material-ui/core";
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { Breadcrumbs } from "@material-ui/core";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
-import { Course } from "../models";
+import useCourses from "../customHook/useCourses";
 
 function Breadcrumb() {
-  const [course, setCourse] = useState([]);
   let { id } = useParams();
+  const course = useCourses(id);
   let pathCapitalized = "";
 
   const pathArray = window.location.pathname.split("/");
@@ -16,13 +15,6 @@ function Breadcrumb() {
       pathArray[3].charAt(0).toUpperCase() + pathArray[3].slice(1);
   }
 
-  useEffect(() => {
-    getCourses();
-  }, []);
-  async function getCourses() {
-    const models = await DataStore.query(Course, id);
-    setCourse(models);
-  }
   return (
     <div>
       <Breadcrumbs style={{ marginTop: "15px", marginLeft: "15px" }}>

@@ -15,19 +15,21 @@ function DisplayAssignments() {
   const course = useCourses(id);
 
   const [assignments, setAssignments] = useState([]);
+
   useEffect(() => {
+    async function getAssignments() {
+      const models = (await DataStore.query(AssignmentModel)).filter(
+        (c) => c.courseID === id
+      );
+      setAssignments(models);
+    }
     getAssignments();
     const subscription = DataStore.observe(AssignmentModel).subscribe((msg) => {
       getAssignments();
     });
     return () => subscription.unsubscribe();
-  }, []);
-  async function getAssignments() {
-    const models = (await DataStore.query(AssignmentModel)).filter(
-      (c) => c.courseID === id
-    );
-    setAssignments(models);
-  }
+  }, [id]);
+
   return (
     <React.Fragment>
       <Container maxWidth="sm">

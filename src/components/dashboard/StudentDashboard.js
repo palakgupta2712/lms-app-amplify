@@ -11,14 +11,15 @@ function StudentDashboard() {
   const user = useContext(UserContext);
   const [enrolledCourses, setEnrolledCourses] = useState([]);
   useEffect(() => {
+    async function getCourses() {
+      const enrolledCourses = (await DataStore.query(CourseUser))
+        .filter((c) => c.user.id === user.id)
+        .map((c) => c.course);
+      setEnrolledCourses(enrolledCourses);
+    }
     getCourses();
-  }, []);
-  async function getCourses() {
-    const enrolledCourses = (await DataStore.query(CourseUser))
-      .filter((c) => c.user.id === user.id)
-      .map((c) => c.course);
-    setEnrolledCourses(enrolledCourses);
-  }
+  }, [user.id]);
+
   return (
     <React.Fragment>
       <Container maxWidth="md" style={{ marginTop: "50px", display: "flex" }}>

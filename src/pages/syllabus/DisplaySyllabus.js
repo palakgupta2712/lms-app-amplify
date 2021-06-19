@@ -16,18 +16,20 @@ function DisplaySyllabus() {
 
   const [syllabus, setSyllabus] = useState([]);
   useEffect(() => {
+    async function getSyllabus() {
+      const models = (await DataStore.query(SyllabusModel)).filter(
+        (c) => c.courseID === id
+      );
+      setSyllabus(models);
+    }
+
     getSyllabus();
     const subscription = DataStore.observe(SyllabusModel).subscribe((msg) => {
       getSyllabus();
     });
     return () => subscription.unsubscribe();
-  }, []);
-  async function getSyllabus() {
-    const models = (await DataStore.query(SyllabusModel)).filter(
-      (c) => c.courseID === id
-    );
-    setSyllabus(models);
-  }
+  }, [id]);
+
   async function handleDelete(id) {
     const todelete = await DataStore.query(SyllabusModel, id);
     DataStore.delete(todelete);

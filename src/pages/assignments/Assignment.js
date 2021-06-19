@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import DescriptionIcon from "@material-ui/icons/Description";
-import { Grid, Link } from "@material-ui/core";
-import CloseIcon from "@material-ui/icons/Close";
+import { Link } from "@material-ui/core";
 import GetAppIcon from "@material-ui/icons/GetApp";
 import { Storage } from "aws-amplify";
 
@@ -10,7 +9,7 @@ function Assignment({ assignment }) {
 
   useEffect(() => {
     loadFileUrl(assignment);
-  }, []);
+  }, [assignment]);
 
   const loadFileUrl = async (assignment) => {
     await Storage.get(assignment.S3Key).then((res) => {

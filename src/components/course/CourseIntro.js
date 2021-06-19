@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { useParams } from "react-router";
 import { DataStore } from "@aws-amplify/datastore";
 import { Course } from "../../models";
@@ -10,26 +10,20 @@ import draftToHtml from "draftjs-to-html";
 import ReactHtmlParser from "react-html-parser";
 import { UserContext } from "../../context/UserContext";
 import Avatar from "boring-avatars";
+import useCourses from "../../customHook/useCourses";
 
 function CourseIntro() {
   const user = useContext(UserContext);
   const [introduction, setIntroduction] = useState();
-  const [course, setCourse] = useState([]);
   const [editorState, setEditorState] = useState();
   const { id } = useParams();
+  const course = useCourses(id);
 
-  useEffect(() => {
-    fetchCourse();
-  }, []);
-  async function fetchCourse() {
-    const models = await DataStore.query(Course, id);
-    setIntroduction(models.introduction);
-    setCourse(models);
-  }
   function onEditorStateChange(editorState) {
     setIntroduction(draftToHtml(convertToRaw(editorState.getCurrentContent())));
     setEditorState(editorState);
   }
+
   async function handleSubmit(event) {
     event.preventDefault();
     const original = await DataStore.query(Course, id);

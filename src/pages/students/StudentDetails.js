@@ -11,15 +11,15 @@ function StudentDetails() {
   const { id } = useParams();
   const [enrolledStudents, setEnrolledStudents] = useState([]);
   useEffect(() => {
+    async function getStudents() {
+      const enrolledStudents = (await DataStore.query(CourseUser))
+        .filter((pe) => pe.course.id === id)
+        .map((pe) => pe.user);
+      setEnrolledStudents(enrolledStudents);
+    }
     getStudents();
-  }, []);
+  }, [id]);
 
-  async function getStudents() {
-    const enrolledStudents = (await DataStore.query(CourseUser))
-      .filter((pe) => pe.course.id === id)
-      .map((pe) => pe.user);
-    setEnrolledStudents(enrolledStudents);
-  }
   return (
     <React.Fragment>
       <Container maxWidth="md" style={{ marginTop: "50px", display: "flex" }}>

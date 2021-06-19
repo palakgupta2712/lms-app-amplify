@@ -32,12 +32,13 @@ export default function CourseDetails() {
   const [course, setCourse] = useState([]);
   const [mobileOpen, setMobileOpen] = React.useState(false);
   useEffect(() => {
+    async function getCourses() {
+      const models = await DataStore.query(Course, id);
+      setCourse(models);
+    }
     getCourses();
-  }, []);
-  async function getCourses() {
-    const models = await DataStore.query(Course, id);
-    setCourse(models);
-  }
+  }, [id]);
+
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };

@@ -9,19 +9,21 @@ function DisplayComments({ discussionID }) {
   const [comments, setComments] = useState([]);
   const [open, setOpen] = useState(false);
   const [text, setText] = useState("View");
+
   useEffect(() => {
+    async function getComments() {
+      const models = (await DataStore.query(CommentModel)).filter(
+        (c) => c.postmodelID === discussionID
+      );
+      setComments(models);
+    }
     getComments();
     const subscription = DataStore.observe(CommentModel).subscribe((msg) => {
       getComments();
     });
     return () => subscription.unsubscribe();
-  }, []);
-  async function getComments() {
-    const models = (await DataStore.query(CommentModel)).filter(
-      (c) => c.postmodelID === discussionID
-    );
-    setComments(models);
-  }
+  }, [discussionID]);
+
   async function handleDelete(id) {
     const todelete = await DataStore.query(CommentModel, id);
     DataStore.delete(todelete);
