@@ -1,9 +1,9 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
-import Navigation from "./Navigation";
-import noDdata from "../assests/nodata.svg";
+import Navigation from "../Navigation";
 import { Container } from "@material-ui/core";
+import CalendarView from "./CalendarView";
 
 export default function Calendar() {
   const classes = useStyles();
@@ -14,14 +14,9 @@ export default function Calendar() {
         <Grid item xs={12} md={1} className={classes.sidebar}>
           <Navigation />
         </Grid>
-        <Grid item xs={12} md={10}>
+        <Grid item xs={12} md={11} className={classes.grid}>
           <Container align="center">
-            <img
-              src={noDdata}
-              alt="page-yet-to-be-created"
-              height="80%"
-              width="80%"
-            />
+            <CalendarView />
           </Container>
         </Grid>
       </Grid>
@@ -32,9 +27,16 @@ export default function Calendar() {
 const useStyles = makeStyles((theme) => ({
   sidebar: {
     height: "100%",
+
     background: theme.palette.primary.main,
     [theme.breakpoints.up("md")]: {
       height: "100vh",
+      position: "fixed",
+    },
+  },
+  grid: {
+    [theme.breakpoints.up("md")]: {
+      marginLeft: "100px",
     },
   },
 }));

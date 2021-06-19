@@ -10,7 +10,7 @@ import ProtectedRoute from "./ProtectedRoute";
 import SignIn from "../auth/SignIn";
 import SignUp from "../auth/SignUp";
 import Account from "../components/account/Account";
-import Calendar from "../components/Calendar";
+import Calendar from "../components/calendar/Calendar";
 import Connect from "../components/Connect";
 import Dashboard from "../components/dashboard/Dashboard";
 import Error404 from "../components/Error404";

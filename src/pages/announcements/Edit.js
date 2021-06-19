@@ -96,7 +96,14 @@ function Edit() {
           onEditorStateChange={onEditorStateChange}
           placeholder="Enter the description..."
           toolbar={{
-            options: ["inline", "blockType", "fontSize", "list", "textAlign"],
+            options: [
+              "inline",
+              "blockType",
+              "fontSize",
+              "list",
+              "textAlign",
+              "link",
+            ],
             inline: { inDropdown: false },
             list: { inDropdown: true },
             textAlign: { inDropdown: true },
