@@ -109,6 +109,7 @@ export default function NewAnnouncement() {
                   "fontSize",
                   "list",
                   "textAlign",
+                  "link",
                 ],
                 inline: { inDropdown: false },
                 list: { inDropdown: true },

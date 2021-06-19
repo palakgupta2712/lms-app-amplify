@@ -60,7 +60,7 @@ function CourseCard({ course, handleUpdate }) {
             <ContinueButton course={course} />
           ) : (
             <>
-              {user.isEducator && (
+              {!user.isEducator && (
                 <EnrollButton course={course} handleUpdate={handleUpdate} />
               )}
             </>

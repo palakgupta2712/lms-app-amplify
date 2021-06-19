@@ -24,7 +24,6 @@ function PreviewSyllabus({ syllabus, handleDelete }) {
   const loadFileUrl = async (syllabus) => {
     await Storage.get(syllabus.S3Key).then((res) => {
       setUrl(res);
-      console.log(res);
     });
   };
   return (
