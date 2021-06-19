@@ -1,33 +1,40 @@
 import React, { useContext } from "react";
 import Avatar from "boring-avatars";
 import { UserContext } from "../../context/UserContext";
-import { Typography } from "@material-ui/core";
+import { Box, Typography } from "@material-ui/core";
+import IsEducatorChip from "../IsEducatorChip";
 
 function UserDetails() {
   const user = useContext(UserContext);
 
   return (
     <React.Fragment>
-      <div
+      <Box
         style={{
           display: "flex",
-          alignItems: "center",
           padding: "10px",
+          justifyContent: "space-evenly",
         }}
       >
-        <Avatar
-          size={60}
-          name={user.username}
-          variant="beam"
-          colors={["#A70267", "#F10C49", "#FB6B41", "#F6D86B", "#339194"]}
-          style={{ padding: 10 }}
-        />
+        <Box
+          style={{ display: "flex", flexDirection: "column", padding: "14px" }}
+        >
+          <Avatar
+            size={60}
+            name={user.username}
+            variant="beam"
+            colors={["#A70267", "#F10C49", "#FB6B41", "#F6D86B", "#339194"]}
+          />
+        </Box>
 
-        <div>
+        <Box
+          style={{ display: "flex", flexDirection: "column", padding: "10px" }}
+        >
           <Typography style={{ fontWeight: 700 }}>{user.name}</Typography>
           <Typography variant="subtitle2">@{user.username}</Typography>
-        </div>
-      </div>
+          <IsEducatorChip />
+        </Box>
+      </Box>
     </React.Fragment>
   );
 }
