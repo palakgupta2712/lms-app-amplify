@@ -1,8 +1,8 @@
 import React from "react";
 import { Grid, makeStyles } from "@material-ui/core";
-import org from "./org.svg";
-import student from "./student.svg";
-import teacher from "./teacher.svg";
+import org from "../../assests/org.svg";
+import student from "../../assests/student.svg";
+import teacher from "../../assests/teacher.svg";
 import { Typography } from "@material-ui/core";
 
 function Benefit() {

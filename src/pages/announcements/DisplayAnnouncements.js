@@ -6,7 +6,7 @@ import { AnnouncementsModel } from "../../models";
 import { useParams } from "react-router";
 import { UserContext } from "../../context/UserContext";
 import { Box, Typography } from "@material-ui/core";
-import announcementImg from "./announcementImg.svg";
+import announcementImg from "../../assests/announcementImg.svg";
 import useCourses from "../../customHook/useCourses";
 
 function DisplayAnnouncement() {

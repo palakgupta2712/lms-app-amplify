@@ -5,7 +5,7 @@ import { useParams } from "react-router";
 import { Box, Typography } from "@material-ui/core";
 import NewDiscussion from "./NewDiscussion";
 import Discussion from "./Discussion";
-import noDiscussionImg from "./noDiscussionImg.svg";
+import noDiscussionImg from "../../assests/noDiscussionImg.svg";
 
 function DisplayDiscussions() {
   const { id } = useParams();

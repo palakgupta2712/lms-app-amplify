@@ -17,7 +17,7 @@ import {
   Hidden,
 } from "@material-ui/core";
 
-import signUpLogo from "./signUpLogo.svg";
+import signUpLogo from "../assests/signUpLogo.svg";
 import { Link } from "react-router-dom";
 
 Auth.configure(awsconfig); // For NoUserPoolFound error

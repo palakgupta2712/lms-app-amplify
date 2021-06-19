@@ -1,7 +1,7 @@
 import React from "react";
 import { Grid, makeStyles } from "@material-ui/core";
-import lms from "./lms.png";
-import lms2 from "./lms2.png";
+import lms from "../../assests/lms.png";
+import lms2 from "../../assests/lms2.png";
 
 import { Typography } from "@material-ui/core";
 

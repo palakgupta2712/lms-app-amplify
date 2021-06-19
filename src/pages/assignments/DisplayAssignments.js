@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Box, Container } from "@material-ui/core";
-import nodata from "../nodata.svg";
+import nodata from "../../assests/nodata.svg";
 import { DataStore } from "@aws-amplify/datastore";
 import { AssignmentModel } from "../../models";
 import AddAssignment from "./AddAssignment";

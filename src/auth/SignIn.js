@@ -12,7 +12,7 @@ import {
   Box,
   Hidden,
 } from "@material-ui/core";
-import login from "./login.svg";
+import login from "../assests/login.svg";
 
 Auth.configure(awsconfig); //For NoUserPool Found error
 Amplify.configure(awsconfig);

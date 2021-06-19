@@ -2,7 +2,7 @@ import React from "react";
 import { Button, makeStyles, Typography } from "@material-ui/core";
 import { Container, Grid } from "@material-ui/core";
 import { Link } from "react-router-dom";
-import hero from "./hero.svg";
+import hero from "../../assests/hero.svg";
 
 function Hero() {
   const classes = useStyles();

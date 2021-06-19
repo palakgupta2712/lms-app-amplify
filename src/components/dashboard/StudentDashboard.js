@@ -5,7 +5,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../context/UserContext";
 import { CourseUser } from "../../models";
 import CourseCard from "../course/CourseCard";
-import noDdata from "../../no-data.svg";
+import nodata from "../../assests/no-data.svg";
 
 function StudentDashboard() {
   const user = useContext(UserContext);
@@ -34,7 +34,7 @@ function StudentDashboard() {
             </>
           ) : (
             <Container align="center" maxWidth="md">
-              <img src={noDdata} alt="no-course" height="80%" width="80%" />
+              <img src={nodata} alt="no-course" height="80%" width="80%" />
               <Typography> No Course!</Typography>
             </Container>
           )}

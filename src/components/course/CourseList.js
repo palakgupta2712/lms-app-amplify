@@ -6,7 +6,7 @@ import * as mutations from "../../graphql/mutations";
 import { Container, Grid, Typography } from "@material-ui/core";
 import { UserContext } from "../../context/UserContext";
 import CourseCard from "./CourseCard";
-import noDdata from "../../no-data.svg";
+import nodata from "../../assests/no-data.svg";
 
 function CourseList() {
   const [courses, setCourses] = useState([]);
@@ -66,7 +66,7 @@ function CourseList() {
             </>
           ) : (
             <Container align="center" maxWidth="md">
-              <img src={noDdata} alt="no-course" height="80%" width="80%" />
+              <img src={nodata} alt="no-course" height="80%" width="80%" />
               <Typography> No Course!</Typography>
             </Container>
           )}

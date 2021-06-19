@@ -4,7 +4,7 @@ import { Container } from "@material-ui/core";
 import { DataStore } from "aws-amplify";
 import { CourseUser } from "../../models";
 import StudentCard from "./StudentCard";
-import noUser from "./no-user.svg";
+import noUser from "../../assests/no-user.svg";
 import { useParams } from "react-router-dom";
 
 function StudentDetails() {

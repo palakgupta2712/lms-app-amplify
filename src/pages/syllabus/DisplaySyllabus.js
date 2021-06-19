@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Container } from "@material-ui/core";
-import nodata from "../nodata.svg";
+import nodata from "../../assests/nodata.svg";
 import { DataStore } from "@aws-amplify/datastore";
 import { SyllabusModel } from "../../models";
 import { useParams } from "react-router";
