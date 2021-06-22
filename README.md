@@ -1,6 +1,6 @@
-# Cloud Based Learning Management System
+# EduCouch - A Cloud Based Learning Management System
 
-_A cloud-based learning management system is a management system intended for educational institution for managing their educational content.  
+_EduCouch is a management system intended for educational institution for managing their educational content.  
 Serverless Application using AWS Amplify, React.js, GraphQL and Datastore._
 
 ## Table of Contents
@@ -13,14 +13,28 @@ Serverless Application using AWS Amplify, React.js, GraphQL and Datastore._
   - [Installation](#installation)
 - [Resources](#resources)
 
-### About this project
+# About this project
+EduCouch is a monolith application which is built on [AWS Amplify](https://docs.amplify.aws/lib/) Framework and [ReactJS](https://reactjs.org/).  
+In the LMS, there will be three actors -   
+1. Admin
+2. Instructor
+3. Learner
+
+
+- From the perspective of an instructor, this LMS tool will be used to manage and support a group of learners.  
+Instructors can design the materials for the course.
+
+- From the perspective of a learner, this LMS tool provides access to the course materials provided by the instructor. 
+This could be in the form of a study plan or a lecture schedule with links to materials in the syllabus.  
+
+- From the perspective of the admin, this LMS tool allows the educational institution to manage users and content.
 
 ## Architecture Diagram
 
 <img width="auto" alt="ArchitectureDiagram" src="https://user-images.githubusercontent.com/61227144/121209864-d63f7800-c898-11eb-9a6f-773a13e34f37.png">
 
-## Built with
-
+Frontend
+---
 <a href="https://reactjs.org/">
 <img
 src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB"
@@ -42,6 +56,9 @@ alt="material-ui"
 style={{ padding: "10px" }}
 />
 </a>
+
+Backend
+---
 <a href="https://aws.amazon.com/">
 <img
 src="https://img.shields.io/badge/Amazon_AWS-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white"
@@ -56,21 +73,38 @@ alt="graphql"
 style={{ padding: "10px" }}
 />
 </a>
-<a href="hhttps://docs.amplify.aws/lib/">
+<a href="https://docs.amplify.aws/lib/">
 <img
 src="https://img.shields.io/badge/AWS-Amplify-FFBB05?style=for-the-badge&logo=AWS&logoColor=white"
 alt="aws-amplify"
 style={{ padding: "10px" }}
 />
-</a><a href="https://www.npmjs.com/">
+</a>  
+
+## AWS Amplify Services used  
+<p align="center">
+<img width="auto" height="350px" alt="ArchitectureDiagram" src="https://user-images.githubusercontent.com/61227144/122998939-438bf680-d3cb-11eb-949b-f0c289e974ad.png">
+</p>
+
+Other Tools
+---
+<a href="https://www.npmjs.com/">
 <img
 src="https://img.shields.io/badge/npm-20232A?style=for-the-badge&logo=npm&logoColor=white"
-alt="npm"
+alt="npmjs"
+style={{ padding: "10px" }}
+/>
+</a>
+<a href="https://git-scm.com/">
+<img
+src="https://img.shields.io/badge/git-20232A?style=for-the-badge&logo=git&logoColor=red"
+alt="npmjs"
 style={{ padding: "10px" }}
 />
 </a>
 
-## One-Click Deploy with the Amplify Console
+
+# One-Click Deploy with the Amplify Console
 
 Click the button to deploy this application to the Amplify console.
 
@@ -80,7 +114,7 @@ Click the button to deploy this application to the Amplify console.
     </a>
 </p>
 
-## Local Deployment
+# Local Deployment
 
 ### Prerequisites
 
@@ -111,8 +145,13 @@ For complete instructions on how to install and configure Amplify CLI, refer [of
    ```
    https://github.com/palakgupta2712/lms-app-amplify.git
    cd lms-app-amplify
-   npm install
    ```
+   
+   Install the dependencies using npm:
+   ``` npm install ```
+   
+   or using yarn: 
+   ``` yarn install ``` 
 
 2. Initialize the amplify project
 
@@ -135,10 +174,27 @@ For complete instructions on how to install and configure Amplify CLI, refer [of
    ```
    Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-## Resources
+# Resources
 
 - Amplify documentation: https://docs.amplify.aws
 - Amplify CLI documentation: https://docs.amplify.aws/cli
 - Amplify DataStore: https://docs.amplify.aws/lib/datastore/getting-started/q/platform/js
 - Amplify Authentication: https://docs.amplify.aws/lib/auth/emailpassword/q/platform/js
 - Custom Authentication Flow: https://docs.amplify.aws/guides/authentication/custom-auth-flow/q/platform/js
+
+## Additional Libraries
+
+- [material-ui](https://material-ui.com/)
+- [aws-amplify](https://github.com/aws-amplify/amplify-js)
+- [react-router-dom](https://reactrouter.com/web/example/basic)
+- [boring-avatars](https://boringavatars.com/)
+- [draft-js](https://draftjs.org/)
+- [react-draft-wysiwyg](https://www.npmjs.com/package/react-draft-wysiwyg)
+- [react-pdf](https://github.com/wojtekmaj/react-pdf)
+- [react-player](https://www.npmjs.com/package/react-player)
+- [dx-react-scheduler](https://devexpress.github.io/devextreme-reactive/react/scheduler/docs/guides/getting-started/)
+
+## Illustrations
+
+- [unDraw](https://undraw.co/)
+- [storyset](https://storyset.com/)
