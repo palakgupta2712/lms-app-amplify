@@ -30,6 +30,10 @@ export default function Routes() {
   const [currentUser, setCurrentUser] = useState([]);
   useEffect(() => {
     getUser();
+    const subscription = DataStore.observe(User).subscribe((msg) => {
+      getUser();
+    });
+    return () => subscription.unsubscribe();
   }, []);
   async function getUser() {
     const user = await Auth.currentAuthenticatedUser();
