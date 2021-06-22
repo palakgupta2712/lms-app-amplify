@@ -21,7 +21,6 @@ function IsEducatorSwitch() {
         updated.isEducator = state.checkedA;
       })
     );
-    window.location.reload();
   }
   return (
     <React.Fragment>
