@@ -33,6 +33,11 @@ This could be in the form of a study plan or a lecture schedule with links to ma
 
 <img width="auto" alt="ArchitectureDiagram" src="https://user-images.githubusercontent.com/61227144/121209864-d63f7800-c898-11eb-9a6f-773a13e34f37.png">
 
+## AWS Amplify Services used  
+<p align="center">
+<img width="auto" height="350px" alt="ArchitectureDiagram" src="https://user-images.githubusercontent.com/61227144/122998939-438bf680-d3cb-11eb-949b-f0c289e974ad.png">
+</p>
+
 Frontend
 ---
 <a href="https://reactjs.org/">
@@ -80,11 +85,6 @@ alt="aws-amplify"
 style={{ padding: "10px" }}
 />
 </a>  
-
-## AWS Amplify Services used  
-<p align="center">
-<img width="auto" height="350px" alt="ArchitectureDiagram" src="https://user-images.githubusercontent.com/61227144/122998939-438bf680-d3cb-11eb-949b-f0c289e974ad.png">
-</p>
 
 Other Tools
 ---
