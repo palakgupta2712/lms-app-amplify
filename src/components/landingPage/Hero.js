@@ -52,6 +52,11 @@ function Hero() {
               </Link>
             </Button>
           </Container>
+          <div>
+            Demo credentials:
+            <p> username: test-user</p>
+            <p> password: Test@123#</p>
+          </div>
         </Grid>
         <Grid item xs={12}>
           <img src={hero} alt="hero" height="150rem" />

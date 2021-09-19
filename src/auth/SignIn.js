@@ -112,6 +112,11 @@ function SignIn() {
               <div style={{ margin: "20px 0px" }}>
                 Not a member? <Link to="/signUp">Sign up now</Link>
               </div>
+              <div>
+                Demo credentials:
+                <p> username: test-user</p>
+                <p> password: Test@123#</p>
+              </div>
             </Container>
           )}
         </Grid>
