@@ -16,7 +16,7 @@ function SignoutButton() {
           Auth.signOut();
           window.location.reload();
           localStorage.removeItem("auth");
-          history.push("/");
+          window.location.href = "/";
         }}
         style={{ cursor: "pointer" }}
       >

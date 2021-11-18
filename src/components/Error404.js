@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
     color: "white",
   },
   heading: {
-    fontSize: "120px",
+    fontSize: "80px",
     background: "linear-gradient(to right, #C33764 0%, #1D2671 100%)",
     backgroundClip: "text",
     WebkitBackgroundClip: "text",
@@ -35,9 +35,10 @@ function Error404() {
         </Typography>
         <Typography variant="h5">404 - Page not found</Typography>
         <Typography variant="subtitle2"></Typography>
-        <Typography variant="body2" gutterBottom>
+        <Typography>
           Sorry, the page you're looking for doesn't exist.
         </Typography>
+        <Typography> Or maybe you doesn't have access to the page.</Typography>
         <Button variant="contained" color="primary" style={{ margin: "20px" }}>
           <Link to="/" className={classes.link}>
             Back to home
@@ -48,10 +49,10 @@ function Error404() {
           variant="contained"
           color="primary"
           onClick={() => {
-            window.location.reload();
+            window.location.href = "/sigin";
           }}
         >
-          Reload
+          Login
         </Button>
       </div>
     </React.Fragment>
