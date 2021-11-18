@@ -61,6 +61,7 @@ function SignIn() {
       updateFormState(() => ({ ...formState }));
       localStorage.setItem("auth", username);
       history.push("/");
+      window.location.reload();
     } catch (err) {
       alert(err.message);
       console.log("error signing in user...", err.message);

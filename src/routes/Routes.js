@@ -46,18 +46,9 @@ export default function Routes() {
   return (
     <Switch>
       <Route exact path="/" component={Home} />
-      {currentUser ? (
-        <Redirect to="/" />
-      ) : (
-        <Route path="/signin/" component={SignIn} />
-      )}
-      {currentUser ? (
-        <Redirect to="/" />
-      ) : (
-        <Route path="/signup/" component={SignUp} />
-      )}
-      {/* <Route path="/signin/" component={SignIn} /> */}
-      {/* <Route path="/signup/" component={SignUp} /> */}
+
+      <Route path="/signin/" component={SignIn} />
+      <Route path="/signup/" component={SignUp} />
       {currentUser.map((user, index) => (
         <UserContext.Provider key={index} value={user}>
           <Route exact path="/courses/" component={Courses} />

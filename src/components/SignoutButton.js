@@ -2,8 +2,11 @@ import React from "react";
 import Auth from "@aws-amplify/auth";
 import { Box, Hidden, Typography } from "@material-ui/core";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import { useHistory } from "react-router";
 
 function SignoutButton() {
+  let history = useHistory();
+
   return (
     <div>
       <Box
@@ -13,7 +16,7 @@ function SignoutButton() {
           Auth.signOut();
           window.location.reload();
           localStorage.removeItem("auth");
-          window.history.go(-1);
+          history.push("/");
         }}
         style={{ cursor: "pointer" }}
       >
