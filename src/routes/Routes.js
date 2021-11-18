@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
 import { DataStore } from "@aws-amplify/datastore";
 import { User } from "../models";
@@ -41,13 +41,23 @@ export default function Routes() {
       (c) => c.username === user.username
     );
     setCurrentUser(currentUser);
+    console.log("user");
   }
   return (
     <Switch>
       <Route exact path="/" component={Home} />
-      <Route path="/signin/" component={SignIn} />
-      <Route path="/signup/" component={SignUp} />
-
+      {currentUser ? (
+        <Redirect to="/" />
+      ) : (
+        <Route path="/signin/" component={SignIn} />
+      )}
+      {currentUser ? (
+        <Redirect to="/" />
+      ) : (
+        <Route path="/signup/" component={SignUp} />
+      )}
+      {/* <Route path="/signin/" component={SignIn} /> */}
+      {/* <Route path="/signup/" component={SignUp} /> */}
       {currentUser.map((user, index) => (
         <UserContext.Provider key={index} value={user}>
           <Route exact path="/courses/" component={Courses} />
@@ -82,7 +92,6 @@ export default function Routes() {
           )}
         </UserContext.Provider>
       ))}
-
       <Route path="*" component={Error404} />
     </Switch>
   );

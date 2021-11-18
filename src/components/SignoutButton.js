@@ -13,6 +13,7 @@ function SignoutButton() {
           Auth.signOut();
           window.location.reload();
           localStorage.removeItem("auth");
+          window.history.go(-1);
         }}
         style={{ cursor: "pointer" }}
       >
