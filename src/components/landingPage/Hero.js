@@ -3,6 +3,7 @@ import { Button, makeStyles, Typography } from "@material-ui/core";
 import { Container, Grid } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import hero from "../../assests/hero.svg";
+import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 
 function Hero() {
   const classes = useStyles();
@@ -27,36 +28,29 @@ function Hero() {
               for educational institution for managing their educational
               content.
             </Typography>
+
             <Button
               variant="contained"
               color="secondary"
               className={classes.button}
             >
               <Link
-                to="/signup"
-                style={{ textDecoration: "none", color: "white" }}
-              >
-                Sign Up
-              </Link>
-            </Button>
-            <Button
-              variant="outlined"
-              color="secondary"
-              className={classes.button}
-            >
-              <Link
                 to="/signin"
-                style={{ textDecoration: "none", color: "white" }}
+                style={{
+                  textDecoration: "none",
+                  color: "white",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
               >
-                Sign In
+                <p style={{ fontSize: "16px", marginRight: "5px" }}>
+                  Get Started
+                </p>{" "}
+                <ArrowForwardIosIcon />
               </Link>
             </Button>
           </Container>
-          <div>
-            Demo credentials:
-            <p> username: test-user</p>
-            <p> password: Test@123#</p>
-          </div>
         </Grid>
         <Grid item xs={12}>
           <img src={hero} alt="hero" height="150rem" />
@@ -71,6 +65,7 @@ export default Hero;
 const useStyles = makeStyles((theme) => ({
   button: {
     margin: "50px 10px 0px 10px",
+    padding: "13px 18px",
   },
   subtitle: {
     [theme.breakpoints.up("md")]: {
